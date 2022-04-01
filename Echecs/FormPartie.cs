@@ -63,17 +63,19 @@ namespace Echecs
         }
 
 
-        
+
         public void modifEchiquier(int initial, int desti)
         {
             char[] tabEchiquier = _board.ToCharArray();
+            if (tabEchiquier[initial] != '0')
+            {
+                tabEchiquier[desti] = tabEchiquier[initial];
+                tabEchiquier[initial] = '0';
+                _board = new string(tabEchiquier);
+                painturerEchiquier();
+            }
 
-            tabEchiquier[desti] = tabEchiquier[initial];
-            tabEchiquier[initial] = '0';
 
-            _board = new string(tabEchiquier);
-
-            painturerEchiquier();
         }
         private void pnlEchiquier_Click(object sender, EventArgs e)
         {
@@ -107,10 +109,10 @@ namespace Echecs
 
         public void painturerEchiquier()
         {
-            
+
             char[] tabEchiquier = null;
 
-            if(tabEchiquier == null)
+            if (tabEchiquier == null)
             {
                 tabEchiquier = _board.ToCharArray();
             }

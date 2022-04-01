@@ -8,5 +8,15 @@ namespace Echecs
 {
     class Partie
     {
+        Echec _parent;
+        Plateau _plateau;
+        int _indexInitial;
+        int _indexDestination;
+        int _nbCoup;
+        int _coupDepuisPionBougé;
+        Joueur _joueur1;
+        Joueur _joueur2;
+        string _echiquierActuelle;
+        List<string> _listeEchiquier;
     }
 }

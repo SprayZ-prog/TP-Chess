@@ -67,13 +67,14 @@
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Echec.cs" />
+    <Compile Include="Plateau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormClassement.resx">
       <DependentUpon>FormClassement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
-    </EmbeddedResource>  
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPartie.resx">
       <DependentUpon>FormPartie.cs</DependentUpon>
     </EmbeddedResource>
