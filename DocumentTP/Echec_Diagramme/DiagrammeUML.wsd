@@ -1,0 +1,24 @@
+@startuml
+
+class Partie {
+ -_echiquier = List<Case>
+ -_indexPartie = int
+ -_parent = Echec
+ -_nbCoup = int
+ -_coupDepuisPionBouge = int
+ -_joueur1 = Joueur
+ -_joueur2 = Joueur
+ -_listeEchiquier = List<string>
+ +verifCoup()
+ +estCollision(int indexDestination)
+ +metEnEchecAllie
+ +verifPromoPion(int index):bool
+ +verifListeEchiquier():bool
+ +videEchiquier():bool
+ +verifEchec():bool
+ +verifEchecMat():bool
+ +verifPat():bool
+ +verif50Coup():bool
+}
+
+@enduml

@@ -1,0 +1,148 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam sequenceParticipant underline
+
+actor User
+participant "FormPartie" as A
+participant "Echec" as B
+participant "Partie" as C
+participant "Plateau" as D
+participant "Pieces" as E
+
+User -> A: ClickSurEchiquier()
+activate A
+
+A -> B: jouerCoup(x1, y1, x2, y2)
+activate B
+
+B -> C: determinerCase(x1, y1, x2, y2)
+activate C
+
+C --> B: retourne _indexInitial, _indexDestination
+deactivate C
+
+B -> C: verifDeplacementPossible(_indexInitial, _indexDesti)
+activate C
+
+C -> D: verifierSiPiece(_indexInitial) 
+activate D 
+' est ce que je vérifie les 2 case '
+
+D --> C: true, messageSansErreur
+deactivate D
+
+C -> D: maPiece(_indexInitial, nbCoup)
+activate D 
+D --> C: true, messageSansErreur
+deactivate D
+
+C -> D: verifTrajectoire(_indexInitial, _indexDesti)
+activate D 
+D -> E: regles(_indexInitial, _indexDesti, plateau)
+activate E
+E --> D: enum('possible sans collision'), Case[]
+deactivate E
+D --> C: enum('possible sans collision'), Case[]
+deactivate D
+
+C -> D: estCollision(_indexInitial, _indexDesti, Case[])
+activate D 
+D --> C: true, messageSansErreur
+deactivate D
+
+C -> D: verifCouleurDesti(_indexDesti, nbCoup)
+D --> C: true, messageSansErreur
+deactivate D
+
+
+C -> D: metEnEchecAllie(_indexInitial, _indexDesti)
+activate D
+
+loop sur toute les pieces ennemies vers roi alliée
+D -> E: regles(_indexInitial, _indexDesti, plateau)
+activate E
+E --> D: true, messageSansErreur
+deactivate E
+end loop
+
+D --> C: true, messageSansErreur
+deactivate D
+
+C --> B: true, messageSansErreur
+deactivate C
+
+B -> C: faireDéplacement()
+activate C
+C --> B
+deactivate C
+
+
+B -> C: verifLesEchecs()
+activate C
+
+
+C -> D: verifEchec(_indexInitial, _indexDesti, nbCoup)
+activate D
+
+loop sur toute les pieces alliée vers roi adverse
+D -> E: regles(_indexInitial, _indexDesti, plateau)
+activate E
+E --> D: true, messageSansErreur
+deactivate E
+end loop
+
+
+loop faire tant que En echec ou faite toute les possibiliter de contre
+D -> D: verifEchecMat(plateau)
+activate D
+end loop
+
+
+
+loop verifier si le joueur peut bouger une piece
+D -> D: verifPat(nbCoup)
+activate D
+end loop
+activate D
+
+
+D --> C: true, messageSansErreur
+deactivate D
+deactivate D
+deactivate D
+
+deactivate C
+deactivate C
+deactivate C
+
+C --> B: true, messageSansErreur
+
+B -> C: verifFinMatchSpecial(_indexInitial)
+
+
+C -> D: verifListEchiquier(_indexInitial)
+activate D
+D -> E: toString(Pieces)
+activate E
+E --> D: string
+deactivate E
+
+D --> C: true
+deactivate D
+
+C -> C: verif50Coup()
+activate C
+
+
+C --> B: true, messageSansErreur
+deactivate C
+
+B --> A: true, messageSansErreur
+deactivate B
+
+A --> User: Done
+deactivate A
+
+@enduml
+
