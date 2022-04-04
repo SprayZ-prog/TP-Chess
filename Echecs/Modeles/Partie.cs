@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
-    class Partie
+    public class Partie
     {
         Echec _parent;
         Plateau _plateau;

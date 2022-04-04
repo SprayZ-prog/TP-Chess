@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Case.cs" />
-    <Compile Include="Piece.cs" />
-    <Compile Include="Couleur.cs" />
+    <Compile Include="Modeles\Case.cs" />
+    <Compile Include="Modeles\Piece.cs" />
+    <Compile Include="Modeles\Couleur.cs" />
     <Compile Include="FormClassement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormClassement.Designer.cs">
       <DependentUpon>FormClassement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Joueur.cs" />
-    <Compile Include="Partie.cs" />
+    <Compile Include="Modeles\Joueur.cs" />
+    <Compile Include="Modeles\Partie.cs" />
     <Compile Include="FormPartie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,8 +69,8 @@
     <Compile Include="FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Echec.cs" />
-    <Compile Include="Plateau.cs" />
+    <Compile Include="Modeles\Echec.cs" />
+    <Compile Include="Modeles\Plateau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormClassement.resx">
       <DependentUpon>FormClassement.cs</DependentUpon>
