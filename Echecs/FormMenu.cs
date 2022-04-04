@@ -19,15 +19,16 @@ namespace Echecs
             _controlleur = controlleur;
             InitializeComponent();
         }
-        public void nouvellePartie()
+
+
+        private void btnNouvelle_Click(object sender, EventArgs e)
         {
             _controlleur.nouvellePartie();
         }
 
-        private void classementOuvrir(object sender, EventArgs e)
+        private void btnClassement_Click(object sender, EventArgs e)
         {
             _controlleur.ouvrirClassement();
-
         }
     }
 }
