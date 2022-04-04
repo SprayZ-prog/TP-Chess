@@ -31,7 +31,15 @@ namespace Echecs
             return message;
 
         }
-        public Tuple<bool, string> verifTrajectoire(int indexInitial, int indexDestination)
+        public Tuple< Mouvement, List<Case> > verifTrajectoire(int indexInitial, int indexDestination)
+        {
+            Tuple<Mouvement, List<Case>> message = new Tuple<Mouvement, List<Case>>(Mouvement.peutPasBouger, new List<Case>());
+
+
+            return message;
+
+        }
+        public Tuple<bool, string> estCollision(int indexInitial, int indexDestination)
         {
             Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
 
@@ -39,6 +47,53 @@ namespace Echecs
             return message;
 
         }
+        public Tuple<bool, string> verifCouleurDesti(int indexDestination)
+        {
+            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
 
+
+            return message;
+
+        }
+        public Tuple<bool, string> metEnEchecAllie(int indexInitial, int indexDestination)
+        {
+            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+
+
+            return message;
+
+        }
+        public Tuple<bool, string> verifPromoPion(int indexDestination)
+        {
+            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+
+
+            return message;
+
+        }
+        public Tuple<bool, string> verifEchec(int indexInitial, int indexDestination, int nbCoup)
+        {
+            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+
+
+            return message;
+
+        }
+        public Tuple<bool, string> verifEchecMat()
+        {
+            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+
+
+            return message;
+
+        }
+        public Tuple<bool, string> verifPat(int nbCoup)
+        {
+            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+
+
+            return message;
+
+        }
     }
 }
