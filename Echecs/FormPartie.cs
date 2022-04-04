@@ -26,6 +26,9 @@ namespace Echecs
               "PPPPPPPP" +
               "TCFRKFCT";
 
+        Point clickInitial;
+        Point clickDest;
+
         public FormPartie(Echec leControlleur)
         {
             InitializeComponent();
@@ -57,29 +60,33 @@ namespace Echecs
                 //Appeler methode fin de partie avec qui a abandonner
             }
         }
+
         private void pnlEchiquier_Paint(object sender, PaintEventArgs e)
         {
             peinturerEchiquier();
         }
 
 
-
-        public void modifEchiquier(int initial, int desti)
-        {
-            char[] tabEchiquier = _board.ToCharArray();
-            if (tabEchiquier[initial] != '0')
-            {
-                tabEchiquier[desti] = tabEchiquier[initial];
-                tabEchiquier[initial] = '0';
-                _board = new string(tabEchiquier);
-                peinturerEchiquier();
-            }
-
-
-        }
         private void pnlEchiquier_Click(object sender, EventArgs e)
         {
-            Point clickInitial;
+
+            Point point1 = pnlEchiquier.PointToClient(Cursor.Position);
+
+            if (i % 2 == 0)
+            {
+                clickInitial = point1;
+            }
+            else
+            {
+                clickDest = point1;
+                Tuple<int, int> indexMovement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
+                modifEchiquier(indexMovement.Item1, indexMovement.Item2);
+            }
+            i++;
+
+
+
+            /*Point clickInitial;
             Point clickDest;
             Point point1 = pnlEchiquier.PointToClient(Cursor.Position);
 
@@ -101,9 +108,13 @@ namespace Echecs
 
             if (indexDest >= 0)
             {
+                _controlleur.verifDeplacement(indexInitial, indexDest);
                 modifEchiquier(indexInitial, indexDest);
                 //Console.WriteLine(indexInitial + ", " + indexDest);
-            }
+            }*/
+
+
+
 
         }
 
@@ -119,16 +130,11 @@ namespace Echecs
 
 
             Bitmap imgPiece = null;
-
-            //if (_controlleur. != null) tabEchiquier = this.Partie.ToString().ToCharArray();
-
             Graphics myGraph = pnlEchiquier.CreateGraphics();
             SolidBrush myBrush = new SolidBrush(Color.Chocolate);
             myGraph.DrawImage(Properties.Resources.board2, 0, 0);
 
 
-
-            
             // Dessine les pièces...
             for (int c = 0; c < 8; c++)
                 for (int r = 0; r < 8; r++)
@@ -182,10 +188,21 @@ namespace Echecs
                             imgPiece.MakeTransparent(imgPiece.GetPixel(1, 1));
                             myGraph.DrawImage(imgPiece, r * 62, c * 62);
                         }
-
                     }
                 }
             Console.WriteLine(_board);
+        }
+
+        public void modifEchiquier(int initial, int desti)
+        {
+            char[] tabEchiquier = _board.ToCharArray();
+            if (tabEchiquier[initial] != '0')
+            {
+                tabEchiquier[desti] = tabEchiquier[initial];
+                tabEchiquier[initial] = '0';
+                _board = new string(tabEchiquier);
+                peinturerEchiquier();
+            }
         }
     }
 }

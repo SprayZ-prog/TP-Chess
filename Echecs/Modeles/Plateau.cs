@@ -17,6 +17,8 @@ namespace Echecs
         }
         public Tuple<bool, string> verifierSiPiece(int indexInitial)
         {
+
+
             Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
 
 

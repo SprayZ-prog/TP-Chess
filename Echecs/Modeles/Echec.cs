@@ -37,5 +37,14 @@ namespace Echecs
             _formPartie.Show();
         }
 
+        public Tuple<int, int> jouerCoup(int x1, int y1, int x2, int y2)
+        {
+            Tuple<int, int> indexMovement = _unePartie.determinerCase(x1, y1, x2, y2);
+            _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
+
+            return indexMovement;
+        }
+
+
     }
 }
