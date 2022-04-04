@@ -21,12 +21,13 @@ namespace Echecs
         }
         public Echec()
         {
+            _listeJoueur = new List<Joueur>();
             _formMenu = new FormMenu(this);
             Application.Run(_formMenu);
         }
         public void ouvrirClassement()
         {
-            _formClassement = new FormClassement();
+            _formClassement = new FormClassement(this);
             _formClassement.Show();
         }
         public void nouvellePartie()
@@ -42,6 +43,14 @@ namespace Echecs
             _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
 
             return indexMovement;
+        }
+        public void ajouterJoueur(string nom, int gagné, int perdu, int nulle)
+        {
+            _listeJoueur.Add(new Joueur(nom, gagné, perdu, nulle));
+        }
+        public List<Joueur> ListeJoueur
+        {
+            get { return _listeJoueur; }
         }
 
 

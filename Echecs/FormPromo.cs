@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
-    public partial class Form1 : Form
+    public partial class FormPromo : Form
     {
-        public Form1()
+        public FormPromo()
         {
             InitializeComponent();
         }
