@@ -54,5 +54,9 @@ namespace Echecs
         {
             _statsNull++;
         }
+        public override string ToString()
+        {
+            return _nom + "/" + _statsVictoire + "/" + _statsDefaite + "/" + _statsNull; 
+        }
     }
 }
