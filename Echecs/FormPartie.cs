@@ -59,7 +59,7 @@ namespace Echecs
         }
         private void pnlEchiquier_Paint(object sender, PaintEventArgs e)
         {
-            painturerEchiquier();
+            peinturerEchiquier();
         }
 
 
@@ -72,7 +72,7 @@ namespace Echecs
                 tabEchiquier[desti] = tabEchiquier[initial];
                 tabEchiquier[initial] = '0';
                 _board = new string(tabEchiquier);
-                painturerEchiquier();
+                peinturerEchiquier();
             }
 
 
@@ -107,7 +107,7 @@ namespace Echecs
 
         }
 
-        public void painturerEchiquier()
+        public void peinturerEchiquier()
         {
 
             char[] tabEchiquier = null;
@@ -128,7 +128,7 @@ namespace Echecs
 
 
 
-            Thread.Sleep(1000);
+            
             // Dessine les pièces...
             for (int c = 0; c < 8; c++)
                 for (int r = 0; r < 8; r++)

@@ -21,7 +21,7 @@ namespace Echecs
         }
         public void nouvellePartie()
         {
-
+            _controlleur.nouvellePartie();
         }
 
         private void classementOuvrir(object sender, EventArgs e)

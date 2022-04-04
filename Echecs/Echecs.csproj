@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Case.cs" />
+    <Compile Include="Piece.cs" />
+    <Compile Include="Couleur.cs" />
     <Compile Include="FormClassement.cs">
       <SubType>Form</SubType>
     </Compile>

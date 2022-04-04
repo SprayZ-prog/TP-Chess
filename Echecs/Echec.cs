@@ -8,9 +8,9 @@ namespace Echecs
 {
     public class Echec
     {
-        FormMenu _leMenu;
+        FormMenu _formMenu;
         FormPartie _formPartie;
-        FormClassement formClassement;
+        FormClassement _formClassement;
         Partie _unePartie;
         List<Joueur> _listeJoueur;
 
@@ -21,15 +21,20 @@ namespace Echecs
         }
         public Echec()
         {
-            /*_leMenu = new FormMenu(this);
-            Application.Run(_leMenu);*/
+            /*_formMenu = new FormMenu(this);
+            Application.Run(_formMenu);*/
             _formPartie = new FormPartie(this);
             Application.Run(_formPartie);
         }
         public void ouvrirClassement()
         {
-            formClassement = new FormClassement();
-            formClassement.Show();
+            _formClassement = new FormClassement();
+            _formClassement.Show();
+        }
+        public void nouvellePartie()
+        {
+            _formPartie = new FormPartie(this);
+            _formPartie.Show();
         }
 
     }
