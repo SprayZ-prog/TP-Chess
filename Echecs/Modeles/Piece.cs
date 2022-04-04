@@ -6,34 +6,27 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
-    public class Piece
+    public abstract class Piece
     {
-        protected string _nom;
+        protected char _nom;
         protected Couleur _couleur;
 
-        public Piece(string nom, Couleur couleur)
+        public Piece(Couleur couleur)
         {
-            _nom = nom;
-            _couleur = couleur; 
+            _couleur = couleur;    
         }
-        public string Nom
-        {
-            get { return _nom; }
-            set { _nom = value; }   
-        }
+
         public Couleur Couleur
         {
             get { return _couleur; }
+            set { _couleur = Couleur; }
             
         }
         public virtual Tuple<bool, string> regles(int indexInitiale, int indexDestination)
         {
             return new Tuple<bool, string>(false, "t beau babe");
         }
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+
         public virtual bool estEssentiel()
         {
             return true;

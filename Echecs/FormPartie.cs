@@ -121,11 +121,13 @@ namespace Echecs
         public void peinturerEchiquier()
         {
 
+            string _echiquier = _controlleur.afficherEchiquier();
+
             char[] tabEchiquier = null;
 
             if (tabEchiquier == null)
             {
-                tabEchiquier = _board.ToCharArray();
+                tabEchiquier = _echiquier.ToCharArray();
             }
 
 
@@ -141,6 +143,7 @@ namespace Echecs
                 {
                     if (true)
                     {
+                        Thread.Sleep(100);
                         switch (tabEchiquier[c * 8 + r])
                         {
                             case 'P':

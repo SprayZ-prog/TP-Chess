@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\Cavalier.cs" />
+    <Compile Include="Modeles\Fou.cs" />
     <Compile Include="Modeles\Mouvement.cs" />
     <Compile Include="Modeles\Case.cs" />
     <Compile Include="Modeles\Piece.cs" />
@@ -71,7 +73,11 @@
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Modeles\Echec.cs" />
+    <Compile Include="Modeles\Pion.cs" />
     <Compile Include="Modeles\Plateau.cs" />
+    <Compile Include="Modeles\Reine.cs" />
+    <Compile Include="Modeles\Roi.cs" />
+    <Compile Include="Modeles\Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormClassement.resx">
       <DependentUpon>FormClassement.cs</DependentUpon>

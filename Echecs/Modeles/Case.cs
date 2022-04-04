@@ -11,17 +11,57 @@ namespace Echecs
         private Piece _piece;
         private bool _estVide;
         private Plateau _plateau;
+        Couleur _couleur;
 
-        public Case(Piece piece, Plateau plateau) 
+        public Case(char piece, Plateau plateau) 
         {
-            _piece = piece;
             _plateau = plateau;
             _estVide = false;
+
+            switch (piece)
+            {
+                case 'P':
+                    _piece = new Pion(Couleur.Blanc);
+                    break;
+                case 'p':
+                    _piece = new Pion(Couleur.Noir);
+                    break;
+                case 'T':
+                    _piece = new Tour(Couleur.Blanc);
+                    break;
+                case 't':
+                    _piece = new Tour(Couleur.Noir);
+                    break;
+                case 'C':
+                    _piece = new Cavalier(Couleur.Blanc);
+                    break;
+                case 'c':
+                    _piece = new Cavalier(Couleur.Noir);
+                    break;
+                case 'F':
+                    _piece = new Fou(Couleur.Blanc);
+                    break;
+                case 'f':
+                    _piece = new Fou(Couleur.Noir);
+                    break;
+                case 'R':
+                    _piece = new Reine(Couleur.Blanc);
+                    break;
+                case 'r':
+                    _piece = new Reine(Couleur.Noir);
+                    break;
+                case 'K':
+                    _piece = new Roi(Couleur.Blanc);
+                    break;
+                case 'k':
+                    _piece = new Roi(Couleur.Noir);
+                    break;
+            }
         }
         public Case(bool estVide, Plateau plateau)
         {
-            this._estVide = estVide;    
-            this._plateau = plateau;    
+            _estVide = estVide;    
+            _plateau = plateau;    
         }
         public Piece Piece 
         { 
@@ -33,12 +73,18 @@ namespace Echecs
             get { return _estVide; }
             set { _estVide = value; }
         }
+
         public Couleur couleurPiece()
         {
             return _piece.Couleur;
         }
 
-       
+        public Couleur setcouleurPiece()
+        {
+
+            return _piece.Couleur;
+        }
+
 
     }
 }

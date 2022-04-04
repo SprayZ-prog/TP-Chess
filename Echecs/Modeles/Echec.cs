@@ -31,7 +31,7 @@ namespace Echecs
         }
         public void nouvellePartie()
         {
-            //_unePartie = new Partie(this);
+            _unePartie = new Partie(this);
             _formPartie = new FormPartie(this);
             _formPartie.Show();
         }
@@ -42,6 +42,11 @@ namespace Echecs
             _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
 
             return indexMovement;
+        }
+
+        public string afficherEchiquier()
+        {
+            return _unePartie.afficher();
         }
 
 

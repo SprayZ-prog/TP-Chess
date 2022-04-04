@@ -17,9 +17,10 @@ namespace Echecs
         string _echiquierActuelle;
         List<string> _listeEchiquier;
 
-        Partie()
+        public Partie(Echec _monControlleur)
         {
-
+            _parent = _monControlleur;
+            _plateau = new Plateau(this);
         }
 
         public Tuple<int, int> determinerCase(int x1, int y1, int x2, int y2)
@@ -34,6 +35,12 @@ namespace Echecs
         public Tuple<bool, string> verifDeplacement(int indexInitial, int indexDesti)
         {
             return _plateau.verifierSiPiece(indexInitial);
+        }
+
+
+        public string afficher()
+        {
+            return _plateau.afficher();
         }
     }
 }

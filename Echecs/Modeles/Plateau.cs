@@ -8,13 +8,70 @@ namespace Echecs
 {
     public class Plateau
     {
-        private List<Case> _echiquier;
+        private Case[] _echiquier;
         private Partie _partie;
+
+        string _board =
+              "tcfrkfct" +
+              "pppppppp" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "PPPPPPPP" +
+              "TCFRKFCT";
+
+
 
         public Plateau(Partie partie)
         {
             _partie = partie;
+            _echiquier = new Case[64];
+            char[] tabEchiquier = null;
+
+            if (tabEchiquier == null)
+            {
+                tabEchiquier = _board.ToCharArray();
+            }
+
+            for (int i = 0; i < 63; i++)
+            {
+                if (tabEchiquier[i] != '0')
+                {
+                    _echiquier[i] = new Case(tabEchiquier[i], this);
+                    Console.WriteLine(_echiquier[i].Piece.ToString());
+                    
+                }
+                else
+                {
+                    _echiquier[i] = new Case(true, this);
+                    Console.WriteLine("0");
+                }
+                    
+            }
+            
         }
+        
+
+        public string afficher()
+        {
+            string echiquierActuel = "";
+            for (int i = 0; i < 63; i++)
+            {
+                if (_echiquier[i].EstVide != true)
+                {
+                    echiquierActuel += _echiquier[i].Piece.ToString();
+                }
+                else
+                {
+                    echiquierActuel += "0";
+                }
+
+            }
+            return echiquierActuel;
+        }
+
+
         public Tuple<bool, string> verifierSiPiece(int indexInitial)
         {
 
