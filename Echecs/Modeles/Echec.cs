@@ -21,10 +21,8 @@ namespace Echecs
         }
         public Echec()
         {
-            /*_formMenu = new FormMenu(this);
-            Application.Run(_formMenu);*/
-            _formPartie = new FormPartie(this);
-            Application.Run(_formPartie);
+            _formMenu = new FormMenu(this);
+            Application.Run(_formMenu);
         }
         public void ouvrirClassement()
         {
@@ -33,6 +31,7 @@ namespace Echecs
         }
         public void nouvellePartie()
         {
+            //_unePartie = new Partie(this);
             _formPartie = new FormPartie(this);
             _formPartie.Show();
         }
