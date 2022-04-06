@@ -34,9 +34,19 @@ namespace Echecs
 
         public Tuple<bool, string> verifDeplacement(int indexInitial, int indexDesti)
         {
-            return _plateau.verifierSiPiece(indexInitial);
+            Tuple<bool, string> message = _plateau.verifierSiPiece(indexInitial);
+            if (!message.Item1)
+            {
+                message = _plateau.maPiece(indexInitial, _nbCoup);
+            }
+            return message;
         }
 
+        public void faireDeplacement(int indexInitial, int indexDesti)
+        {
+            _nbCoup++;
+            _plateau.deplacer(indexInitial, indexDesti);
+        }
 
         public string afficher()
         {

@@ -79,8 +79,16 @@ namespace Echecs
             else
             {
                 clickDest = point1;
-                Tuple<int, int> indexMovement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
-                modifEchiquier(indexMovement.Item1, indexMovement.Item2);
+                Tuple<bool, string, int, int> movement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
+                if (movement.Item1)
+                {
+                    modifEchiquier(movement.Item3, movement.Item4);
+                }
+                else
+                {
+                    labMessage.Text = movement.Item2;
+                }
+                
             }
             i++;
 
@@ -130,7 +138,6 @@ namespace Echecs
                 tabEchiquier = _echiquier.ToCharArray();
             }
 
-
             Bitmap imgPiece = null;
             Graphics myGraph = pnlEchiquier.CreateGraphics();
             SolidBrush myBrush = new SolidBrush(Color.Chocolate);
@@ -143,7 +150,7 @@ namespace Echecs
                 {
                     if (true)
                     {
-                        Thread.Sleep(100);
+                        //Thread.Sleep(100);
                         switch (tabEchiquier[c * 8 + r])
                         {
                             case 'P':
@@ -193,7 +200,6 @@ namespace Echecs
                         }
                     }
                 }
-            Console.WriteLine(_board);
         }
 
         public void modifEchiquier(int initial, int desti)

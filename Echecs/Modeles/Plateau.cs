@@ -34,13 +34,12 @@ namespace Echecs
                 tabEchiquier = _board.ToCharArray();
             }
 
-            for (int i = 0; i < 63; i++)
+            for (int i = 0; i < 64; i++)
             {
                 if (tabEchiquier[i] != '0')
                 {
                     _echiquier[i] = new Case(tabEchiquier[i], this);
                     Console.WriteLine(_echiquier[i].Piece.ToString());
-                    
                 }
                 else
                 {
@@ -52,11 +51,16 @@ namespace Echecs
             
         }
         
+        public void deplacer(int indexInitial, int indexDesti)
+        {
+                _echiquier[indexDesti] = _echiquier[indexInitial];
+                _echiquier[indexInitial] = new Case(true, this);
+        }
 
         public string afficher()
         {
             string echiquierActuel = "";
-            for (int i = 0; i < 63; i++)
+            for (int i = 0; i < 64; i++)
             {
                 if (_echiquier[i].EstVide != true)
                 {
@@ -68,6 +72,7 @@ namespace Echecs
                 }
 
             }
+            Console.WriteLine(echiquierActuel);
             return echiquierActuel;
         }
 
@@ -75,17 +80,22 @@ namespace Echecs
         public Tuple<bool, string> verifierSiPiece(int indexInitial)
         {
 
-
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
-
+            Tuple<bool, string> message = new Tuple<bool, string>(_echiquier[indexInitial].EstVide, "test");
 
             return message;
 
         }
-        public Tuple<bool, string> maPiece(int indexInitial, int indexDestination)
+        public Tuple<bool, string> maPiece(int indexInitial, int nbCoup)
         {
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
-
+            Tuple<bool, string> message;
+            if ((nbCoup % 2 == 0 && _echiquier[indexInitial].Piece.Couleur == Couleur.Blanc) || (nbCoup % 2 == 1 && _echiquier[indexInitial].Piece.Couleur == Couleur.Noir))
+            {
+                message = new Tuple<bool, string>(true, "test");
+            }
+            else
+            {
+                message = new Tuple<bool, string>(false, "test");
+            }
 
             return message;
 
