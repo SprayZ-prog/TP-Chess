@@ -83,6 +83,7 @@ namespace Echecs
                 if (movement.Item1)
                 {
                     modifEchiquier(movement.Item3, movement.Item4);
+                    labMessage.Text = "";
                 }
                 else
                 {

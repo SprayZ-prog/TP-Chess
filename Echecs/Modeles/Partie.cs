@@ -34,11 +34,20 @@ namespace Echecs
 
         public Tuple<bool, string> verifDeplacement(int indexInitial, int indexDesti)
         {
-            Tuple<bool, string> message = _plateau.verifierSiPiece(indexInitial);
-            if (!message.Item1)
+            Tuple<bool, string> message;
+            if (indexInitial == indexDesti)
             {
-                message = _plateau.maPiece(indexInitial, _nbCoup);
+                message = new Tuple<bool, string>(false, "Invalide: Sélection de la même case 2 fois");
             }
+            else
+            {
+                message = _plateau.verifierSiPiece(indexInitial);
+                if (!message.Item1)
+                {
+                    message = _plateau.maPiece(indexInitial, _nbCoup);
+                }
+            }
+            
             return message;
         }
 

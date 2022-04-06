@@ -79,8 +79,16 @@ namespace Echecs
 
         public Tuple<bool, string> verifierSiPiece(int indexInitial)
         {
-
-            Tuple<bool, string> message = new Tuple<bool, string>(_echiquier[indexInitial].EstVide, "test");
+            Tuple<bool, string> message;
+            if (_echiquier[indexInitial].EstVide)
+            {
+                message = new Tuple<bool, string>(true, "");
+            }
+            else
+            {
+                message = new Tuple<bool, string>(false, "Invalide: Sélectionner une pièce");
+            }
+            
 
             return message;
 
@@ -90,11 +98,11 @@ namespace Echecs
             Tuple<bool, string> message;
             if ((nbCoup % 2 == 0 && _echiquier[indexInitial].Piece.Couleur == Couleur.Blanc) || (nbCoup % 2 == 1 && _echiquier[indexInitial].Piece.Couleur == Couleur.Noir))
             {
-                message = new Tuple<bool, string>(true, "test");
+                message = new Tuple<bool, string>(true, "");
             }
             else
             {
-                message = new Tuple<bool, string>(false, "test");
+                message = new Tuple<bool, string>(false, "Invalide: Mauvaise couleur de pièce");
             }
 
             return message;
