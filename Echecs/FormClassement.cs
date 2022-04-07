@@ -64,5 +64,17 @@ namespace Echecs
             txtNulle.Text = "";
 
         }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                listView1.Items.RemoveAt(listView1.FocusedItem.Index);
+
+                _controlleur.enleverJoueur(listView1.FocusedItem.Index);
+            }
+            
+            
+        }
     }
 }

@@ -63,6 +63,7 @@ namespace Echecs
             this.btnSupprimer.TabIndex = 2;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // listView1
             // 
@@ -72,6 +73,7 @@ namespace Echecs
             this.listView1.Location = new System.Drawing.Point(30, 65);
             this.listView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.listView1.MaximumSize = new System.Drawing.Size(596, 625);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(596, 625);
             this.listView1.TabIndex = 0;

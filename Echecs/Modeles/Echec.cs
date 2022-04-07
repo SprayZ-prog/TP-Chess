@@ -116,6 +116,10 @@ namespace Echecs
             }
 
         }
+        public void enleverJoueur(int index)
+        {
+            _listeJoueur.RemoveAt(index);
+        }
 
 
     }
