@@ -15,16 +15,6 @@ namespace Echecs
     {
         Echec _controlleur;
         int i = 0;
-        string _board =
-              "tcfrkfct" +
-              "pppppppp" +
-              "00000000" +
-              "00000000" +
-              "00000000" +
-              "00000000" +
-              "PPPPPPPP" +
-              "TCFRKFCT";
-
         Point clickInitial;
         Point clickDest;
 

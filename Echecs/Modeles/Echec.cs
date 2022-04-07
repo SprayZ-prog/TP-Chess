@@ -39,11 +39,11 @@ namespace Echecs
             _formPartie.Show();
         }
 
-        public Tuple<bool, string, int, int> jouerCoup(int x1, int y1, int x2, int y2)
+        public Tuple<bool, string> jouerCoup(int x1, int y1, int x2, int y2)
         {
             Tuple<int, int> indexMovement = _unePartie.determinerCase(x1, y1, x2, y2);
             Tuple<bool, string> test = _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
-            Tuple<bool, string, int, int> test2 = new Tuple<bool, string, int, int>(test.Item1, test.Item2, indexMovement.Item1, indexMovement.Item2);
+            Tuple<bool, string> test2 = new Tuple<bool, string>(test.Item1, test.Item2);
             if (test.Item1)
             {
                 _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
