@@ -36,6 +36,7 @@ namespace Echecs
         public void nouvellePartie()
         {
             _formSelection = new FormSelection(this);
+            _formSelection.Show();
             
         }
 

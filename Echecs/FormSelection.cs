@@ -12,14 +12,21 @@ namespace Echecs
 {
     public partial class FormSelection : Form
     {
-        public FormSelection()
+        Echec _controlleur;
+        public FormSelection(Echec controlleur)
         {
+            _controlleur = controlleur;
             InitializeComponent();
         }
 
         private void FormSelection_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCommencer_Click(object sender, EventArgs e)
+        {
+            _controlleur.commencerPartie();
         }
     }
 }
