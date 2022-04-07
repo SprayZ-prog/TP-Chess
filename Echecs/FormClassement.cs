@@ -17,39 +17,11 @@ namespace Echecs
         public FormClassement(Echec controlleur)
         {
             _controlleur = controlleur;
+            
             InitializeComponent();
         }
-        public void read()
-        {
-            string file = @"../../test.txt";
-            string[] lines = File.ReadAllLines(file);
-
-            foreach(string line in lines)
-            {
-                string[] infos = line.Split('/');
-                _controlleur.ajouterJoueur(infos[0], Int32.Parse(infos[1]), Int32.Parse(infos[2]), Int32.Parse(infos[3]));
-                ListViewItem lvi = new ListViewItem(infos);
-                listView1.Items.Add(lvi);
-            }
-        }
-        public void save()
-        {
-            string file = @"../../test.txt";
-
         
-            
-            using (StreamWriter sw = new StreamWriter(file))
-            {
-
-                foreach (Joueur joueur in _controlleur.ListeJoueur)
-                {
-                    sw.WriteLine(joueur.ToString());
-
-                }
-                sw.Close();
-            }
-
-        }
+ 
 
         private void FormClassement_Load(object sender, EventArgs e)
         {
@@ -60,7 +32,12 @@ namespace Echecs
             listView1.Columns.Add("Parties gagnés", 150);
             listView1.Columns.Add("Parties perdues", 150);
             listView1.Columns.Add("Nulles", 150);
-            read();
+            foreach (Joueur joueur in _controlleur.ListeJoueur)
+            {
+                string[] infos = joueur.ToString().Split('/');
+                ListViewItem lvi = new ListViewItem(infos);
+                listView1.Items.Add(lvi);
+            }
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -85,7 +62,6 @@ namespace Echecs
             txtWin.Text = "";
             txtLose.Text = "";
             txtNulle.Text = "";
-            save();
 
         }
     }

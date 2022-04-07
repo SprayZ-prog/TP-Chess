@@ -30,5 +30,10 @@ namespace Echecs
         {
             _controlleur.ouvrirClassement();
         }
+
+        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _controlleur.fermerJeu();
+        }
     }
 }

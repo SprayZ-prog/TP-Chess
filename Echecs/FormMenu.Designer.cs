@@ -42,7 +42,7 @@ namespace Echecs
             this.Titre.Location = new System.Drawing.Point(364, 121);
             this.Titre.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.Titre.Name = "Titre";
-            this.Titre.Size = new System.Drawing.Size(217, 18);
+            this.Titre.Size = new System.Drawing.Size(316, 29);
             this.Titre.TabIndex = 0;
             this.Titre.Text = "Bienvenue au jeu d\'échec";
             // 
@@ -83,7 +83,7 @@ namespace Echecs
             // 
             // FormMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(978, 544);
@@ -95,6 +95,7 @@ namespace Echecs
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "FormMenu";
             this.Text = "Menu du jeu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenu_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

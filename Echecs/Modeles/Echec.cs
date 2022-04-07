@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,7 @@ namespace Echecs
         {
             _listeJoueur = new List<Joueur>();
             _formMenu = new FormMenu(this);
+            read();
             Application.Run(_formMenu);
         }
         public void ouvrirClassement()
@@ -57,6 +59,10 @@ namespace Echecs
         {
             _listeJoueur.Add(new Joueur(nom, gagné, perdu, nulle));
         }
+        public void nettoyerJoueur()
+        {
+            _listeJoueur.Clear();
+        }
         public List<Joueur> ListeJoueur
         {
             get { return _listeJoueur; }
@@ -65,6 +71,50 @@ namespace Echecs
         public string afficherEchiquier()
         {
             return _unePartie.afficher();
+        }
+        public void fermerJeu()
+        {
+            save();
+        }
+
+        public void read()
+        {
+            string file = @"../../test.txt";
+
+            if (File.Exists(file))
+            {
+                string[] lines = File.ReadAllLines(file);
+                foreach (string line in lines)
+                {
+                    string[] infos = line.Split('/');
+
+                    ajouterJoueur(infos[0], Int32.Parse(infos[1]), Int32.Parse(infos[2]), Int32.Parse(infos[3]));
+
+                }
+
+            }
+
+        }
+        public void save()
+        {
+            string file = @"../../test.txt";
+
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+            }
+
+            using (StreamWriter sw = new StreamWriter(file))
+            {
+
+                foreach (Joueur joueur in ListeJoueur)
+                {
+                    sw.WriteLine(joueur.ToString());
+
+                }
+                sw.Close();
+            }
+
         }
 
 
