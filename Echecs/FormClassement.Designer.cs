@@ -171,6 +171,7 @@ namespace Echecs
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.listView1);
             this.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FormClassement";
             this.Text = "Classement";

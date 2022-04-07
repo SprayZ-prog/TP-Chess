@@ -92,6 +92,7 @@ namespace Echecs
             this.Controls.Add(this.btnNouvelle);
             this.Controls.Add(this.Titre);
             this.Font = new System.Drawing.Font("Verdana", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "FormMenu";
             this.Text = "Menu du jeu";
