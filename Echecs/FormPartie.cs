@@ -15,7 +15,6 @@ namespace Echecs
     {
         Echec _controlleur;
         int i = 0;
-        int indexInitial = 0;
         string _board =
               "tcfrkfct" +
               "pppppppp" +
@@ -63,7 +62,8 @@ namespace Echecs
 
         private void pnlEchiquier_Paint(object sender, PaintEventArgs e)
         {
-            peinturerEchiquier();
+            string echiquier = _controlleur.afficherEchiquier();
+            peinturerEchiquier(echiquier);
         }
 
 
@@ -79,10 +79,12 @@ namespace Echecs
             else
             {
                 clickDest = point1;
-                Tuple<bool, string, int, int> movement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
+                Tuple<bool, string> movement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
                 if (movement.Item1)
                 {
-                    modifEchiquier(movement.Item3, movement.Item4);
+                    string echiquier = _controlleur.afficherEchiquier();
+                    peinturerEchiquier(echiquier);
+
                     labMessage.Text = "";
                 }
                 else
@@ -127,16 +129,15 @@ namespace Echecs
 
         }
 
-        public void peinturerEchiquier()
+        public void peinturerEchiquier(string echiquier)
         {
 
-            string _echiquier = _controlleur.afficherEchiquier();
 
             char[] tabEchiquier = null;
 
             if (tabEchiquier == null)
             {
-                tabEchiquier = _echiquier.ToCharArray();
+                tabEchiquier = echiquier.ToCharArray();
             }
 
             Bitmap imgPiece = null;
@@ -203,17 +204,6 @@ namespace Echecs
                 }
         }
 
-        public void modifEchiquier(int initial, int desti)
-        {
-            char[] tabEchiquier = _board.ToCharArray();
-            if (tabEchiquier[initial] != '0')
-            {
-                tabEchiquier[desti] = tabEchiquier[initial];
-                tabEchiquier[initial] = '0';
-                _board = new string(tabEchiquier);
-                peinturerEchiquier();
-            }
-        }
     }
 }
 
