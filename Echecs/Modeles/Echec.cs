@@ -11,6 +11,7 @@ namespace Echecs
     {
         FormMenu _formMenu;
         FormPartie _formPartie;
+        FormSelection _formSelection;
         FormClassement _formClassement;
         Partie _unePartie;
         List<Joueur> _listeJoueur;
@@ -33,6 +34,12 @@ namespace Echecs
             _formClassement.Show();
         }
         public void nouvellePartie()
+        {
+            _formSelection = new FormSelection(this);
+            
+        }
+
+        public void commencerPartie()
         {
             _unePartie = new Partie(this);
             _formPartie = new FormPartie(this);
