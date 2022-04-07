@@ -37,7 +37,6 @@ namespace Echecs
         {
             _formSelection = new FormSelection(this);
             _formSelection.Show();
-            
         }
 
         public void commencerPartie()
@@ -47,22 +46,29 @@ namespace Echecs
             _formPartie.Show();
         }
 
-        public Tuple<bool, string> jouerCoup(int x1, int y1, int x2, int y2)
+        public Tuple<bool, int> jouerCoup(int x1, int y1, int x2, int y2)
         {
             Tuple<int, int> indexMovement = _unePartie.determinerCase(x1, y1, x2, y2);
-            Tuple<bool, string> test = _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
-            Tuple<bool, string> test2 = new Tuple<bool, string>(test.Item1, test.Item2);
-            if (test.Item1)
+            Tuple<bool, int> message = _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
+            if (message.Item1)
             {
                 _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
-                return test2;
+                return message;
             }
             else
             {
-                return test2;
+                return message;
             }
             
         }
+
+
+        public int tour()
+        {
+            return _unePartie.tour();
+        }
+
+
         public void ajouterJoueur(string nom, int gagné, int perdu, int nulle)
         {
             _listeJoueur.Add(new Joueur(nom, gagné, perdu, nulle));

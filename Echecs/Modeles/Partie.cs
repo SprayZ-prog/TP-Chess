@@ -23,6 +23,13 @@ namespace Echecs
             _plateau = new Plateau(this);
         }
 
+
+        public int tour()
+        {
+            return _nbCoup % 2;
+        }
+
+
         public Tuple<int, int> determinerCase(int x1, int y1, int x2, int y2)
         {
             int indexInitial = (x1 / 62) + (y1 / 62) * 496 / 62;
@@ -32,12 +39,12 @@ namespace Echecs
             return indexMovement;
         }
 
-        public Tuple<bool, string> verifDeplacement(int indexInitial, int indexDesti)
+        public Tuple<bool, int> verifDeplacement(int indexInitial, int indexDesti)
         {
-            Tuple<bool, string> message;
+            Tuple<bool, int> message;
             if (indexInitial == indexDesti)
             {
-                message = new Tuple<bool, string>(false, "Invalide: Sélection de la même case 2 fois");
+                message = new Tuple<bool, int>(false, 3);
             }
             else
             {

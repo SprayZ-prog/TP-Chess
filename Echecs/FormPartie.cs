@@ -52,6 +52,14 @@ namespace Echecs
 
         private void pnlEchiquier_Paint(object sender, PaintEventArgs e)
         {
+            if (_controlleur.tour() == 0)
+            {
+                labMessage.Text = "Tour des blancs";
+            }
+            else
+            {
+                labMessage.Text = "Tour des noirs";
+            }
             string echiquier = _controlleur.afficherEchiquier();
             peinturerEchiquier(echiquier);
         }
@@ -69,19 +77,35 @@ namespace Echecs
             else
             {
                 clickDest = point1;
-                Tuple<bool, string> movement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
-                if (movement.Item1)
+                Tuple<bool, int> mouvement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
+
+                switch (mouvement.Item2)
+                {
+                    case 0:
+                        if(_controlleur.tour() == 0){
+                            labMessage.Text = "Tour des blancs";
+                        }
+                        else
+                        {
+                            labMessage.Text = "Tour des noirs";
+                        }
+                        break;
+                    case 1:
+                        labMessage.Text = "Invalide: Sélectionner une pièce";
+                        break;
+                    case 2:
+                        labMessage.Text = "Invalide: Mauvaise couleur de pièce";
+                        break;
+                    case 3:
+                        labMessage.Text = "Invalide: Sélection de la même case 2 fois";
+                        break;
+
+                }
+                if (mouvement.Item1)
                 {
                     string echiquier = _controlleur.afficherEchiquier();
                     peinturerEchiquier(echiquier);
-
-                    labMessage.Text = "";
                 }
-                else
-                {
-                    labMessage.Text = movement.Item2;
-                }
-                
             }
             i++;
 
