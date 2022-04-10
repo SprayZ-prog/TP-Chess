@@ -25,32 +25,25 @@ namespace Echecs
         {
             return _nom.ToString();
         }
-        public override Tuple<Mouvement, string> regles(int indexInitiale, int indexDestination)
+        public override Mouvement regles(int indexInitiale, int indexDestination)
         {
            if (_nom == 'P')
            {
-                if (indexDestination == indexInitiale - 8)
+                if (indexDestination == indexInitiale - 8 || indexDestination == indexInitiale - 9 || indexDestination == indexInitiale - 7)
                 {
-                    return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le coup est correcte");
-                }
-                else if ((indexDestination == indexInitiale - 9 || indexDestination == indexInitiale - 7))
-                {
-                    return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le coup est correcte");
+                    return Mouvement.peutBougerSansCollision;
                 }
                 
            }
            else
            {
-                if (indexDestination == indexInitiale + 8)
+                if (indexDestination == indexInitiale + 8 || (indexDestination == indexInitiale + 9 || indexDestination == indexInitiale + 7))
                 {
-                    return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le coup est correcte");
+                    return Mouvement.peutBougerSansCollision;
                 }
-                else if ((indexDestination == indexInitiale + 9 || indexDestination == indexInitiale + 7))
-                {
-                    return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le coup est correcte");
-                }
+   
            }
-            return new Tuple<Mouvement, string>(Mouvement.peutPasBouger, "Le coup est incorrecte");
+            return Mouvement.peutPasBouger;
         }
     }
 }

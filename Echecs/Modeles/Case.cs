@@ -84,6 +84,10 @@ namespace Echecs
 
             return _piece.Couleur;
         }
+        public Mouvement regles(int indexInitiale, int indexDesti)
+        {
+            return _piece.regles(indexInitiale, indexDesti);
+        }
 
 
     }

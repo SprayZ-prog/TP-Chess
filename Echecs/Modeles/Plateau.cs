@@ -82,11 +82,11 @@ namespace Echecs
             Tuple<bool, int> message;
             if (_echiquier[indexInitial].EstVide)
             {
-                message = new Tuple<bool, int>(true, 0);
+                message = new Tuple<bool, int>(false, 0);
             }
             else
             {
-                message = new Tuple<bool, int>(false, 1);
+                message = new Tuple<bool, int>(true, 1);
             }
             
 
@@ -109,12 +109,10 @@ namespace Echecs
             return message;
 
         }
-        public Tuple< Mouvement, List<Case> > verifTrajectoire(int indexInitial, int indexDestination)
+        public Mouvement verifTrajectoire(int indexInitial, int indexDestination)
         {
-            Tuple<Mouvement, List<Case>> message = new Tuple<Mouvement, List<Case>>(Mouvement.peutPasBouger, new List<Case>());
 
-
-            return message;
+            return _echiquier[indexInitial].regles(indexInitial, indexDestination);
 
         }
         public Tuple<bool, string> estCollision(int indexInitial, int indexDestination)
