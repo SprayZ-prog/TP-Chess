@@ -63,7 +63,7 @@ namespace Echecs
                                 break;
 
                             case Mouvement.peutBougerSansCollision:
-                                List<Case> cases = _plateau.chemin(indexInitial);
+                                int deplacement = _plateau.deplacement(indexInitial, indexDesti);
 
                                 break;
 
