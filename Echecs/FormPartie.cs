@@ -91,13 +91,32 @@ namespace Echecs
                         }
                         break;
                     case 1:
+
                         labMessage.Text = "Invalide: Sélectionner une pièce";
                         break;
+
                     case 2:
+
                         labMessage.Text = "Invalide: Mauvaise couleur de pièce";
                         break;
+
                     case 3:
+
                         labMessage.Text = "Invalide: Sélection de la même case 2 fois";
+                        break;
+                    case 4:
+
+                        labMessage.Text = "Invalide: Cette pièce ne peut pas faire ce mouvement";
+                        break;
+
+                    case 5:
+
+                        labMessage.Text = "Invalide: Une pièce est dans la trajectoire";
+                        break;
+
+                    case 6:
+
+                        labMessage.Text = "Invalide: Vous ne pouvez pas attaquer votre propre pièce";
                         break;
 
                 }

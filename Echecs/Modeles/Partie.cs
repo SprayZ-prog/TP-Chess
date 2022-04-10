@@ -66,10 +66,12 @@ namespace Echecs
                                 int deplacement = _plateau.deplacement(indexInitial, indexDesti);
 
                                 message = _plateau.estCollision(indexInitial, indexDesti, deplacement);
-
-                                if (!message.Item1)
+                                Console.WriteLine(message.Item1);
+                                if (message.Item1)
                                 {
-                                    
+                                    message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
+
+
                                 }
                                 break;
 

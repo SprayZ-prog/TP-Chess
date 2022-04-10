@@ -88,6 +88,10 @@ namespace Echecs
         {
             return _piece.regles(indexInitiale, indexDesti);
         }
+        public void aBougé()
+        {
+            _piece.Abouge = true;
+        }
 
 
     }

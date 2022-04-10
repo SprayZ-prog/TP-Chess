@@ -53,8 +53,9 @@ namespace Echecs
         
         public void deplacer(int indexInitial, int indexDesti)
         {
-                _echiquier[indexDesti] = _echiquier[indexInitial];
-                _echiquier[indexInitial] = new Case(true, this);
+            _echiquier[indexInitial].aBougé();   
+            _echiquier[indexDesti] = _echiquier[indexInitial];
+            _echiquier[indexInitial] = new Case(true, this);
         }
 
         public string afficher()
@@ -62,7 +63,7 @@ namespace Echecs
             string echiquierActuel = "";
             for (int i = 0; i < 64; i++)
             {
-                if (_echiquier[i].EstVide != true)
+                if (!_echiquier[i].EstVide)
                 {
                     echiquierActuel += _echiquier[i].Piece.ToString();
                 }
@@ -147,7 +148,7 @@ namespace Echecs
                 }
                 else
                 {
-                    return 9;
+                    return 7;
                 }
             }
             else if ((indexDesti - indexInitial) % 9 == 0)
@@ -158,7 +159,7 @@ namespace Echecs
                 }
                 else
                 {
-                    return 7;
+                    return 9;
                 }
             }
             return 1;
@@ -173,23 +174,26 @@ namespace Echecs
                 
                 if (!_echiquier[indexChemin].EstVide)
                 {
-                    return new Tuple<bool, int>(true, 5);
+                    return new Tuple<bool, int>(false, 5);
                 }
                 indexChemin += deplacement;
             }
 
 
-            return new Tuple<bool, int>(false, 0);
+            return new Tuple<bool, int>(true, 0);
 
         }
         public Tuple<bool, int> verifCouleurDesti(int indexInitial, int indexDestination)
         {
             
-            
-            if (_echiquier[indexInitial].couleurPiece() == _echiquier[indexDestination].couleurPiece())
+            if (!_echiquier[indexDestination].EstVide)
             {
-                return new Tuple<bool, int>(false, 6);
+                if (_echiquier[indexInitial].couleurPiece() == _echiquier[indexDestination].couleurPiece())
+                {
+                    return new Tuple<bool, int>(false, 6);
+                }
             }
+            
 
             return new Tuple<bool, int>(true, 0);
 
