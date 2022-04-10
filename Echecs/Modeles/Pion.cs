@@ -8,7 +8,6 @@ namespace Echecs
 {
     class Pion : Piece
     {
-        bool aBougé;
         public Pion(Couleur _couleur) : base(_couleur)
         {
 
@@ -20,7 +19,7 @@ namespace Echecs
             {
                 _nom = 'p';
             }
-            
+            _estPion = true;
         }
 
         public override string ToString()

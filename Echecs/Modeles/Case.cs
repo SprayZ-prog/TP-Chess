@@ -93,6 +93,14 @@ namespace Echecs
             _piece.Abouge = true;
         }
 
+        public override string ToString()
+        {
+            return _piece.ToString();
+        }
+        public bool estPion()
+        {
+            return _piece.EstPion;
+        }
 
     }
 }

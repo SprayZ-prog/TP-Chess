@@ -119,6 +119,11 @@ namespace Echecs
                         labMessage.Text = "Invalide: Vous ne pouvez pas attaquer votre propre pièce";
                         break;
 
+                    case 7:
+                        labMessage.Text = "Invalide: Vous mettez votre roi en échec";
+                        break;
+
+
                 }
                 if (mouvement.Item1)
                 {

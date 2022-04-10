@@ -65,19 +65,25 @@ namespace Echecs
                             case Mouvement.peutBougerSansCollision:
                                 int deplacement = _plateau.deplacement(indexInitial, indexDesti);
 
-                                message = _plateau.estCollision(indexInitial, indexDesti, deplacement);
-                                Console.WriteLine(message.Item1);
+                                message = _plateau.estCollision(indexInitial, indexDesti, deplacement, _plateau.Echiquier);
                                 if (message.Item1)
                                 {
                                     message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
-
-
+                                    
+                                    if (message.Item1)
+                                    {
+                                        message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                    }
                                 }
                                 break;
-
                             case Mouvement.peutBougerAvecCollision:
 
+                                message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
 
+                                if (message.Item1)
+                                {
+                                    message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                }
                                 break;
 
 
