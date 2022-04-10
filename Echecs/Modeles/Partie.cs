@@ -65,9 +65,16 @@ namespace Echecs
                             case Mouvement.peutBougerSansCollision:
                                 int deplacement = _plateau.deplacement(indexInitial, indexDesti);
 
+                                message = _plateau.estCollision(indexInitial, indexDesti, deplacement);
+
+                                if (!message.Item1)
+                                {
+                                    
+                                }
                                 break;
 
                             case Mouvement.peutBougerAvecCollision:
+
 
                                 break;
 

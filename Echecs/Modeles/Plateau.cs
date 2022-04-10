@@ -167,25 +167,31 @@ namespace Echecs
         public Tuple<bool, int> estCollision(int indexInitial, int indexDestination, int deplacement)
         {
             int indexChemin = indexInitial;
+            indexChemin += deplacement;
             while (indexChemin != indexDestination)
             {
-                indexChemin += deplacement;
+                
                 if (!_echiquier[indexChemin].EstVide)
                 {
-                    return new Tuple<bool, int>(false, 5);
+                    return new Tuple<bool, int>(true, 5);
                 }
+                indexChemin += deplacement;
             }
 
 
-            return new Tuple<bool, int>(true, 5);
+            return new Tuple<bool, int>(false, 0);
 
         }
-        public Tuple<bool, string> verifCouleurDesti(int indexDestination)
+        public Tuple<bool, int> verifCouleurDesti(int indexInitial, int indexDestination)
         {
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+            
+            
+            if (_echiquier[indexInitial].couleurPiece() == _echiquier[indexDestination].couleurPiece())
+            {
+                return new Tuple<bool, int>(false, 6);
+            }
 
-
-            return message;
+            return new Tuple<bool, int>(true, 0);
 
         }
         public Tuple<bool, string> metEnEchecAllie(int indexInitial, int indexDestination)
