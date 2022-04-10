@@ -115,6 +115,55 @@ namespace Echecs
             return _echiquier[indexInitial].regles(indexInitial, indexDestination);
 
         }
+        public int deplacement(int indexInitial, int indexDesti)
+        {
+            
+            if (indexInitial / 8 == indexDesti / 8)
+            {
+                if (indexDesti - indexInitial < 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else if ((indexInitial - indexDesti) % 8 == 0)
+            {
+                if (indexDesti - indexInitial < 0) {
+                    return -8;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+            else if ((indexDesti - indexInitial) % 7 == 0)
+            {
+                if (indexDesti < indexInitial)
+                {
+                    return -7;
+                }
+                else
+                {
+                    return 9;
+                }
+            }
+            else if ((indexDesti - indexInitial) % 9 == 0)
+            {
+                if (indexDesti < indexInitial)
+                {
+                    return -9;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+            return 1;
+        }
+
         public Tuple<bool, string> estCollision(int indexInitial, int indexDestination)
         {
             Tuple<bool, string> message = new Tuple<bool, string>(false, "test");

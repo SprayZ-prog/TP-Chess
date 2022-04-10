@@ -27,12 +27,8 @@ namespace Echecs
         }
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
-            int x1 = indexInitiale % 8;
-            int y1 = indexInitiale / 8;
-            int x2 = indexDestination % 8;
-            int y2 = indexDestination / 8;
 
-            if ((y2 - y1) / (x2 - x1) == 1 || (y2 - y1) / (x2 - x1) == -1)
+            if ((indexDestination - indexInitiale) % 7 == 0 || (indexDestination - indexInitiale) % 9 == 0)
             {
                 return Mouvement.peutBougerSansCollision;
             }

@@ -59,10 +59,11 @@ namespace Echecs
                         {
                             case Mouvement.peutPasBouger:
 
-                                
+                                message = new Tuple<bool, int>(false, 4);
                                 break;
 
                             case Mouvement.peutBougerSansCollision:
+                                List<Case> cases = _plateau.chemin(indexInitial);
 
                                 break;
 

@@ -8,8 +8,10 @@ namespace Echecs
 {
     class Pion : Piece
     {
+        bool aBougé;
         public Pion(Couleur _couleur) : base(_couleur)
         {
+
             if(_couleur == Couleur.Blanc)
             {
                 _nom = 'P';
