@@ -64,6 +64,7 @@ namespace Echecs
 
                             case Mouvement.peutBougerSansCollision:
                                 int deplacement = _plateau.deplacement(indexInitial, indexDesti);
+                               
 
                                 message = _plateau.estCollision(indexInitial, indexDesti, deplacement, _plateau.Echiquier);
                                 if (message.Item1)
@@ -73,6 +74,7 @@ namespace Echecs
                                     if (message.Item1)
                                     {
                                         message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                        
                                     }
                                 }
                                 break;
@@ -97,8 +99,15 @@ namespace Echecs
 
         public void faireDeplacement(int indexInitial, int indexDesti)
         {
-            _nbCoup++;
+            
             _plateau.deplacer(indexInitial, indexDesti);
+            _nbCoup++;
+        }
+        public Tuple<bool, int> verifEchec(int indexInitial, int indexDesti)
+        {
+            Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi(_nbCoup);
+            return _plateau.verifEchec(roi.Item1, roi.Item2); 
+            
         }
 
         public string afficher()

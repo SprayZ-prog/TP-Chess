@@ -122,6 +122,9 @@ namespace Echecs
                     case 7:
                         labMessage.Text = "Invalide: Vous mettez votre roi en échec";
                         break;
+                    case 8:
+                        labMessage.Text = "Échec";
+                        break;
 
 
                 }

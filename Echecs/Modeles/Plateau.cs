@@ -39,16 +39,16 @@ namespace Echecs
                 if (tabEchiquier[i] != '0')
                 {
                     _echiquier[i] = new Case(tabEchiquier[i], this);
-                    
+
                 }
                 else
                 {
                     _echiquier[i] = new Case(true, this);
-                    
+
                 }
-                    
+
             }
-            
+
         }
         public Case[] Echiquier
         {
@@ -56,7 +56,7 @@ namespace Echecs
         }
         public void deplacer(int indexInitial, int indexDesti)
         {
-            _echiquier[indexInitial].aBougé();   
+            _echiquier[indexInitial].aBougé();
             _echiquier[indexDesti] = _echiquier[indexInitial];
             _echiquier[indexInitial] = new Case(true, this);
         }
@@ -76,7 +76,6 @@ namespace Echecs
                 }
 
             }
-            Console.WriteLine(echiquierActuel);
             return echiquierActuel;
         }
 
@@ -92,7 +91,7 @@ namespace Echecs
             {
                 message = new Tuple<bool, int>(true, 1);
             }
-            
+
 
             return message;
 
@@ -121,7 +120,7 @@ namespace Echecs
         }
         public int deplacement(int indexInitial, int indexDesti)
         {
-            
+
             if (indexInitial / 8 == indexDesti / 8)
             {
                 if (indexDesti - indexInitial < 0)
@@ -174,7 +173,7 @@ namespace Echecs
             indexChemin += deplacement;
             while (indexChemin != indexDestination)
             {
-                
+
                 if (!echiquier[indexChemin].EstVide)
                 {
                     return new Tuple<bool, int>(false, 5);
@@ -188,7 +187,7 @@ namespace Echecs
         }
         public Tuple<bool, int> verifCouleurDesti(int indexInitial, int indexDestination)
         {
-            
+
             if (!_echiquier[indexDestination].EstVide)
             {
                 if (_echiquier[indexInitial].couleurPiece() == _echiquier[indexDestination].couleurPiece())
@@ -196,7 +195,7 @@ namespace Echecs
                     return new Tuple<bool, int>(false, 6);
                 }
             }
-            
+
 
             return new Tuple<bool, int>(true, 0);
 
@@ -207,24 +206,24 @@ namespace Echecs
 
             echiquierTest[indexDesti] = echiquierTest[indexInitial];
             echiquierTest[indexInitial] = new Case(true, this);
-            
+
             int indexDestination = 0;
             for (int i = 0; i < echiquierTest.Length; i++)
             {
                 if (!echiquierTest[i].EstVide)
                 {
-                    
+
                     if ((nbCoup % 2 == 0 && echiquierTest[i].ToString() == "K")
                     || (nbCoup % 2 == 1 && echiquierTest[i].ToString() == "k"))
                     {
-                        
+
                         indexDestination = i;
                         break;
                     }
                 }
-                
+
             }
-            for (int i = 0; i < 64; i++)
+            for (int i = 0; i < echiquierTest.Length; i++)
             {
                 if (!echiquierTest[i].EstVide)
                 {
@@ -235,22 +234,11 @@ namespace Echecs
 
                         switch (mouvement)
                         {
-                            case Mouvement.peutPasBouger:
 
-
-                                break;
 
                             case Mouvement.peutBougerSansCollision:
 
                                 int deplacement = this.deplacement(i, indexDestination);
-                                if (echiquierTest[i].estPion())
-                                {
-                                    if (!(indexDestination == i + 7 || indexDestination == i + 9))
-                                    {
-                                        return new Tuple<bool, int>(false, 7);
-                                    }
-                                }
-                                
 
                                 Tuple<bool, int> message = this.estCollision(i, indexDestination, deplacement, echiquierTest);
                                 if (message.Item1)
@@ -271,22 +259,11 @@ namespace Echecs
 
                         switch (mouvement)
                         {
-                            case Mouvement.peutPasBouger:
 
-
-                                break;
 
                             case Mouvement.peutBougerSansCollision:
 
                                 int deplacement = this.deplacement(i, indexDestination);
-                                if (echiquierTest[i].estPion())
-                                {
-                                    if (!(indexDestination == i - 7 || indexDestination == i - 9))
-                                    {
-                                        return new Tuple<bool, int>(false, 7);
-                                    }
-                                }
-
 
                                 Tuple<bool, int> message = this.estCollision(i, indexDestination, deplacement, echiquierTest);
                                 if (message.Item1)
@@ -303,10 +280,11 @@ namespace Echecs
                     }
                 }
 
-                
+
             }
             return new Tuple<bool, int>(true, 0);
         }
+
         public Tuple<bool, string> verifPromoPion(int indexDestination)
         {
             Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
@@ -315,13 +293,70 @@ namespace Echecs
             return message;
 
         }
-        public Tuple<bool, string> verifEchec(int indexInitial, int indexDestination, int nbCoup)
+        public Tuple<bool, int> verifEchec(int indexRoi, Couleur couleur)
         {
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+
+            for (int i = 0; i < _echiquier.Length; i++)
+            {
+                if (!_echiquier[i].EstVide)
+                {
+
+                    if (_echiquier[i].couleurPiece() == couleur)
+                    {
+                        Mouvement mouvement = verifTrajectoire(i, indexRoi);
+
+                        switch (mouvement) {
+
+                            case Mouvement.peutBougerSansCollision:
+
+                                int deplacement = this.deplacement(i, indexRoi);
+
+                                Tuple<bool, int> message = this.estCollision(i, indexRoi, deplacement, _echiquier);
+                                if (message.Item1)
+                                {
+                                    return new Tuple<bool, int>(true, 8);
+
+                                }
+                                break;
+                            case Mouvement.peutBougerAvecCollision:
+
+                                return new Tuple<bool, int>(true, 8);
+
+                        }
+                    }
+                }
 
 
-            return message;
+            }
+            return new Tuple<bool, int>(true, 0);
 
+        }
+        public Tuple<int, Couleur> trouverRoiEnnemi(int nbCoup)
+        {
+            int indexRoi = 0;
+            Couleur couleur = Couleur.Blanc;
+            for (int i = 0; i < 64; i++)
+            {
+                if (!_echiquier[i].EstVide)
+                {
+
+                    if (nbCoup % 2 == 0 && _echiquier[i].ToString() == "K") {
+                        indexRoi = i;
+                        couleur = Couleur.Noir;
+                        break;
+                    }
+                    else if (nbCoup % 2 == 1 && _echiquier[i].ToString() == "k") {
+
+
+                        indexRoi = i;
+                        couleur = Couleur.Blanc;
+                        break;
+                    }
+                }
+           
+
+            }
+            return new Tuple<int, Couleur>(indexRoi, couleur);
         }
         public Tuple<bool, string> verifEchecMat()
         {

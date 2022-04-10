@@ -30,7 +30,8 @@ namespace Echecs
         {
            if (_nom == 'P')
            {
-                if (indexDestination == indexInitiale - 8 || (!_aBouge && indexDestination == indexInitiale - 16))
+                if (indexDestination == indexInitiale - 8 || (!_aBouge && indexDestination == indexInitiale - 16
+                    || indexDestination == indexInitiale - 9 || indexDestination == indexInitiale - 7))
                 {
                     return Mouvement.peutBougerSansCollision;
                 }
@@ -38,7 +39,8 @@ namespace Echecs
            }
            else
            {
-                if (indexDestination == indexInitiale + 8 || (!_aBouge && indexDestination == indexInitiale + 16))
+                if (indexDestination == indexInitiale + 8 || (!_aBouge && indexDestination == indexInitiale + 16
+                    || indexDestination == indexInitiale + 9 || indexDestination == indexInitiale + 7))
                 {
                     return Mouvement.peutBougerSansCollision;
                 }
