@@ -25,5 +25,18 @@ namespace Echecs
         {
             return _nom.ToString();
         }
+        public override Tuple<Mouvement, string> regles(int indexInitiale, int indexDestination)
+        {
+            int x1 = indexInitiale % 8;
+            int y1 = indexInitiale / 8;
+            int x2 = indexDestination % 8;
+            int y2 = indexDestination / 8;
+
+            if ((y2 - y1) / (x2 - x1) == 1 || (y2 - y1) / (x2 - x1) == -1)
+            {
+                return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le mouvement est correct");
+            }
+            return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le mouvement est incorrect");
+        }
     }
 }

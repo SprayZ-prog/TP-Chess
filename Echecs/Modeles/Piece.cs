@@ -22,14 +22,14 @@ namespace Echecs
             set { _couleur = Couleur; }
             
         }
-        public virtual Tuple<bool, string> regles(int indexInitiale, int indexDestination)
+        public virtual Tuple<Mouvement, string> regles(int indexInitiale, int indexDestination)
         {
-            return new Tuple<bool, string>(false, "t beau babe");
+            return new Tuple<Mouvement, string>(Mouvement.peutPasBouger, "t beau babe");
         }
 
         public virtual bool estEssentiel()
         {
-            return true;
+            return false;
         }
 
 

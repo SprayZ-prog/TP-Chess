@@ -25,5 +25,17 @@ namespace Echecs
         {
             return _nom.ToString();
         }
+        public override Tuple<Mouvement, string> regles(int indexInitiale, int indexDestination)
+        {
+            if ((indexInitiale - indexDestination) % 8 == 0 || (indexInitiale + indexDestination) % 8 == 0)
+            {
+                return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le coup est correcte");
+            }
+            else if (indexInitiale / 8 == indexDestination / 8)
+            {
+                return new Tuple<Mouvement, string>(Mouvement.peutBougerSansCollision, "Le coup est correcte");
+            }
+            return new Tuple<Mouvement, string>(Mouvement.peutPasBouger, "Le coup est incorrecte");
+        }
     }
 }

@@ -35,7 +35,6 @@ namespace Echecs
             int indexInitial = (x1 / 62) + (y1 / 62) * 496 / 62;
             int indexDest = (x2 / 62) + (y2 / 62) * 496 / 62;
             Tuple<int, int> indexMovement = new Tuple<int, int>(indexInitial, indexDest);
-
             return indexMovement;
         }
 
