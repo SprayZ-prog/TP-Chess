@@ -12,7 +12,11 @@ namespace Echecs
         private bool _estVide;
         private Plateau _plateau;
         Couleur _couleur;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <param name="plateau"></param>
         public Case(char piece, Plateau plateau) 
         {
             _plateau = plateau;

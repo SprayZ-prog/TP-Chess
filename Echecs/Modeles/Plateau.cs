@@ -11,7 +11,7 @@ namespace Echecs
         private Case[] _echiquier;
         private Partie _partie;
 
-        /*string _board =
+        string _board =
               "tcfrkfct" +
               "pppppppp" +
               "00000000" +
@@ -19,17 +19,17 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCFRKFCT";*/
+              "TCFRKFCT";
         
-        string _board =
-              "tcf0kf0T" +
-              "pppp0p00" +
-              "00000000" +
-              "0000R000" +
-              "00000000" +
-              "00000000" +
-              "PPPPPPPP" +
-              "TCF0KFC0";
+        //string _board =
+              /*"00000000" +
+              "0000kp0f" +
+              "0t000000" +
+              "00000P00" +
+              "0000000p" +
+              "0000C0PF" +
+              "0000P00P" +
+              "0000K00T"*/
 
 
 
@@ -209,6 +209,10 @@ namespace Echecs
 
             return new Tuple<bool, int>(true, 0);
 
+        }
+        public bool verifPion(int indexInitial)
+        {
+            return false;
         }
         public Tuple<bool, int> metEnEchecAllie(int indexInitial, int indexDesti, int nbCoup)
         {
@@ -415,7 +419,7 @@ namespace Echecs
         {
             
             if ((indexRoi + 1) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 1).Item1
-                || (indexRoi - 1) % 8 != 7 && _partie.verifDeplacement(indexRoi, indexRoi + 1).Item1)
+                || (indexRoi - 1) % 8 != 7 && _partie.verifDeplacement(indexRoi, indexRoi - 1).Item1)
             {
                 return true;
             }
@@ -425,9 +429,9 @@ namespace Echecs
             {
                 return true;
             }
-            else if (indexRoi + 7 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 7).Item1
+            else if (indexRoi + 7 < 64 && (indexRoi + 7) % 8 != 7 && _partie.verifDeplacement(indexRoi, indexRoi + 7).Item1
                 || indexRoi + 8 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 8).Item1
-                || indexRoi + 9 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1)
+                || indexRoi + 9 < 64 && (indexRoi + 9) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1)
             {
                 return true;
             }

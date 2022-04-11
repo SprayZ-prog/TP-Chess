@@ -32,6 +32,10 @@ namespace Echecs
             read();
             Application.Run(_formMenu);
         }
+        /// <summary>
+        /// Ouvre le formulaire du class
+        /// 
+        /// </summary>
         public void ouvrirClassement()
         {
             _formClassement = new FormClassement(this);

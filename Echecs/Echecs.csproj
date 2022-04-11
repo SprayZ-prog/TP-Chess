@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\PieceMemoire.cs" />
     <Compile Include="FormSelection.cs">
       <SubType>Form</SubType>
     </Compile>
