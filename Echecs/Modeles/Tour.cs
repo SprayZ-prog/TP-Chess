@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
-    class Tour : Piece
+    class Tour : PieceMemoire
     {
         public Tour(Couleur _couleur) : base(_couleur)
         {

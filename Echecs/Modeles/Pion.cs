@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
-    class Pion : Piece
+    class Pion : PieceMemoire
     {
         public Pion(Couleur _couleur) : base(_couleur)
         {
@@ -19,12 +19,15 @@ namespace Echecs
             {
                 _nom = 'p';
             }
-            _peutEtrePromu = true;
         }
 
         public override string ToString()
         {
             return _nom.ToString();
+        }
+        public override bool peutEtrePromu()
+        {
+            return true;
         }
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {

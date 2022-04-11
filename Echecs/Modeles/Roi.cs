@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
-    class Roi: Piece
+    class Roi: PieceMemoire
     {
         public Roi(Couleur _couleur) : base(_couleur)
         {
