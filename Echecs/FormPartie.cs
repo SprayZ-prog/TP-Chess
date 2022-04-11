@@ -21,40 +21,16 @@ namespace Echecs
         public FormPartie(Echec leControlleur)
         {
             InitializeComponent();
-            this._controlleur = leControlleur;
+            _controlleur = leControlleur;
         }
 
         private void btnAbandon_Click(object sender, EventArgs e)
         {
-            /*
-            string message = "Voulez-vous vraiment abandonner?";
-            string title = "Abandonner";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                //Appeler methode fin de partie avec qui a abandonner
-            }
-            */
-
             finPartie(1);
         }
 
         private void btnNulle_Click(object sender, EventArgs e)
         {
-            /*
-            string message = "Acceptez-vous une partie nulle?";
-            string title = "Partie nulle";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                //Appeler methode fin de partie avec qui a abandonner
-            }
-            */
-
             finPartie(2);
         }
 
@@ -147,9 +123,7 @@ namespace Echecs
                         labMessage.Text = "Partie nulle";
                         finPartie(mouvement.Item2);
                         break;
-
-                }
-                
+                }    
             }
             i++;
 
@@ -157,7 +131,6 @@ namespace Echecs
 
         public void peinturerEchiquier(string echiquier)
         {
-
 
             char[] tabEchiquier = null;
 

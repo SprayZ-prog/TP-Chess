@@ -125,12 +125,16 @@ namespace Echecs
             return message;
         }
 
-        public void faireDeplacement(int indexInitial, int indexDesti)
-        {
-            
+        public bool faireDeplacement(int indexInitial, int indexDesti)
+        {          
             _plateau.deplacer(indexInitial, indexDesti);
             _nbCoup++;
+
+            return _plateau.verifPromoPion(indexDesti);
         }
+
+
+
         public Tuple<bool, int> verifEchec()
         {
             Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi(_nbCoup);
