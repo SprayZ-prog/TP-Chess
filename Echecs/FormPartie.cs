@@ -125,7 +125,9 @@ namespace Echecs
                     case 8:
                         labMessage.Text = "Échec";
                         break;
-
+                    case 9:
+                        labMessage.Text = "Échec et mat";
+                        break;
 
                 }
                 if (mouvement.Item1)

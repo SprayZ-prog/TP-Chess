@@ -293,7 +293,7 @@ namespace Echecs
             return message;
 
         }
-        public Tuple<bool, int> verifEchec(int indexRoi, Couleur couleur)
+        public Tuple<bool, int, int> verifEchec(int indexRoi, Couleur couleur)
         {
 
             for (int i = 0; i < _echiquier.Length; i++)
@@ -314,13 +314,13 @@ namespace Echecs
                                 Tuple<bool, int> message = this.estCollision(i, indexRoi, deplacement, _echiquier);
                                 if (message.Item1)
                                 {
-                                    return new Tuple<bool, int>(true, 8);
+                                    return new Tuple<bool, int, int>(true, 8, i);
 
                                 }
                                 break;
                             case Mouvement.peutBougerAvecCollision:
 
-                                return new Tuple<bool, int>(true, 8);
+                                return new Tuple<bool, int, int>(true, 8, i);
 
                         }
                     }
@@ -328,7 +328,7 @@ namespace Echecs
 
 
             }
-            return new Tuple<bool, int>(true, 0);
+            return new Tuple<bool, int, int>(true, 0, 0);
 
         }
         public Tuple<int, Couleur> trouverRoiEnnemi(int nbCoup)
@@ -358,12 +358,38 @@ namespace Echecs
             }
             return new Tuple<int, Couleur>(indexRoi, couleur);
         }
-        public Tuple<bool, string> verifEchecMat()
+        public Tuple<bool, int> verifEchecMat(int indexRoi, int indexAttaquant)
         {
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
+            if (!peutBougerRoi(indexRoi))
+            {
+                int deplacement1 = deplacement(indexAttaquant, indexRoi);
+                int indexChemin = indexAttaquant;
+                indexChemin += deplacement1;
+                while (indexChemin != indexRoi)
+                {
+                    for (int i = 0; i < _echiquier.Length; i++)
+                    {
+                        if (!_echiquier[i].EstVide)
+                        {
+
+                            if (_echiquier[i].couleurPiece() == _echiquier[indexRoi].couleurPiece())
+                            {
+                                if (_partie.verifDeplacement(i, indexChemin).Item1)
+                                {
+                                    return new Tuple<bool, int>(true, 8);
+                                }
+
+                            }
+                        }
+
+                    }
+                    indexChemin += deplacement1;
+                }
+
+            }
 
 
-            return message;
+            return new Tuple<bool, int>(true, 9);
 
         }
         public Tuple<bool, string> verifPat(int nbCoup)
@@ -373,6 +399,28 @@ namespace Echecs
 
             return message;
 
+        }
+        public bool peutBougerRoi(int indexRoi)
+        {
+            
+            if ((indexRoi + 1) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 1).Item1
+                || (indexRoi - 1) % 8 != 7 && _partie.verifDeplacement(indexRoi, indexRoi + 1).Item1)
+            {
+                return true;
+            }
+            else if (indexRoi - 7 > 0 && _partie.verifDeplacement(indexRoi, indexRoi - 7).Item1
+                || indexRoi - 8 > 0 && _partie.verifDeplacement(indexRoi, indexRoi - 8).Item1
+                || indexRoi - 9 > 0 && _partie.verifDeplacement(indexRoi, indexRoi - 9).Item1)
+            {
+                return true;
+            }
+            else if (indexRoi + 7 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 7).Item1
+                || indexRoi + 8 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 8).Item1
+                || indexRoi + 9 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1)
+            {
+                return true;
+            }
+            return false;  
         }
     }
 }

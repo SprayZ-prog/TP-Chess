@@ -54,13 +54,11 @@ namespace Echecs
             if (message.Item1)
             {
                 _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
-                message = _unePartie.verifEchec(indexMovement.Item1, indexMovement.Item2);
-                return message;
+                message = _unePartie.verifEchec();
+                
+                
             }
-            else
-            {
-                return message;
-            }
+            return message;
             
         }
 

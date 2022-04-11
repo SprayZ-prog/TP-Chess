@@ -103,11 +103,18 @@ namespace Echecs
             _plateau.deplacer(indexInitial, indexDesti);
             _nbCoup++;
         }
-        public Tuple<bool, int> verifEchec(int indexInitial, int indexDesti)
+        public Tuple<bool, int> verifEchec()
         {
             Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi(_nbCoup);
-            return _plateau.verifEchec(roi.Item1, roi.Item2); 
+            int indexAttaquant = _plateau.verifEchec(roi.Item1, roi.Item2).Item3; 
+
+            if (_plateau.verifEchec(roi.Item1, roi.Item2).Item2 == 8)
+            {
+                return _plateau.verifEchecMat(roi.Item1, indexAttaquant);
+            }
+            return new Tuple<bool, int>(true, 0);
             
+
         }
 
         public string afficher()
