@@ -13,6 +13,7 @@ namespace Echecs
         FormPartie _formPartie;
         FormSelection _formSelection;
         FormClassement _formClassement;
+        FormPromotion _formPromotion;
         Partie _unePartie;
         List<Joueur> _listeJoueur;
         List<Partie> _listePartie;
@@ -79,8 +80,15 @@ namespace Echecs
 
             if (message.Item1)
             {
-                _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
-                message = _unePartie.verifEchec();             
+                bool promotion = _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
+
+                if (promotion)
+                {
+                    _formPromotion = new FormPromotion(this);
+                    _formPromotion.Show();
+                }
+                message = _unePartie.verifEchec();
+               
                 
             }
             return message;
@@ -107,6 +115,12 @@ namespace Echecs
             int indexOfForm = _listeFormPartie.IndexOf(monForm);
             _unePartie = _listePartie[indexOfForm];
             return _unePartie.tour();
+        }
+        public int tour(FormPromotion monForm)
+        {
+
+            //return _unePartie.tour();
+            return 0;
         }
 
 

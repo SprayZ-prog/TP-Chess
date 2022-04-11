@@ -97,9 +97,10 @@ namespace Echecs
         {
             return _piece.ToString();
         }
+
         public bool estPion()
         {
-            return _piece.EstPion;
+            return _piece.PeutEtrePromu;
         }
 
     }

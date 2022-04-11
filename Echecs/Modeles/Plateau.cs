@@ -20,8 +20,18 @@ namespace Echecs
               "00000000" +
               "PPPPPPPP" +
               "TCFRKFCT";*/
-        
+
         string _board =
+              "tcfrkfc0" +
+              "pppppppP" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "PPPPPPPP" +
+              "TCFRKFCT";
+
+        /*string _board =
               "tcf0kf0T" +
               "pppp0p00" +
               "00000000" +
@@ -29,7 +39,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCF0KFC0";
+              "TCF0KFC0";*/
 
 
 
@@ -110,7 +120,7 @@ namespace Echecs
         public Tuple<bool, int> maPiece(int indexInitial, int nbCoup)
         {
             Tuple<bool, int> message;
-            if ((nbCoup % 2 == 0 && _echiquier[indexInitial].Piece.Couleur == Couleur.Blanc) || (nbCoup % 2 == 1 && _echiquier[indexInitial].Piece.Couleur == Couleur.Noir))
+            if ((nbCoup % 2 == 0 && _echiquier[indexInitial].couleurPiece() == Couleur.Blanc) || (nbCoup % 2 == 1 && _echiquier[indexInitial].couleurPiece() == Couleur.Noir))
             {
                 message = new Tuple<bool, int>(true, 0);
             }
@@ -295,14 +305,18 @@ namespace Echecs
             return new Tuple<bool, int>(true, 0);
         }
 
-        public Tuple<bool, string> verifPromoPion(int indexDestination)
+        public bool verifPromoPion(int indexDestination)
         {
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
-
-
-            return message;
+            if (_echiquier[indexDestination].estPion())
+            {
+                return _echiquier[indexDestination].couleurPiece() == Couleur.Blanc && indexDestination < 8 || _echiquier[indexDestination].couleurPiece() == Couleur.Noir && indexDestination > 55;
+            }
+            else
+                return false;
 
         }
+
+
         public Tuple<bool, int, int> verifEchec(int indexRoi, Couleur couleur)
         {
 

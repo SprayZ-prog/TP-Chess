@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormPromotion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPromotion.Designer.cs">
+      <DependentUpon>FormPromotion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSelection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Modeles\Roi.cs" />
     <Compile Include="Modeles\Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormPromotion.resx">
+      <DependentUpon>FormPromotion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormClassement.resx">
       <DependentUpon>FormClassement.cs</DependentUpon>
     </EmbeddedResource>

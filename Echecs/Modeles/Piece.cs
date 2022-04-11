@@ -11,13 +11,13 @@ namespace Echecs
         protected char _nom;
         protected Couleur _couleur;
         protected bool _aBouge;
-        protected bool _estPion;
+        protected bool _peutEtrePromu;
 
         public Piece(Couleur couleur)
         {
             _aBouge = false;
             _couleur = couleur;
-            _estPion = false;
+            _peutEtrePromu = false;
         }
 
         public Couleur Couleur
@@ -26,9 +26,9 @@ namespace Echecs
             set { _couleur = Couleur; }
             
         }
-        public bool EstPion
+        public bool PeutEtrePromu
         {
-            get { return _estPion; }
+            get { return _peutEtrePromu; }
         }
         public bool Abouge
         {
