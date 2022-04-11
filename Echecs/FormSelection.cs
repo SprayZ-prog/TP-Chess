@@ -24,7 +24,16 @@ namespace Echecs
 
         private void btnCommencer_Click(object sender, EventArgs e)
         {
-            _controlleur.commencerPartie();
+            if(selected1 != null && selected2 != null)
+            {
+                _controlleur.commencerPartie(selected1, selected2);
+            }
+            else
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show("Veuiller selectionner 2 joueurs!", "Attention", buttons);
+            }
+            
         }
 
         private void FormSelection_Load(object sender, EventArgs e)
@@ -39,22 +48,41 @@ namespace Echecs
 
         private void cmbJoueur1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selected2 != null)
+            if(selected1 == null)
             {
-                cmbJoueur2.Items.Add(selected2);
+                selected1 = cmbJoueur1.SelectedItem.ToString();
+                int index = cmbJoueur2.FindString(selected1);
+                cmbJoueur2.Items.RemoveAt(index);
             }
-            selected1 = cmbJoueur1.SelectedItem.ToString();
-            cmbJoueur2.Items.RemoveAt(cmbJoueur1.SelectedIndex);
+            else if (!selected1.Equals(cmbJoueur1.SelectedItem.ToString()))
+            {
+                cmbJoueur2.Items.Add(selected1);
+                selected1 = cmbJoueur1.SelectedItem.ToString();
+                int index = cmbJoueur2.FindString(selected1);
+                cmbJoueur2.Items.RemoveAt(index);
+
+                
+            }
         }
 
         private void cmbJoueur2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selected1 != null)
+            if (selected2 == null)
             {
-                cmbJoueur1.Items.Add(selected1);
+                selected2 = cmbJoueur2.SelectedItem.ToString();
+                int index = cmbJoueur1.FindString(selected2);
+                cmbJoueur1.Items.RemoveAt(index);
             }
-            selected2 = cmbJoueur2.SelectedItem.ToString();
-            cmbJoueur1.Items.RemoveAt(cmbJoueur1.SelectedIndex);
+            else if (!selected2.Equals(cmbJoueur2.SelectedItem.ToString()))
+            {
+                cmbJoueur1.Items.Add(selected2);
+                selected2 = cmbJoueur2.SelectedItem.ToString();
+                int index = cmbJoueur1.FindString(selected2);
+                cmbJoueur1.Items.RemoveAt(index);
+            }
+           
+            
         }
+
     }
 }

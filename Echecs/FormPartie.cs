@@ -26,6 +26,7 @@ namespace Echecs
 
         private void btnAbandon_Click(object sender, EventArgs e)
         {
+            /*
             string message = "Voulez-vous vraiment abandonner?";
             string title = "Abandonner";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -35,10 +36,14 @@ namespace Echecs
                 this.Close();
                 //Appeler methode fin de partie avec qui a abandonner
             }
+            */
+
+            finPartie(1);
         }
 
         private void btnNulle_Click(object sender, EventArgs e)
         {
+            /*
             string message = "Acceptez-vous une partie nulle?";
             string title = "Partie nulle";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -48,11 +53,14 @@ namespace Echecs
                 this.Close();
                 //Appeler methode fin de partie avec qui a abandonner
             }
+            */
+
+            finPartie(2);
         }
 
         private void pnlEchiquier_Paint(object sender, PaintEventArgs e)
         {
-            if (_controlleur.tour() == 0)
+            if (_controlleur.tour(this) == 0)
             {
                 labMessage.Text = "Tour des blancs";
             }
@@ -77,12 +85,18 @@ namespace Echecs
             else
             {
                 clickDest = point1;
-                Tuple<bool, int> mouvement = _controlleur.jouerCoup(clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
+                Tuple<bool, int> mouvement = _controlleur.jouerCoup(this, clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y);
+
+                if (mouvement.Item1)
+                {
+                    string echiquier = _controlleur.afficherEchiquier();
+                    peinturerEchiquier(echiquier);
+                }
 
                 switch (mouvement.Item2)
                 {
                     case 0:
-                        if(_controlleur.tour() == 0){
+                        if(_controlleur.tour(this) == 0){
                             labMessage.Text = "Tour des blancs";
                         }
                         else
@@ -127,48 +141,17 @@ namespace Echecs
                         break;
                     case 9:
                         labMessage.Text = "Échec et mat";
+                        finPartie(mouvement.Item2);
+                        break;
+                    case 10:
+                        labMessage.Text = "Partie nulle";
+                        finPartie(mouvement.Item2);
                         break;
 
                 }
-                if (mouvement.Item1)
-                {
-                    string echiquier = _controlleur.afficherEchiquier();
-                    peinturerEchiquier(echiquier);
-                }
+                
             }
             i++;
-
-
-
-            /*Point clickInitial;
-            Point clickDest;
-            Point point1 = pnlEchiquier.PointToClient(Cursor.Position);
-
-
-            int indexDest = -1;
-            if (i % 2 == 0)
-            {
-                clickInitial = point1;
-                indexInitial = (clickInitial.X / 62) + (clickInitial.Y / 62) * 496 / 62;
-                Console.WriteLine(indexInitial);
-            }
-            else
-            {
-                clickDest = point1;
-                indexDest = (clickDest.X / 62) + (clickDest.Y / 62) * 496 / 62;
-                Console.WriteLine(indexDest);
-            }
-            i++;
-
-            if (indexDest >= 0)
-            {
-                _controlleur.verifDeplacement(indexInitial, indexDest);
-                modifEchiquier(indexInitial, indexDest);
-                //Console.WriteLine(indexInitial + ", " + indexDest);
-            }*/
-
-
-
 
         }
 
@@ -245,6 +228,73 @@ namespace Echecs
                         }
                     }
                 }
+        }
+
+
+        public void finPartie(int raison)
+        {
+            string message = "";
+            string title = "";
+            MessageBoxButtons buttons;
+            DialogResult result;
+            buttons = MessageBoxButtons.YesNo;
+            switch (raison)
+            {
+                case 1:
+                    message = "Voulez-vous vraiment abandonner?";
+                    title = "Abandonner";
+                    result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        _controlleur.victoire_Abandon(this);
+                        this.Close();
+                    }
+
+                    break;
+                case 2:
+                    message = "Acceptez-vous une partie nulle?";
+                    title = "Partie nulle";
+                    result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        _controlleur.uneNulle(this);
+                        this.Close();
+                    }
+                    break;
+                case 9:
+                    if (_controlleur.tour(this) == 0)
+                        message = "Victoire des noirs voulez-vous faire une autre partie ensemble?";
+                    else
+                        message = "Victoire des blancs voulez-vous faire une autre partie ensemble?";
+
+                    title = "Victoire";
+                    result = MessageBox.Show(message, title, buttons);
+                    _controlleur.victoire_Abandon(this);
+                    if (result == DialogResult.Yes)
+                    {
+                       //Nouvelle partie
+                    }
+                    else
+                    {
+
+                        this.Close();
+                    }
+                    break;
+                case 10:
+                    message = "C'est une partie nulle!";
+                    title = "Partie nulle!!";
+                    result = MessageBox.Show(message, title, buttons);
+                    _controlleur.uneNulle(this);
+                    if (result == DialogResult.Yes)
+                    {
+                        //Nouvelle partie
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+                    break;
+            }
         }
 
     }

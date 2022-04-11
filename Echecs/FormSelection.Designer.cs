@@ -37,10 +37,11 @@ namespace Echecs
             // btnCommencer
             // 
             this.btnCommencer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnCommencer.Location = new System.Drawing.Point(303, 136);
-            this.btnCommencer.MinimumSize = new System.Drawing.Size(216, 57);
+            this.btnCommencer.Location = new System.Drawing.Point(239, 63);
+            this.btnCommencer.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCommencer.MinimumSize = new System.Drawing.Size(144, 37);
             this.btnCommencer.Name = "btnCommencer";
-            this.btnCommencer.Size = new System.Drawing.Size(216, 57);
+            this.btnCommencer.Size = new System.Drawing.Size(144, 37);
             this.btnCommencer.TabIndex = 0;
             this.btnCommencer.Text = "Commencer";
             this.btnCommencer.UseVisualStyleBackColor = false;
@@ -48,32 +49,37 @@ namespace Echecs
             // 
             // cmbJoueur2
             // 
+            this.cmbJoueur2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJoueur2.FormattingEnabled = true;
-            this.cmbJoueur2.Location = new System.Drawing.Point(40, 242);
+            this.cmbJoueur2.Location = new System.Drawing.Point(27, 112);
+            this.cmbJoueur2.Margin = new System.Windows.Forms.Padding(2);
             this.cmbJoueur2.Name = "cmbJoueur2";
-            this.cmbJoueur2.Size = new System.Drawing.Size(201, 28);
+            this.cmbJoueur2.Size = new System.Drawing.Size(135, 21);
             this.cmbJoueur2.TabIndex = 1;
             this.cmbJoueur2.SelectedIndexChanged += new System.EventHandler(this.cmbJoueur2_SelectedIndexChanged);
             // 
             // cmbJoueur1
             // 
+            this.cmbJoueur1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJoueur1.FormattingEnabled = true;
-            this.cmbJoueur1.Location = new System.Drawing.Point(40, 75);
+            this.cmbJoueur1.Location = new System.Drawing.Point(27, 36);
+            this.cmbJoueur1.Margin = new System.Windows.Forms.Padding(2);
             this.cmbJoueur1.Name = "cmbJoueur1";
-            this.cmbJoueur1.Size = new System.Drawing.Size(201, 28);
+            this.cmbJoueur1.Size = new System.Drawing.Size(135, 21);
             this.cmbJoueur1.TabIndex = 2;
             this.cmbJoueur1.SelectedIndexChanged += new System.EventHandler(this.cmbJoueur1_SelectedIndexChanged);
             // 
             // FormSelection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(568, 344);
+            this.ClientSize = new System.Drawing.Size(449, 189);
             this.Controls.Add(this.cmbJoueur1);
             this.Controls.Add(this.cmbJoueur2);
             this.Controls.Add(this.btnCommencer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSelection";
             this.Text = "Sélection des joueurs";
             this.Load += new System.EventHandler(this.FormSelection_Load);

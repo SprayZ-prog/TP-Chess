@@ -11,7 +11,7 @@ namespace Echecs
         private Case[] _echiquier;
         private Partie _partie;
 
-        string _board =
+        /*string _board =
               "tcfrkfct" +
               "pppppppp" +
               "00000000" +
@@ -19,7 +19,17 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCFRKFCT";
+              "TCFRKFCT";*/
+        
+        string _board =
+              "tcf0kf0T" +
+              "pppp0p00" +
+              "00000000" +
+              "0000R000" +
+              "00000000" +
+              "00000000" +
+              "PPPPPPPP" +
+              "TCF0KFC0";
 
 
 
@@ -385,11 +395,12 @@ namespace Echecs
                     }
                     indexChemin += deplacement1;
                 }
+                return new Tuple<bool, int>(true, 9);
 
             }
 
 
-            return new Tuple<bool, int>(true, 9);
+            return new Tuple<bool, int>(true, 8);
 
         }
         public Tuple<bool, string> verifPat(int nbCoup)

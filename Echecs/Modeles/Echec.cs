@@ -15,6 +15,8 @@ namespace Echecs
         FormClassement _formClassement;
         Partie _unePartie;
         List<Joueur> _listeJoueur;
+        List<Partie> _listePartie;
+        List<FormPartie> _listeFormPartie;
 
         [STAThread]
         static void Main()
@@ -24,6 +26,8 @@ namespace Echecs
         public Echec()
         {
             _listeJoueur = new List<Joueur>();
+            _listePartie = new List<Partie>();
+            _listeFormPartie = new List<FormPartie>();
             _formMenu = new FormMenu(this);
             read();
             Application.Run(_formMenu);
@@ -35,36 +39,73 @@ namespace Echecs
         }
         public void nouvellePartie()
         {
+            
             _formSelection = new FormSelection(this);
             _formSelection.Show();
         }
 
-        public void commencerPartie()
+        public void commencerPartie(string joueur1, string joueur2)
         {
-            _unePartie = new Partie(this);
+            Joueur j1 = null;
+            Joueur j2 = null;
+            for (int i = 0; i < _listeJoueur.Count; i++)
+            {
+                if (this._listeJoueur[i].Nom.Equals(joueur1))
+                {
+                    j1 = this._listeJoueur[i];
+                }
+                else if (this._listeJoueur[i].Nom.Equals(joueur2))
+                {
+                    j2 = this._listeJoueur[i];
+                }
+                
+            }
+            
+
+            _formSelection.Close();
+
+            _listePartie.Add(new Partie(this, j1, j2));
             _formPartie = new FormPartie(this);
+            _listeFormPartie.Add(_formPartie);
             _formPartie.Show();
         }
 
-        public Tuple<bool, int> jouerCoup(int x1, int y1, int x2, int y2)
+        public Tuple<bool, int> jouerCoup(FormPartie monForm, int x1, int y1, int x2, int y2)
         {
+            int indexOfForm = _listeFormPartie.IndexOf(monForm);
+            _unePartie = _listePartie[indexOfForm];
             Tuple<int, int> indexMovement = _unePartie.determinerCase(x1, y1, x2, y2);
             Tuple<bool, int> message = _unePartie.verifDeplacement(indexMovement.Item1, indexMovement.Item2);
 
             if (message.Item1)
             {
                 _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
-                message = _unePartie.verifEchec();
-                
+                message = _unePartie.verifEchec();             
                 
             }
             return message;
             
         }
 
-
-        public int tour()
+        public void victoire_Abandon(FormPartie monForm)
         {
+            int indexOfForm = _listeFormPartie.IndexOf(monForm);
+            _unePartie = _listePartie[indexOfForm];
+            _unePartie.victoire_Abandon();
+        }
+
+        public void uneNulle(FormPartie monForm)
+        {
+            int indexOfForm = _listeFormPartie.IndexOf(monForm);
+            _unePartie = _listePartie[indexOfForm];
+            _unePartie.uneNulle();
+        }
+
+
+        public int tour(FormPartie monForm)
+        {
+            int indexOfForm = _listeFormPartie.IndexOf(monForm);
+            _unePartie = _listePartie[indexOfForm];
             return _unePartie.tour();
         }
 
@@ -73,10 +114,12 @@ namespace Echecs
         {
             _listeJoueur.Add(new Joueur(nom, gagné, perdu, nulle));
         }
+
         public void nettoyerJoueur()
         {
             _listeJoueur.Clear();
         }
+
         public List<Joueur> ListeJoueur
         {
             get { return _listeJoueur; }
@@ -86,6 +129,7 @@ namespace Echecs
         {
             return _unePartie.afficher();
         }
+
         public void fermerJeu()
         {
             save();

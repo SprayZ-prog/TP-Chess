@@ -17,10 +17,38 @@ namespace Echecs
         string _echiquierActuelle;
         List<string> _listeEchiquier;
 
-        public Partie(Echec _monControlleur)
+        public Partie(Echec _monControlleur, Joueur joueur1, Joueur joueur2)
         {
             _parent = _monControlleur;
+            _joueur1 = joueur1;
+            _joueur2 = joueur2;
+            Console.WriteLine(_joueur1.ToString());
+            Console.WriteLine(_joueur2.ToString());
             _plateau = new Plateau(this);
+        }
+
+        public void victoire_Abandon()
+        {
+            if (tour() == 0)
+            {
+                _joueur1.ajoutDefaite();
+                _joueur2.ajoutVictoire();
+            }
+            else
+            {
+                _joueur1.ajoutVictoire();
+                _joueur2.ajoutDefaite();
+            }
+            Console.WriteLine(_joueur1.ToString());
+            Console.WriteLine(_joueur2.ToString());
+        }
+
+        public void uneNulle()
+        {
+            _joueur1.ajoutNulle();
+            _joueur2.ajoutNulle();
+            Console.WriteLine(_joueur1.ToString());
+            Console.WriteLine(_joueur2.ToString());
         }
 
 

@@ -85,7 +85,7 @@ namespace Echecs
             this.Controls.Add(this.labMessage);
             this.Controls.Add(this.pnlEchiquier);
             this.Name = "FormPartie";
-            this.Text = "Form1";
+            this.Text = "Partie d\'échec";
             this.ResumeLayout(false);
             this.PerformLayout();
 
