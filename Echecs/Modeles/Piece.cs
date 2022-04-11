@@ -10,14 +10,10 @@ namespace Echecs
     {
         protected char _nom;
         protected Couleur _couleur;
-        protected bool _aBouge;
-        protected bool _peutEtrePromu;
 
         public Piece(Couleur couleur)
         {
-            _aBouge = false;
             _couleur = couleur;
-            _peutEtrePromu = false;
         }
 
         public Couleur Couleur
@@ -26,24 +22,15 @@ namespace Echecs
             set { _couleur = Couleur; }
             
         }
-        public bool PeutEtrePromu
+        public virtual bool peutEtrePromu()
         {
-            get { return _peutEtrePromu; }
-        }
-        public bool Abouge
-        {
-            get { return _aBouge; }
-            set { _aBouge = value; }
+            return false;
         }
         public virtual Mouvement regles(int indexInitiale, int indexDestination)
         {
             return Mouvement.peutPasBouger;
         }
         
-        public virtual bool estEssentiel()
-        {
-            return false;
-        }
 
 
     }
