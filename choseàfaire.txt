@@ -1,0 +1,6 @@
+1. roque
+2. promo Pion
+3. Partie nulle
+4. selection joueurs
+5. Sauvegarder partie
+6. Avoir plusieurs parties en meme temps
