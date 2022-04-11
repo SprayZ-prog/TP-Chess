@@ -28,8 +28,8 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "00000000" +
-              "PPPPPPPP" +
-              "TCFRKFCT";
+              "PPPPPPPp" +
+              "TCFRKFC0";
 
         /*string _board =
               "tcf0kf0T" +
@@ -307,7 +307,7 @@ namespace Echecs
 
         public bool verifPromoPion(int indexDestination)
         {
-            if (_echiquier[indexDestination].estPion())
+            if (_echiquier[indexDestination].peutEtrePromu())
             {
                 return _echiquier[indexDestination].couleurPiece() == Couleur.Blanc && indexDestination < 8 || _echiquier[indexDestination].couleurPiece() == Couleur.Noir && indexDestination > 55;
             }

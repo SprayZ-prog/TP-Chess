@@ -102,7 +102,7 @@ namespace Echecs
             return _piece.ToString();
         }
 
-        public bool estPion()
+        public bool peutEtrePromu()
         {
             return _piece.PeutEtrePromu;
         }

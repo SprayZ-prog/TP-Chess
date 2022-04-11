@@ -19,7 +19,7 @@ namespace Echecs
             {
                 _nom = 'p';
             }
-            _estPion = true;
+            _peutEtrePromu = true;
         }
 
         public override string ToString()

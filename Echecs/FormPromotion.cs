@@ -24,7 +24,7 @@ namespace Echecs
         {
             Graphics myGraph = pnl1.CreateGraphics();
             
-            if (_controlleur.tour(this) == 0)
+            if (_controlleur.tour(this) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.queenWhite, 0, 0);
             }
@@ -36,9 +36,9 @@ namespace Echecs
 
         private void pnl2_Paint(object sender, PaintEventArgs e)
         {
-            Graphics myGraph = pnl1.CreateGraphics();
+            Graphics myGraph = pnl2.CreateGraphics();
 
-            if (_controlleur.tour(this) == 0)
+            if (_controlleur.tour(this) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.bishopWhite, 0, 0);
             }
@@ -50,9 +50,9 @@ namespace Echecs
 
         private void pnl3_Paint(object sender, PaintEventArgs e)
         {
-            Graphics myGraph = pnl1.CreateGraphics();
+            Graphics myGraph = pnl3.CreateGraphics();
 
-            if (_controlleur.tour(this) == 0)
+            if (_controlleur.tour(this) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.knightWhite, 0, 0);
             }
@@ -64,15 +64,27 @@ namespace Echecs
 
         private void pnl4_Paint(object sender, PaintEventArgs e)
         {
-            Graphics myGraph = pnl1.CreateGraphics();
+            Graphics myGraph = pnl4.CreateGraphics();
 
-            if (_controlleur.tour(this) == 0)
+            if (_controlleur.tour(this) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.rookWhite, 0, 0);
             }
             else
             {
                 myGraph.DrawImage(Properties.Resources.rookBlack, 0, 0);
+            }
+        }
+
+        private void pnl1_Click(object sender, EventArgs e)
+        {
+            if (_controlleur.tour(this) != 0)
+            {
+                _controlleur.changerPion("r");
+            }
+            else
+            {
+                _controlleur.changerPion("R");
             }
         }
     }

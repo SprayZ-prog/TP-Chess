@@ -99,6 +99,11 @@ namespace Echecs
             
         }
 
+        public void changerPion(string piece)
+        {
+            //_unePartie.changerPion(piece);
+        }
+
         public void victoire_Abandon(FormPartie monForm)
         {
             int indexOfForm = _listeFormPartie.IndexOf(monForm);
@@ -122,9 +127,7 @@ namespace Echecs
         }
         public int tour(FormPromotion monForm)
         {
-
-            //return _unePartie.tour();
-            return 0;
+            return _unePartie.tour();
         }
 
 
