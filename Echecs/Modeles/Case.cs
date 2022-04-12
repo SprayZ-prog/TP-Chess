@@ -13,10 +13,10 @@ namespace Echecs
         private Plateau _plateau;
         Couleur _couleur;
         /// <summary>
-        /// 
+        /// Créer la pièce sur la case selon son identifiant
         /// </summary>
-        /// <param name="piece"></param>
-        /// <param name="plateau"></param>
+        /// <param name="piece">L'identifiant de la pièce, soit son premier caractère</param>
+        /// <param name="plateau">Le plateau où se tro-</param>
         public Case(char piece, Plateau plateau) 
         {
             _plateau = plateau;

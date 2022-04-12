@@ -88,8 +88,8 @@ namespace Echecs
 
                 if (promotion)
                 {
-                    //_formPromotion = new FormPromotion(this, indexMovement.Item2);
-                    //_formPromotion.Show();
+                    _formPromotion = new FormPromotion(this, indexMovement.Item2);
+                    _formPromotion.Show();
                 }
                 message = _unePartie.verifEchec();
                
@@ -102,7 +102,9 @@ namespace Echecs
         public void changerPion(char piece, int indexPion)
         {
             _unePartie.changerPion(piece, indexPion);
-            //_formPromotion.Close();
+            _formPromotion.Close();
+            string echiquier = afficherEchiquier();
+            _formPartie.peinturerEchiquier(echiquier);
         }
 
         public void victoire_Abandon(FormPartie monForm)
