@@ -119,10 +119,7 @@ namespace Echecs
                                     if (message.Item1)
                                     {
                                         message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
-                                        if (message.Item1)
-                                        {
-                                            _plateau.nePeutPlusCharger(indexInitial);
-                                        }
+                                        
                                     }
 
                                 }
@@ -148,7 +145,8 @@ namespace Echecs
         }
 
         public bool faireDeplacement(int indexInitial, int indexDesti)
-        {          
+        {
+            _plateau.nePeutPlusCharger(indexInitial);
             _plateau.deplacer(indexInitial, indexDesti);
             _nbCoup++;
 

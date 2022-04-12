@@ -12,14 +12,14 @@ namespace Echecs
         private Partie _partie;
 
         string _board =
-              "tcfrkfct" +
-              "pppppppp" +
+              "t00fkt00" +
+              "pp00cpp0" +
+              "000pp00p" +
+              "00p00000" +
               "00000000" +
-              "00000000" +
-              "00000000" +
-              "00000000" +
-              "PPPPPPPP" +
-              "TCFRKFCT"; 
+              "0RC00r00" +
+              "fP0PPPPc" +
+              "T0F0KFCT"; 
 
         /*string _board =
               "tcfrkfc0" +
