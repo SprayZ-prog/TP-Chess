@@ -10,7 +10,6 @@ namespace Echecs
     {
         protected char _nom;
         protected Couleur _couleur;
-
         public Piece(Couleur couleur)
         {
             _couleur = couleur;
@@ -26,6 +25,14 @@ namespace Echecs
         {
             return false;
         }
+        public virtual bool peutCharger()
+        {
+            return false;
+        }
+        public virtual bool peutRoquer()
+        {
+            return false;
+        } 
         public virtual Mouvement regles(int indexInitiale, int indexDestination)
         {
             return Mouvement.peutPasBouger;

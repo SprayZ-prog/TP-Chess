@@ -92,10 +92,7 @@ namespace Echecs
         {
             return _piece.regles(indexInitiale, indexDesti);
         }
-        public void aBougé()
-        {
-            _piece.Abouge = true;
-        }
+        
 
         public override string ToString()
         {
@@ -104,7 +101,7 @@ namespace Echecs
 
         public bool peutEtrePromu()
         {
-            return _piece.PeutEtrePromu;
+            return _piece.peutEtrePromu();
         }
 
     }

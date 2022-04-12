@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
-    public class PieceMemoire : Piece
+    public abstract class PieceMemoire : Piece
     {
+        protected bool _aBougé;
         public PieceMemoire(Couleur couleur) : base(couleur)
         {
-            
-        }
-        public virtual bool aBougé()
-        {
-            return false;
+            _aBougé = false;
         }
 
     }

@@ -19,7 +19,6 @@ namespace Echecs
             {
                 _nom = 'p';
             }
-            _estPion = true;
         }
 
         public override string ToString()
@@ -30,11 +29,15 @@ namespace Echecs
         {
             return true;
         }
+        public override bool peutCharger()
+        {
+            return !_aBougé;
+        }
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
            if (_nom == 'P')
            {
-                if (indexDestination == indexInitiale - 8 || (!_aBouge && indexDestination == indexInitiale - 16))
+                if (indexDestination == indexInitiale - 8 || (peutCharger() && indexDestination == indexInitiale - 16))
                 {
                     return Mouvement.peutBougerSansCollision;
                 }
@@ -42,7 +45,7 @@ namespace Echecs
            }
            else
            {
-                if (indexDestination == indexInitiale + 8 || (!_aBouge && indexDestination == indexInitiale + 16))
+                if (indexDestination == indexInitiale + 8 || (peutCharger() && indexDestination == indexInitiale + 16))
                 {
                     return Mouvement.peutBougerSansCollision;
                 }

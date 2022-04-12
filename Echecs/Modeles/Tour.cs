@@ -25,6 +25,11 @@ namespace Echecs
         {
             return _nom.ToString();
         }
+
+        public override bool peutRoquer()
+        {
+            return !_aBougé;
+        }
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
             if ((indexInitiale - indexDestination) % 8 == 0 || (indexInitiale + indexDestination) % 8 == 0 || indexInitiale / 8 == indexDestination / 8)
