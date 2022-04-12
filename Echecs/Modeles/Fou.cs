@@ -32,9 +32,11 @@ namespace Echecs
             int y1 = indexInitiale / 8;
             int x2 = indexDestination % 8;
             int y2 = indexDestination / 8;
+            double deltaY = (y2 - y1);
+            double deltaX = (x2 - x1);
             if ((indexInitiale - indexDestination) % 7 == 0 || (indexInitiale - indexDestination) % 9 == 0)
             {
-                if ((y2 - y1) / (x2 - x1) == 1 || (y2 - y1) / (x2 - x1) == -1)
+                if (deltaY / deltaX == 1 || deltaY / deltaX == -1)
                 {
                     return Mouvement.peutBougerSansCollision;
                 }

@@ -32,14 +32,14 @@ namespace Echecs
               "TCFRKFC0";*/
 
         string _board =
-              "tcfrkfct" +
-              "pppppppp" +
               "00000000" +
-              "00000000" +
-              "00000000" +
-              "00000000" +
-              "PPPPPPPP" +
-              "TCFRKFCT";
+              "0000kp0f" +
+              "0t000000" +
+              "00000P00" +
+              "0000000p" +
+              "0000C0PF" +
+              "0000P00P" +
+              "0000K00T";
 
 
 

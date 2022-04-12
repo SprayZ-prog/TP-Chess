@@ -1,8 +1,5 @@
 1. roque oli
-2. promo Pion louis
-3. Partie nulle louis
-4. selection joueurs oli	OK
-5. Sauvegarder partie Louis
-6. Avoir plusieurs parties en meme temps Oli
-7. Detecter Fin partie + Sauvegarder partie stats Oli	OK petit detail a règler pour null
+2. Partie nulle louis
+3. Sauvegarder partie Louis
+4. Detecter Fin partie + Sauvegarder partie stats Oli	OK petit detail a règler pour null
 Finir docu***
