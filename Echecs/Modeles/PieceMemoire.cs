@@ -14,5 +14,11 @@ namespace Echecs
             _aBougé = false;
         }
 
+        public bool ABougé
+        {
+            get { return _aBougé; }
+            set { _aBougé = value; }
+        }
+
     }
 }
