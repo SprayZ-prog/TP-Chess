@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PieceMemoire.cs" />
-    <Compile Include="FormPromotion.cs">
+    <Compile Include="Modeles\PieceMemoire.cs" />
+    <Compile Include="Vues\FormPromotion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPromotion.Designer.cs">
+    <Compile Include="Vues\FormPromotion.Designer.cs">
       <DependentUpon>FormPromotion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSelection.cs">
+    <Compile Include="Vues\FormSelection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSelection.Designer.cs">
+    <Compile Include="Vues\FormSelection.Designer.cs">
       <DependentUpon>FormSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="Modeles\Cavalier.cs" />
@@ -65,46 +65,46 @@
     <Compile Include="Modeles\Case.cs" />
     <Compile Include="Modeles\Piece.cs" />
     <Compile Include="Modeles\Couleur.cs" />
-    <Compile Include="FormClassement.cs">
+    <Compile Include="Vues\FormClassement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClassement.Designer.cs">
+    <Compile Include="Vues\FormClassement.Designer.cs">
       <DependentUpon>FormClassement.cs</DependentUpon>
     </Compile>
     <Compile Include="Modeles\Joueur.cs" />
     <Compile Include="Modeles\Partie.cs" />
-    <Compile Include="FormPartie.cs">
+    <Compile Include="Vues\FormPartie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPartie.Designer.cs">
+    <Compile Include="Vues\FormPartie.Designer.cs">
       <DependentUpon>FormPartie.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMenu.cs">
+    <Compile Include="Vues\FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMenu.Designer.cs">
+    <Compile Include="Vues\FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modeles\Echec.cs" />
+    <Compile Include="controlleurs\Echec.cs" />
     <Compile Include="Modeles\Pion.cs" />
     <Compile Include="Modeles\Plateau.cs" />
     <Compile Include="Modeles\Reine.cs" />
     <Compile Include="Modeles\Roi.cs" />
     <Compile Include="Modeles\Tour.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormPromotion.resx">
+    <EmbeddedResource Include="Vues\FormPromotion.resx">
       <DependentUpon>FormPromotion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClassement.resx">
+    <EmbeddedResource Include="Vues\FormClassement.resx">
       <DependentUpon>FormClassement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMenu.resx">
+    <EmbeddedResource Include="Vues\FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPartie.resx">
+    <EmbeddedResource Include="Vues\FormPartie.resx">
       <DependentUpon>FormPartie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSelection.resx">
+    <EmbeddedResource Include="Vues\FormSelection.resx">
       <DependentUpon>FormSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

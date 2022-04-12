@@ -11,7 +11,7 @@ namespace Echecs
         private Case[] _echiquier;
         private Partie _partie;
 
-        string _board =
+        /*string _board =
               "tcfrkfct" +
               "pppppppp" +
               "00000000" +
@@ -19,7 +19,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCFRKFCT";*/
+              "TCFRKFCT"; */
 
         string _board =
               "tcfrkfc0" +

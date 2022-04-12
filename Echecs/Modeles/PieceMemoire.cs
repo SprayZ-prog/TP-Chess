@@ -8,12 +8,14 @@ namespace Echecs
 {
     public class PieceMemoire : Piece
     {
-        protected bool aBougé;
-
         public PieceMemoire(Couleur couleur) : base(couleur)
         {
-
+            
         }
-        
+        public virtual bool aBougé()
+        {
+            return false;
+        }
+
     }
 }
