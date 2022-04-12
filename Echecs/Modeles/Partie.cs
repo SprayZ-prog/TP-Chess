@@ -78,9 +78,10 @@ namespace Echecs
                 message = _plateau.verifierSiPiece(indexInitial);
                 if (message.Item1)
                 {
-                    message = _plateau.maPiece(indexInitial, _nbCoup);
+                    message = _plateau.maPiece(indexInitial);
                     if (message.Item1)
                     {
+                        
                         Mouvement mouvement = _plateau.verifTrajectoire(indexInitial, indexDesti);
 
                         switch (mouvement)

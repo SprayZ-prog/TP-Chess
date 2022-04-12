@@ -116,10 +116,10 @@ namespace Echecs
 
         }
 
-        public Tuple<bool, int> maPiece(int indexInitial, int nbCoup)
+        public Tuple<bool, int> maPiece(int indexInitial)
         {
             Tuple<bool, int> message;
-            if ((nbCoup % 2 == 0 && _echiquier[indexInitial].couleurPiece() == Couleur.Blanc) || (nbCoup % 2 == 1 && _echiquier[indexInitial].couleurPiece() == Couleur.Noir))
+            if ((_partie.tour() == 0 && _echiquier[indexInitial].couleurPiece() == Couleur.Blanc) || (_partie.tour() == 1 && _echiquier[indexInitial].couleurPiece() == Couleur.Noir))
             {
                 message = new Tuple<bool, int>(true, 0);
             }
@@ -133,7 +133,18 @@ namespace Echecs
         }
         public Mouvement verifTrajectoire(int indexInitial, int indexDestination)
         {
-
+            if (_echiquier[indexInitial].peutEtrePromu())
+            {
+                if (_partie.tour() == 0 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial - 7 || indexDestination == indexInitial - 9))
+                {
+                    return Mouvement.peutBougerAvecCollision;
+                }
+                else if (_partie.tour() == 1 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial + 7 || indexDestination == indexInitial + 9))
+                {
+                    return Mouvement.peutBougerAvecCollision;
+                }
+                
+            }
             return _echiquier[indexInitial].regles(indexInitial, indexDestination);
 
         }
@@ -236,8 +247,8 @@ namespace Echecs
                 if (!echiquierTest[i].EstVide)
                 {
 
-                    if ((nbCoup % 2 == 0 && echiquierTest[i].ToString() == "K")
-                    || (nbCoup % 2 == 1 && echiquierTest[i].ToString() == "k"))
+                    if ((_partie.tour() == 0 && echiquierTest[i].ToString() == "K")
+                    || (_partie.tour() == 1 && echiquierTest[i].ToString() == "k"))
                     {
 
                         indexDestination = i;
@@ -251,7 +262,7 @@ namespace Echecs
                 if (!echiquierTest[i].EstVide)
                 {
 
-                    if (nbCoup % 2 == 0 && echiquierTest[i].couleurPiece() == Couleur.Noir)
+                    if (_partie.tour() == 0 && echiquierTest[i].couleurPiece() == Couleur.Noir)
                     {
                         Mouvement mouvement = verifTrajectoire(i, indexDestination);
 
@@ -276,7 +287,7 @@ namespace Echecs
 
                         }
                     }
-                    else if (nbCoup % 2 == 1 && echiquierTest[i].couleurPiece() == Couleur.Blanc)
+                    else if (_partie.tour() == 1 && echiquierTest[i].couleurPiece() == Couleur.Blanc)
                     {
                         Mouvement mouvement = verifTrajectoire(i, indexDestination);
 
@@ -372,12 +383,12 @@ namespace Echecs
                 if (!_echiquier[i].EstVide)
                 {
 
-                    if (nbCoup % 2 == 0 && _echiquier[i].ToString() == "K") {
+                    if (_partie.tour() == 0 && _echiquier[i].ToString() == "K") {
                         indexRoi = i;
                         couleur = Couleur.Noir;
                         break;
                     }
-                    else if (nbCoup % 2 == 1 && _echiquier[i].ToString() == "k") {
+                    else if (_partie.tour() == 1 && _echiquier[i].ToString() == "k") {
 
 
                         indexRoi = i;
