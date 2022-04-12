@@ -76,7 +76,6 @@ namespace Echecs
         }
         public void deplacer(int indexInitial, int indexDesti)
         {
-            _echiquier[indexInitial].aBougé();
             _echiquier[indexDesti] = _echiquier[indexInitial];
             _echiquier[indexInitial] = new Case(true, this);
         }
