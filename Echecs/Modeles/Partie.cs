@@ -99,13 +99,34 @@ namespace Echecs
                                 if (message.Item1)
                                 {
                                     message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
-                                    
+
                                     if (message.Item1)
                                     {
                                         message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
-                                        
+
                                     }
                                 }
+                                break;
+                            case Mouvement.peutCharger:
+
+                                int deplacementCharge = _plateau.deplacement(indexInitial, indexDesti);
+
+                                Tuple<bool, int> message1 = _plateau.estCollision(indexInitial, indexDesti, deplacementCharge, _plateau.Echiquier);
+                                if (message1.Item1)
+                                {
+                                    message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
+
+                                    if (message.Item1)
+                                    {
+                                        message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                        if (message.Item1)
+                                        {
+                                            _plateau.nePeutPlusCharger(indexInitial);
+                                        }
+                                    }
+
+                                }
+
                                 break;
                             case Mouvement.peutBougerAvecCollision:
 

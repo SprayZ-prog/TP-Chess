@@ -10,6 +10,7 @@ namespace Echecs
     {
         peutBougerSansCollision,
         peutBougerAvecCollision,
+        peutCharger,
         peutPasBouger
     }
 }

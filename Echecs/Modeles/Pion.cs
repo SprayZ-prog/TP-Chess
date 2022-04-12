@@ -33,11 +33,19 @@ namespace Echecs
         {
             return !_aBougé;
         }
+        public override void nePeutPlusCharger()
+        {
+            ABougé = true;
+        }
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
            if (_nom == 'P')
            {
-                if (indexDestination == indexInitiale - 8 || (peutCharger() && indexDestination == indexInitiale - 16))
+                if (peutCharger() && (indexDestination == indexInitiale - 8 || indexDestination == indexInitiale - 16))
+                {
+                    return Mouvement.peutCharger;
+                }
+                else if (indexDestination == indexInitiale - 8)
                 {
                     return Mouvement.peutBougerSansCollision;
                 }
@@ -45,7 +53,11 @@ namespace Echecs
            }
            else
            {
-                if (indexDestination == indexInitiale + 8 || (peutCharger() && indexDestination == indexInitiale + 16))
+                if (peutCharger() && (indexDestination == indexInitiale + 16 || indexDestination == indexInitiale + 8))
+                {
+                    return Mouvement.peutCharger;
+                }
+                else if (indexDestination == indexInitiale + 8)
                 {
                     return Mouvement.peutBougerSansCollision;
                 }

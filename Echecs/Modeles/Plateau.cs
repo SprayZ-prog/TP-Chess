@@ -291,9 +291,12 @@ namespace Echecs
 
                                 }
                                 break;
+
+                          
                             case Mouvement.peutBougerAvecCollision:
 
                                 return new Tuple<bool, int>(false, 7);
+
 
                         }
                     }
@@ -304,6 +307,10 @@ namespace Echecs
             return new Tuple<bool, int>(true, 0);
         }
 
+        public void nePeutPlusCharger(int index)
+        {
+            _echiquier[index].Piece.nePeutPlusCharger();
+        }
         public bool verifPromoPion(int indexDestination)
         {
             if (_echiquier[indexDestination].peutEtrePromu())
