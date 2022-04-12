@@ -13,11 +13,13 @@ namespace Echecs
     public partial class FormPromotion : Form
     {
         Echec _controlleur;
+        int _indexPion;
 
-        public FormPromotion(Echec leControlleur)
+        public FormPromotion(Echec leControlleur, int index)
         {
             InitializeComponent();
             _controlleur = leControlleur;
+            _indexPion = index;
         }
 
         private void pnl1_Paint(object sender, PaintEventArgs e)
@@ -78,13 +80,50 @@ namespace Echecs
 
         private void pnl1_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("bob");
             if (_controlleur.tour(this) != 0)
             {
-                _controlleur.changerPion("r");
+                _controlleur.changerPion('R', _indexPion);
             }
             else
             {
-                _controlleur.changerPion("R");
+                _controlleur.changerPion('r', _indexPion);
+            }
+        }
+
+        private void pnl2_Click(object sender, EventArgs e)
+        {
+            if (_controlleur.tour(this) != 0)
+            {
+                _controlleur.changerPion('F', _indexPion);
+            }
+            else
+            {
+                _controlleur.changerPion('f', _indexPion);
+            }
+        }
+
+        private void pnl3_Click(object sender, EventArgs e)
+        {
+            if (_controlleur.tour(this) != 0)
+            {
+                _controlleur.changerPion('C', _indexPion);
+            }
+            else
+            {
+                _controlleur.changerPion('c', _indexPion);
+            }
+        }
+
+        private void pnl4_Click(object sender, EventArgs e)
+        {
+            if (_controlleur.tour(this) != 0)
+            {
+                _controlleur.changerPion('T', _indexPion);
+            }
+            else
+            {
+                _controlleur.changerPion('t', _indexPion);
             }
         }
     }

@@ -330,6 +330,11 @@ namespace Echecs
 
         }
 
+        public void changerPion(char piece, int indexPion)
+        {
+            _echiquier[indexPion] = new Case(piece, this);
+        }
+
 
         public Tuple<bool, int, int> verifEchec(int indexRoi, Couleur couleur)
         {

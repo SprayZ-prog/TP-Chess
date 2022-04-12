@@ -50,6 +50,7 @@ namespace Echecs
             this.pnl2.Name = "pnl2";
             this.pnl2.Size = new System.Drawing.Size(62, 62);
             this.pnl2.TabIndex = 1;
+            this.pnl2.Click += new System.EventHandler(this.pnl2_Click);
             this.pnl2.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl2_Paint);
             // 
             // pnl3
@@ -58,6 +59,7 @@ namespace Echecs
             this.pnl3.Name = "pnl3";
             this.pnl3.Size = new System.Drawing.Size(62, 62);
             this.pnl3.TabIndex = 2;
+            this.pnl3.Click += new System.EventHandler(this.pnl3_Click);
             this.pnl3.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl3_Paint);
             // 
             // pnl4
@@ -66,6 +68,7 @@ namespace Echecs
             this.pnl4.Name = "pnl4";
             this.pnl4.Size = new System.Drawing.Size(62, 62);
             this.pnl4.TabIndex = 2;
+            this.pnl4.Click += new System.EventHandler(this.pnl4_Click);
             this.pnl4.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl4_Paint);
             // 
             // FormPromotion

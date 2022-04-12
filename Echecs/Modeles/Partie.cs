@@ -131,9 +131,15 @@ namespace Echecs
             _plateau.deplacer(indexInitial, indexDesti);
             _nbCoup++;
 
-            return _plateau.verifPromoPion(indexDesti);
+            return _plateau.verifPromoPion
+                
+                (indexDesti);
         }
 
+        public void changerPion(char piece, int indexPion)
+        {
+            _plateau.changerPion(piece, indexPion);
+        }
 
 
         public Tuple<bool, int> verifEchec()
