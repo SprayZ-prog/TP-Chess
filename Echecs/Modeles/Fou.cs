@@ -32,11 +32,14 @@ namespace Echecs
             int y1 = indexInitiale / 8;
             int x2 = indexDestination % 8;
             int y2 = indexDestination / 8;
-
-            if ((y2 - y1) / (x2 - x1) == 1 || (y2 - y1) / (x2 - x1) == -1)
+            if ((indexInitiale - indexDestination) % 7 == 0 || (indexInitiale - indexDestination) % 9 == 0)
             {
-                return Mouvement.peutBougerSansCollision;
+                if ((y2 - y1) / (x2 - x1) == 1 || (y2 - y1) / (x2 - x1) == -1)
+                {
+                    return Mouvement.peutBougerSansCollision;
+                }
             }
+            
             return Mouvement.peutPasBouger;
         }
     }

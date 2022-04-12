@@ -21,7 +21,7 @@ namespace Echecs
               "PPPPPPPP" +
               "TCFRKFCT"; */
 
-        string _board =
+        /*string _board =
               "tcfrkfc0" +
               "pppppppP" +
               "00000000" +
@@ -29,17 +29,17 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPp" +
-              "TCFRKFC0";
+              "TCFRKFC0";*/
 
-        /*string _board =
-              "tcf0kf0T" +
-              "pppp0p00" +
+        string _board =
+              "tcfrkfct" +
+              "pppppppp" +
               "00000000" +
-              "0000R000" +
+              "00000000" +
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCF0KFC0";*/
+              "TCFRKFCT";
 
 
 
