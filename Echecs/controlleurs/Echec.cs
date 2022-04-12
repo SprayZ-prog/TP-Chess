@@ -88,8 +88,8 @@ namespace Echecs
 
                 if (promotion)
                 {
-                    _formPromotion = new FormPromotion(this);
-                    _formPromotion.Show();
+                    //_formPromotion = new FormPromotion(this, indexMovement.Item2);
+                    //_formPromotion.Show();
                 }
                 message = _unePartie.verifEchec();
                
@@ -99,9 +99,10 @@ namespace Echecs
             
         }
 
-        public void changerPion(string piece)
+        public void changerPion(char piece, int indexPion)
         {
-            //_unePartie.changerPion(piece);
+            _unePartie.changerPion(piece, indexPion);
+            //_formPromotion.Close();
         }
 
         public void victoire_Abandon(FormPartie monForm)
@@ -170,10 +171,9 @@ namespace Echecs
                     ajouterJoueur(infos[0], Int32.Parse(infos[1]), Int32.Parse(infos[2]), Int32.Parse(infos[3]));
 
                 }
-
             }
-
         }
+
         public void save()
         {
             string file = @"../../test.txt";
@@ -185,7 +185,6 @@ namespace Echecs
 
             using (StreamWriter sw = new StreamWriter(file))
             {
-
                 foreach (Joueur joueur in ListeJoueur)
                 {
                     sw.WriteLine(joueur.ToString());
