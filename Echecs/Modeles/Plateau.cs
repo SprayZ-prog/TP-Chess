@@ -11,7 +11,7 @@ namespace Echecs
         private Case[] _echiquier;
         private Partie _partie;
 
-        string _board =
+        /*string _board =
               "t00fkt00" +
               "pp00cpp0" +
               "000pp00p" +
@@ -19,9 +19,9 @@ namespace Echecs
               "00000000" +
               "0RC00r00" +
               "fP0PPPPc" +
-              "T0F0KFCT"; 
+              "T0F0KFCT";*/ 
 
-        /*string _board =
+        string _board =
               "tcfrkfc0" +
               "pppppppP" +
               "00000000" +
@@ -29,7 +29,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPp" +
-              "TCFRKFC0";*/
+              "TCFRKFC0";
 
      
         public Plateau(Partie partie)
@@ -399,7 +399,6 @@ namespace Echecs
             {
                 int deplacement1 = deplacement(indexAttaquant, indexRoi);
                 int indexChemin = indexAttaquant;
-                indexChemin += deplacement1;
                 while (indexChemin != indexRoi)
                 {
                     for (int i = 0; i < _echiquier.Length; i++)
