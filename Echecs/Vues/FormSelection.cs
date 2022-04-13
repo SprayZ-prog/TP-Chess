@@ -21,7 +21,9 @@ namespace Echecs
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Événement du clic du bouton « Commencer » qui débute la nouvelle partie
+        /// </summary>
         private void btnCommencer_Click(object sender, EventArgs e)
         {
             if(selected1 != null && selected2 != null)
@@ -35,7 +37,9 @@ namespace Echecs
             }
             
         }
-
+        /// <summary>
+        /// Charge les joueurs dans les comboBox pour pouvoir les sélectionner
+        /// </summary>
         private void FormSelection_Load(object sender, EventArgs e)
         {
             foreach(Joueur joueur in _controlleur.ListeJoueur)
@@ -45,7 +49,9 @@ namespace Echecs
             }
             
         }
-
+        /// <summary>
+        /// Événement de la sélection du premier joueur pour jouer, qui sélectionne le premier joueur et l'enlève de la deuxième liste
+        /// </summary>
         private void cmbJoueur1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(selected1 == null)
@@ -64,7 +70,9 @@ namespace Echecs
                 
             }
         }
-
+        /// <summary>
+        /// Événement de la sélection du deuxième joueur pour jouer, qui sélectionne le deuxième joueur et l'enlève de la première liste
+        /// </summary>
         private void cmbJoueur2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (selected2 == null)

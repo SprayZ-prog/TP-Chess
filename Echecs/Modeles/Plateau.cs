@@ -19,17 +19,17 @@ namespace Echecs
               "00000000" +
               "0RC00r00" +
               "fP0PPPPc" +
-              "T0F0KFCT";*/ 
+              "T0F0KFCT"; */
 
         string _board =
-              "tcfrkfc0" +
-              "pppppppP" +
+              "tcfrkfct" +
+              "pppppppp" +
               "00000000" +
               "00000000" +
               "00000000" +
               "00000000" +
-              "PPPPPPPp" +
-              "TCFRKFC0";
+              "PPPPPPPP" +
+              "TCFRKFCT"; 
 
      
         public Plateau(Partie partie)

@@ -20,9 +20,9 @@ namespace Echecs
             
             InitializeComponent();
         }
-        
+
         /// <summary>
-        /// Événement de l'affichage du formulaire du classement de joueurs
+        /// Événement de l'affichage du formulaire du classement des joueurs
         /// </summary>
         private void FormClassement_Load(object sender, EventArgs e)
         {
@@ -40,7 +40,9 @@ namespace Echecs
                 listView1.Items.Add(lvi);
             }
         }
-
+        /// <summary>
+        /// Ajoute le nouveau joueur au classement
+        /// </summary>
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             
@@ -66,6 +68,9 @@ namespace Echecs
 
         }
 
+        /// <summary>
+        /// Supprime le joueur sélectionné du classement
+        /// </summary>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)

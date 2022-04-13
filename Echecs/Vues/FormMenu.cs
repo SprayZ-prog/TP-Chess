@@ -20,20 +20,33 @@ namespace Echecs
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Événement du bouton « Nouvelle partie »
+        /// </summary>
         private void btnNouvelle_Click(object sender, EventArgs e)
         {
             _controlleur.nouvellePartie();
         }
-
+        /// <summary>
+        /// Événement du bouton « Classement » qui affiche le classement
+        /// </summary>
         private void btnClassement_Click(object sender, EventArgs e)
         {
             _controlleur.ouvrirClassement();
         }
-
+        /// <summary>
+        /// Événement lors de la fermeture de ce formulaire (Menu principal) qui ferme tout le jeu
+        /// </summary>
         private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             _controlleur.fermerJeu();
+        }
+        /// <summary>
+        /// Événement du clic du bouton « Quitter le jeu »
+        /// </summary>
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            _controlleur.quitter();
         }
     }
 }

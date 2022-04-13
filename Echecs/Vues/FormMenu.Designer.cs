@@ -42,7 +42,7 @@ namespace Echecs
             this.Titre.Location = new System.Drawing.Point(364, 121);
             this.Titre.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.Titre.Name = "Titre";
-            this.Titre.Size = new System.Drawing.Size(316, 29);
+            this.Titre.Size = new System.Drawing.Size(217, 18);
             this.Titre.TabIndex = 0;
             this.Titre.Text = "Bienvenue au jeu d\'échec";
             // 
@@ -68,6 +68,7 @@ namespace Echecs
             this.btnQuitter.TabIndex = 2;
             this.btnQuitter.Text = "Quitter le jeu";
             this.btnQuitter.UseVisualStyleBackColor = false;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // btnClassement
             // 
@@ -83,7 +84,7 @@ namespace Echecs
             // 
             // FormMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 38F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGreen;
             this.ClientSize = new System.Drawing.Size(978, 544);
