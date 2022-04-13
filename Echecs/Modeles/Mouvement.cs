@@ -11,6 +11,8 @@ namespace Echecs
         peutBougerSansCollision,
         peutBougerAvecCollision,
         peutCharger,
-        peutPasBouger
+        peutPasBouger,
+        peutGrandRoque,
+        peutPetitRoque
     }
 }
