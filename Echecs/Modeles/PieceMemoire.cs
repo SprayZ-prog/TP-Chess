@@ -20,5 +20,8 @@ namespace Echecs
             set { _aBougé = value; }
         }
 
+
+
+
     }
 }

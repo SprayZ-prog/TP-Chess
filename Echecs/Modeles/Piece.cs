@@ -29,14 +29,16 @@ namespace Echecs
         {
             return false;
         }
-        public virtual void nePeutPlusCharger()
-        {
-            
-        }
+
+        public virtual void nePeutPlusCharger(){ }
+
         public virtual bool peutRoquer()
         {
             return false;
-        } 
+        }
+
+        public virtual void vientDeBouger(){}
+
         public virtual Mouvement regles(int indexInitiale, int indexDestination)
         {
             return Mouvement.peutPasBouger;

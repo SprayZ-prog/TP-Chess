@@ -84,13 +84,17 @@ namespace Echecs
 
             if (message.Item1)
             {
-                bool promotion = _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
-
-                if (promotion)
+                if(message.Item2 != 12)
                 {
-                    _formPromotion = new FormPromotion(this, indexMovement.Item2);
-                    _formPromotion.Show();
+                    bool promotion = _unePartie.faireDeplacement(indexMovement.Item1, indexMovement.Item2);
+
+                    if (promotion)
+                    {
+                        _formPromotion = new FormPromotion(this, indexMovement.Item2);
+                        _formPromotion.Show();
+                    }
                 }
+                
                 message = _unePartie.verifEchec();
                
                 

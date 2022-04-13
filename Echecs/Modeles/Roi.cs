@@ -30,6 +30,12 @@ namespace Echecs
         {
             return !_aBougé;
         }
+
+        public override void vientDeBouger()
+        {
+            ABougé = true;
+        }
+
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
             if (indexDestination == indexInitiale + 1 || indexDestination == indexInitiale - 1

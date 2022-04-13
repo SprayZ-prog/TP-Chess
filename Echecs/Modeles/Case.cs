@@ -89,6 +89,8 @@ namespace Echecs
             return _piece.Couleur;
         }
         public Mouvement regles(int indexInitiale, int indexDesti)
+
+
         {
             return _piece.regles(indexInitiale, indexDesti);
         }
@@ -102,6 +104,21 @@ namespace Echecs
         public bool peutEtrePromu()
         {
             return _piece.peutEtrePromu();
+        }
+
+        public bool peutRoquer()
+        {
+            return _piece.peutRoquer();
+        }
+
+        public void nePeutPlusCharger() 
+        {
+            _piece.nePeutPlusCharger();
+        }
+
+        public void vientDeBouger()
+        {
+            _piece.vientDeBouger();
         }
 
     }

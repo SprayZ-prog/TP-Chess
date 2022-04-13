@@ -134,7 +134,38 @@ namespace Echecs
                                     message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
                                 }
                                 break;
-
+                            case Mouvement.peutGrandRoque:
+                                if (tour() == 0)
+                                {
+                                    _plateau.deplacer(indexInitial, indexDesti);
+                                    _plateau.deplacer(56, 59);
+                                    _nbCoup++;
+                                    message = new Tuple<bool, int>(true, 12);
+                                }
+                                else
+                                {
+                                    faireDeplacement(indexInitial, indexDesti);
+                                    _plateau.deplacer(0,3);
+                                    _nbCoup++;
+                                    message = new Tuple<bool, int>(true, 12);
+                                }
+                                break;
+                            case Mouvement.peutPetitRoque:
+                                if (tour() == 0)
+                                {
+                                    _plateau.deplacer(indexInitial, indexDesti);
+                                    _plateau.deplacer(63, 61);
+                                    _nbCoup++;
+                                    message = new Tuple<bool, int>(true, 12);
+                                }
+                                else
+                                {
+                                    _plateau.deplacer(indexInitial, indexDesti);
+                                    _plateau.deplacer(7, 5);
+                                    _nbCoup++;
+                                    message = new Tuple<bool, int>(true, 12);
+                                }
+                                break;
 
                         }
                     }
