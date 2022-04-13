@@ -34,7 +34,7 @@ namespace Echecs
             Application.Run(_formMenu);
         }
         /// <summary>
-        /// Ouvre le formulaire du class
+        /// Ouvre le formulaire du classement
         /// 
         /// </summary>
         public void ouvrirClassement()

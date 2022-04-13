@@ -14,7 +14,7 @@ namespace Echecs
     public partial class FormPartie : Form
     {
         Echec _controlleur;
-        int i = 0;
+        int clique1 = 0;
         Point clickInitial;
         Point clickDest;
 
@@ -24,16 +24,25 @@ namespace Echecs
             _controlleur = leControlleur;
         }
 
+        /// <summary>
+        /// Événement du clique du bouton « abandonner » pour terminer la partie
+        /// </summary>
         private void btnAbandon_Click(object sender, EventArgs e)
         {
             finPartie(1);
         }
 
+        /// <summary>
+        /// Événement du clique du bouton « Nulle » pour terminer la partie
+        /// </summary>
         private void btnNulle_Click(object sender, EventArgs e)
         {
             finPartie(2);
         }
 
+        /// <summary>
+        /// Affiche l'échiquier et les messages pour rappeler à qui est le tour
+        /// </summary>
         private void pnlEchiquier_Paint(object sender, PaintEventArgs e)
         {
             if (_controlleur.tour(this) == 0)
@@ -48,13 +57,15 @@ namespace Echecs
             peinturerEchiquier(echiquier);
         }
 
-
+        /// <summary>
+        /// Évenement des cliques sur l'échiquier. Joue le coup et affiche les messages si possible.
+        /// </summary>
         private void pnlEchiquier_Click(object sender, EventArgs e)
         {
 
             Point point1 = pnlEchiquier.PointToClient(Cursor.Position);
 
-            if (i % 2 == 0)
+            if (clique1 % 2 == 0)
             {
                 clickInitial = point1;
             }
@@ -125,10 +136,13 @@ namespace Echecs
                         break;
                 }    
             }
-            i++;
+            clique1++;
 
         }
-
+        /// <summary>
+        /// Affiche les pièces sur l'échiquier sur leurs bons emplacements
+        /// </summary>
+        /// <param name="echiquier">La chaine de caractères ayant la position de chacune des pièces</param>
         public void peinturerEchiquier(string echiquier)
         {
 
@@ -203,7 +217,10 @@ namespace Echecs
                 }
         }
 
-
+        /// <summary>
+        /// Termine la partie
+        /// </summary>
+        /// <param name="raison">La raison de la fin de la partie</param>
         public void finPartie(int raison)
         {
             string message = "";
@@ -236,36 +253,26 @@ namespace Echecs
                     break;
                 case 9:
                     if (_controlleur.tour(this) == 0)
-                        message = "Victoire des noirs voulez-vous faire une autre partie ensemble?";
+                        message = "Victoire des noirs!!!";
                     else
-                        message = "Victoire des blancs voulez-vous faire une autre partie ensemble?";
+                        message = "Victoire des blancs!!!";
 
                     title = "Victoire";
                     result = MessageBox.Show(message, title, buttons);
                     _controlleur.victoire_Abandon(this);
-                    if (result == DialogResult.Yes)
-                    {
-                       //Nouvelle partie
-                    }
-                    else
-                    {
-
-                        this.Close();
-                    }
+                    
+                    
+                    this.Close();
+                    
                     break;
                 case 10:
                     message = "C'est une partie nulle!";
                     title = "Partie nulle!!";
                     result = MessageBox.Show(message, title, buttons);
                     _controlleur.uneNulle(this);
-                    if (result == DialogResult.Yes)
-                    {
-                        //Nouvelle partie
-                    }
-                    else
-                    {
-                        this.Close();
-                    }
+                    
+                    this.Close();
+                    
                     break;
             }
         }
