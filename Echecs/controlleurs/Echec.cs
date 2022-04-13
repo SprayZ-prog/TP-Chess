@@ -152,6 +152,7 @@ namespace Echecs
         /// <summary>
         /// Indique le tour du joueur dans la bonne partie
         /// </summary>
+        /// 
         /// <param name="monForm">Formulaire de la partie</param>
         /// <returns>Retourne le tour du joueur</returns>
         public int tour(FormPartie monForm)
