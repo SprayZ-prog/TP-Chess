@@ -162,6 +162,10 @@ namespace Echecs
             _unePartie = _listePartie[indexOfForm];
             return _unePartie.tour();
         }
+        public int tour(FormPromotion monForm)
+        {
+            return _unePartie.tour();
+        }
         /// <summary>
         /// Ajoute unn nouveau joueur dans la liste des joueurs du classement
         /// </summary>

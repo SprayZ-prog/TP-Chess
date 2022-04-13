@@ -32,7 +32,7 @@ namespace Echecs
               "TCFRKFCT"; 
 
 
-        string _board =
+        /*string _board =
               "t000k00t" +
               "pcfrpfcp" +
               "00000000" +
@@ -40,7 +40,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PCFRPFCP" +
-              "T000K00T";
+              "T000K00T"; */
 
         public Plateau(Partie partie)
         {
