@@ -254,7 +254,6 @@ namespace Echecs
                         switch (mouvement)
                         {
 
-
                             case Mouvement.peutBougerSansCollision:
 
                                 int deplacement = this.deplacement(i, indexDestination);

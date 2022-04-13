@@ -21,7 +21,9 @@ namespace Echecs
             _controlleur = leControlleur;
             _indexPion = index;
         }
-
+        /// <summary>
+        /// Dessine l'image de la reine dans le formulaire
+        /// </summary>
         private void pnl1_Paint(object sender, PaintEventArgs e)
         {
             Graphics myGraph = pnl1.CreateGraphics();
@@ -35,7 +37,9 @@ namespace Echecs
                 myGraph.DrawImage(Properties.Resources.queenBlack, 0, 0);
             }
         }
-
+        /// <summary>
+        /// Dessine l'image du fou dans le formulaire
+        /// </summary>
         private void pnl2_Paint(object sender, PaintEventArgs e)
         {
             Graphics myGraph = pnl2.CreateGraphics();
@@ -50,6 +54,9 @@ namespace Echecs
             }
         }
 
+        /// <summary>
+        /// Dessine l'image du cavalier dans le formulaire
+        /// </summary>
         private void pnl3_Paint(object sender, PaintEventArgs e)
         {
             Graphics myGraph = pnl3.CreateGraphics();
@@ -63,7 +70,9 @@ namespace Echecs
                 myGraph.DrawImage(Properties.Resources.knightBlack, 0, 0);
             }
         }
-
+        /// <summary>
+        /// Dessine l'image de la tour dans le formulaire
+        /// </summary>
         private void pnl4_Paint(object sender, PaintEventArgs e)
         {
             Graphics myGraph = pnl4.CreateGraphics();
@@ -78,9 +87,11 @@ namespace Echecs
             }
         }
 
+        /// <summary>
+        /// Événement du clic sur la reine, ce qui promouvoit le pion en reine
+        /// </summary>
         private void pnl1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("bob");
             if (_controlleur.tour(this) != 0)
             {
                 _controlleur.changerPion('R', _indexPion);
@@ -90,7 +101,9 @@ namespace Echecs
                 _controlleur.changerPion('r', _indexPion);
             }
         }
-
+        /// <summary>
+        /// Événement du clic sur le fou, ce qui promouvoit le pion en fou
+        /// </summary>
         private void pnl2_Click(object sender, EventArgs e)
         {
             if (_controlleur.tour(this) != 0)
@@ -102,7 +115,9 @@ namespace Echecs
                 _controlleur.changerPion('f', _indexPion);
             }
         }
-
+        /// <summary>
+        /// Événement du clic sur le cavalier, ce qui promouvoit le pion en cavalier
+        /// </summary>
         private void pnl3_Click(object sender, EventArgs e)
         {
             if (_controlleur.tour(this) != 0)
@@ -114,7 +129,9 @@ namespace Echecs
                 _controlleur.changerPion('c', _indexPion);
             }
         }
-
+        /// <summary>
+        /// Événement du clic sur la tour, ce qui promouvoit le pion en tour
+        /// </summary>
         private void pnl4_Click(object sender, EventArgs e)
         {
             if (_controlleur.tour(this) != 0)

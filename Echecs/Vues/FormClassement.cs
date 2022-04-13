@@ -21,8 +21,9 @@ namespace Echecs
             InitializeComponent();
         }
         
- 
-
+        /// <summary>
+        /// Événement de l'affichage du formulaire du classement de joueurs
+        /// </summary>
         private void FormClassement_Load(object sender, EventArgs e)
         {
             listView1.View = View.Details;
