@@ -31,7 +31,17 @@ namespace Echecs
               "PPPPPPPP" +
               "TCFRKFCT"; 
 
-     
+
+        string _board =
+              "t000k00t" +
+              "pcfrpfcp" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "PCFRPFCP" +
+              "T000K00T";
+
         public Plateau(Partie partie)
         {
             _partie = partie;
@@ -134,7 +144,115 @@ namespace Echecs
                 }
                 
             }
-            return _echiquier[indexInitial].regles(indexInitial, indexDestination);
+
+            Mouvement roque = verifRoque(indexInitial, indexDestination);
+            if (roque == Mouvement.peutGrandRoque || roque == Mouvement.peutPetitRoque)
+            {
+                return roque;
+            }
+            else
+            {
+                return _echiquier[indexInitial].regles(indexInitial, indexDestination);
+            }
+           
+            
+
+        }
+
+
+        public Mouvement verifRoque(int indexInitial, int indexDestination)
+        {
+            if (_partie.tour() != 0 && indexInitial > 0 && indexInitial < 7 && _echiquier[indexInitial].peutRoquer())
+            {
+                if (indexDestination == indexInitial - 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                {
+                    if (_echiquier[0].peutRoquer())
+                    {
+                        _echiquier[indexInitial].vientDeBouger();
+                        _echiquier[0].vientDeBouger();
+                        return Mouvement.peutGrandRoque;
+                    }
+                }
+                if (indexDestination == indexInitial + 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                {
+                    if (_echiquier[7].peutRoquer())
+                    {
+                        _echiquier[indexInitial].vientDeBouger();
+                        _echiquier[7].vientDeBouger();
+                        return Mouvement.peutPetitRoque;
+                    }
+                }
+                return Mouvement.peutPasBouger;
+            }
+            else if (_partie.tour() == 0 && indexInitial > 56 && indexInitial < 63 && _echiquier[indexInitial].peutRoquer())
+            {
+                if (indexDestination == indexInitial - 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                {
+                    if (_echiquier[56].peutRoquer())
+                    {
+                        _echiquier[indexInitial].vientDeBouger();
+                        _echiquier[56].vientDeBouger();
+                        return Mouvement.peutGrandRoque;
+                    }
+                }
+                if (indexDestination == indexInitial + 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                {
+                    if (_echiquier[63].peutRoquer())
+                    {
+                        _echiquier[indexInitial].vientDeBouger();
+                        _echiquier[63].vientDeBouger();
+                        return Mouvement.peutPetitRoque;
+                    }
+                }
+                return Mouvement.peutPasBouger;
+            }
+            return Mouvement.peutPasBouger;
+
+            /*
+             * bool validation = estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide;
+
+            if (validation)
+            {
+                if (_partie.tour() != 0 && indexInitial > 0 && indexInitial < 7 && _echiquier[indexInitial].peutRoquer())
+                {
+                    if (indexDestination == indexInitial - 2)
+                    {
+                        if (_echiquier[0].peutRoquer())
+                        {
+                            return Mouvement.peutGrandRoque;
+                        }
+                    }
+                    if (indexDestination == indexInitial + 2)
+                    {
+                        if (_echiquier[7].peutRoquer())
+                        {
+                            return Mouvement.peutPetitRoque;
+                        }
+                    }
+                    return Mouvement.peutPasBouger;
+                }
+                else if (_partie.tour() == 0 && indexInitial > 56 && indexInitial < 63 && _echiquier[indexInitial].peutRoquer())
+                {
+                    if (indexDestination == indexInitial - 2)
+                    {
+                        if (_echiquier[56].peutRoquer())
+                        {
+                            return Mouvement.peutGrandRoque;
+                        }
+                    }
+                    if (indexDestination == indexInitial + 2)
+                    {
+                        if (_echiquier[63].peutRoquer())
+                        {
+                            return Mouvement.peutPetitRoque;
+                        }
+                    }
+                    return Mouvement.peutPasBouger;
+                }
+                return Mouvement.peutPasBouger;
+            }
+            return Mouvement.peutPasBouger;
+            */
 
         }
         public int deplacement(int indexInitial, int indexDesti)
@@ -307,9 +425,12 @@ namespace Echecs
         }
 
         public void nePeutPlusCharger(int index)
+
+
         {
-            _echiquier[index].Piece.nePeutPlusCharger();
+            _echiquier[index].nePeutPlusCharger();
         }
+
         public bool verifPromoPion(int indexDestination)
         {
             if (_echiquier[indexDestination].peutEtrePromu())
@@ -402,6 +523,12 @@ namespace Echecs
                 {
                     for (int i = 0; i < _echiquier.Length; i++)
                     {
+
+
+
+
+
+
                         if (!_echiquier[i].EstVide)
                         {
 
@@ -450,7 +577,8 @@ namespace Echecs
             }
             else if (indexRoi + 7 < 64 && (indexRoi + 7) % 8 != 7 && _partie.verifDeplacement(indexRoi, indexRoi + 7).Item1
                 || indexRoi + 8 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 8).Item1
-                || indexRoi + 9 < 64 && (indexRoi + 9) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1)
+                || indexRoi + 9 < 64 && (indexRoi + 9) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1
+                || _echiquier[indexRoi].Piece.peutRoquer())
             {
                 return true;
             }
