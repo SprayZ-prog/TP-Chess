@@ -10,8 +10,6 @@ namespace Echecs
     {
         private Piece _piece;
         private bool _estVide;
-        private Plateau _plateau;
-        Couleur _couleur;
 
         /// <summary>
         /// Créer la pièce sur la case selon son identifiant
@@ -20,7 +18,7 @@ namespace Echecs
         /// <param name="plateau">Le plateau où se trouve la case</param>
         public Case(char piece, Plateau plateau) 
         {
-            _plateau = plateau;
+           
             _estVide = false;
 
             switch (piece)
@@ -66,7 +64,6 @@ namespace Echecs
         public Case(bool estVide, Plateau plateau)
         {
             _estVide = estVide;    
-            _plateau = plateau;    
         }
         public Piece Piece 
         { 
