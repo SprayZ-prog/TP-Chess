@@ -20,10 +20,6 @@ namespace Echecs
             }
         }
 
-        public override string ToString()
-        {
-            return _nom.ToString();
-        }
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
             if (indexDestination == indexInitiale - 6 || indexDestination == indexInitiale + 6

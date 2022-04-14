@@ -54,7 +54,7 @@ namespace Echecs
         /// <summary>
         /// Vérifie si la pièce peut roquer
         /// </summary>
-        /// <returns>Retourne faux si la pièce ne peut plus roquerreturns>
+        /// <returns>Retourne faux si la pièce ne peut plus roquer</returns>
         public virtual bool peutRoquer()
         {
             return false;
@@ -75,8 +75,14 @@ namespace Echecs
         {
             return Mouvement.peutPasBouger;
         }
-        
 
-
+        /// <summary>
+        /// Renvoie en chaîne de caractères le caractère qui représente le nom de la pièce.
+        /// </summary>
+        /// <returns>Retourne la chaine de caractères</returns>
+        public override string ToString()
+        {
+            return _nom.ToString();
+        }
     }
 }

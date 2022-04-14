@@ -21,10 +21,6 @@ namespace Echecs
             }
         }
 
-        public override string ToString()
-        {
-            return _nom.ToString();
-        }
         public override bool peutEtrePromu()
         {
             return true;
