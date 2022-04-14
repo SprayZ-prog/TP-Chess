@@ -10,6 +10,7 @@ participant "Partie" as C
 participant "Plateau" as D
 participant "Cases" as E
 participant "Pieces" as F
+participant "Tour" as G
 
 User -> A: ClickSurEchiquier()
 activate A
@@ -17,150 +18,397 @@ activate A
 A -> B: jouerCoup(this, clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y)
 activate B
 
-B -> C: determinerCase(x1, y1, x2, y2)
-activate C
+    B -> C: determinerCase(x1, y1, x2, y2)
+    activate C
+    C --> B: indexInitial, indexDest
+    deactivate C
 
-C --> B: retourne _indexMouvement
-deactivate C
+    B -> C: verifDeplacement(indexMouvement.Item1, indexMouvement.Item2)
+    activate C
 
-B -> C: verifDeplacement(indexMouvement.Item1, indexMouvement.Item2)
-activate C
+        C -> D: verifierSiPiece(indexInitial) 
+        activate D 
 
-C -> D: verifierSiPiece(indexInitial) 
-activate D 
+            D -> E: EstVide
+            activate E
+            E --> D: false
+            deactivate E
 
-D --> C: message
-deactivate D
+        D --> C: true, 1
+        deactivate D
 
-C -> D: maPiece(indexInitial)
-activate D
+        C -> D: maPiece(indexInitial)
+        activate D
 
-D -> C: tour()
-activate C
-C --> D: _nbCoup % 2
-deactivate C
+            D -> C: tour()
+            activate C
+            C --> D: _nbCoup % 2
+            deactivate C
 
-D -> E: couleurPiece()
-activate E
-E --> D: Couleur
-deactivate E
+            D -> E: couleurPiece()
+            activate E
+            E --> D: Blanc
+            deactivate E
 
-D --> C: message
-deactivate D
+        D --> C: true, 0
+        deactivate D
 
-C -> D: verifTrajectoire(indexInitial, indexDesti)
-activate D 
-D -> E: peutEtrePromu()
-activate E
-E -> F: peutEtrePromu()
-activate F
-F --> E: false
-deactivate F
+        C -> D: verifTrajectoire(indexInitial, indexDesti)
+        activate D 
 
-D -> E: regles(_indexInitial, _indexDesti, plateau)
-activate E
-E --> D: enum('possible sans collision'), Case[]
-deactivate E
-D --> C: enum('possible sans collision'), Case[]
-deactivate D
+            D -> E: peutEtrePromu()
+            activate E
 
-C -> D: estCollision(_indexInitial, _indexDesti, Case[])
-activate D 
-D --> C: true, messageSansErreur
-deactivate D
+                E -> F: peutEtrePromu()
+                activate F
+                F --> E: false
+                deactivate F
 
-C -> D: verifCouleurDesti(_indexDesti, nbCoup)
-D --> C: true, messageSansErreur
-deactivate D
+            E --> D: false
+            deactivate E    
 
+            D -> D: verifRoque(indexInitial, indexDestination)
+            activate D
 
-C -> D: metEnEchecAllie(_indexInitial, _indexDesti)
-activate D
+                D -> C: tour()
+                activate C
+                C --> D: _nbCoup % 2
+                deactivate C
 
-loop sur toute les pieces ennemies vers roi alliée
-D -> E: regles(_indexInitial, _indexDesti, plateau)
-activate E
-E --> D: true, messageSansErreur
-deactivate E
-end loop
+            D --> D: Mouvement.peutPasBouger
+            deactivate D
 
-D --> C: true, messageSansErreur
-deactivate D
+                D -> E: regles(indexInitial, indexDestination)
+                activate E
 
-C --> B: true, messageSansErreur
-deactivate C
+                    E -> G: regles(indexInitial, indexDestination)
+                    activate G
+                    G --> E: Mouvement.peutBougerSansCollision
+                    deactivate G
 
-B -> C: faireDéplacement()
-activate C
-C --> B
-deactivate C
+                E --> D: Mouvement.peutBougerSansCollision
+                deactivate E
 
+            D --> C: Mouvement.peutBougerSansCollision
+            deactivate D
 
-B -> C: verifLesEchecs()
-activate C
+            C -> D: deplacement(indexInitial, indexDesti)
+            activate D
+            D --> C: -8
+            deactivate D
 
+            C -> D: estCollision(indexInitial, indexDesti, deplacement)
+            activate D 
 
-C -> D: verifEchec(_indexInitial, _indexDesti, nbCoup)
-activate D
+                loop sur toutes les cases pour se rendre a destination
+                    D -> E: EstVide
+                    activate E
+                    E --> D: true
+                    deactivate E
+                end loop
+                
+            D --> C: true, 0
+            deactivate D
 
-loop sur toute les pieces alliée vers roi adverse
-D -> E: regles(_indexInitial, _indexDesti, plateau)
-activate E
-E --> D: true, messageSansErreur
-deactivate E
-end loop
+            C -> D: verifCouleurDesti(indexInitial, indexDesti)
+            activate D
 
+                D -> E: EstVide
+                activate E
+                E --> D: false
+                deactivate E
 
-loop faire tant que En echec ou faite toute les possibiliter de contre
-D -> D: verifEchecMat(plateau)
-activate D
-end loop
+                D -> E: couleurPiece()
+                activate E
+                E --> D: Blanc
+                deactivate E
 
+                D -> E: couleurPiece()
+                activate E
+                E --> D: Noir
+                deactivate E
 
+            D --> C: true, 0
+            deactivate D
 
-loop verifier si le joueur peut bouger une piece
-D -> D: verifPat(nbCoup)
-activate D
-end loop
-activate D
+        C -> D: metEnEchecAllie(indexInitial, indexDesti, _nbCoup)
+        activate D
 
+            loop sur toutes les cases de l'échiquier jusqu'à trouver le roi du joueur qui fait le coup
+                D -> E: EstVide
+                activate E
+                E --> D: false
+                deactivate E
 
-D --> C: true, messageSansErreur
-deactivate D
-deactivate D
-deactivate D
+                D -> C: tour()
+                activate C
+                C --> D: _nbCoup % 2
+                deactivate C
 
-deactivate C
-deactivate C
-deactivate C
+                D -> E: ToString()
+                activate E
 
-C --> B: true, messageSansErreur
+                    E -> F: ToString()
+                    activate F
+                    F --> E: "K"
+                    deactivate F
 
-B -> C: verifFinMatchSpecial(_indexInitial)
+                E --> D: false
+                deactivate E
+            end loop
 
+            
+            loop sur toutes les cases de l'échiquier
+                
+                D -> E: EstVide
+                activate E
+                E --> D: false
+                deactivate E
 
-C -> D: verifListEchiquier(_indexInitial)
-activate D
-D -> E: toString(Pieces)
-activate E
-E --> D: string
-deactivate E
+                group Puisque je passe par toute les regles de piece et que certaine son special voici pour une piece normal
+                    D -> D: verifTrajectoire(i, indexDestiination)
+                    activate D 
 
-D --> C: true
-deactivate D
+                        D -> E: peutEtrePromu()
+                        activate E
 
-C -> C: verif50Coup()
-activate C
+                            E -> F: peutEtrePromu()
+                            activate F
+                            F --> E: false
+                            deactivate F
 
+                        E --> D: false
+                        deactivate E    
 
-C --> B: true, messageSansErreur
-deactivate C
+                        D -> D: verifRoque(indexInitial, indexDestination)
+                        activate D
 
-B --> A: true, messageSansErreur
+                            D -> C: tour()
+                            activate C
+                            C --> D: _nbCoup % 2
+                            deactivate C
+
+                        D --> D: Mouvement.peutPasBouger
+                        deactivate D
+
+                        D -> E: regles(indexInitial, indexDestination)
+                        activate E
+
+                            E -> G: regles(indexInitial, indexDestination)
+                            activate G
+                            G --> E: Mouvement.peutBougerSansCollision
+                            deactivate G
+
+                        E --> D: Mouvement.peutBougerSansCollision
+                        deactivate E
+
+                    D --> D: Mouvement.peutBougerSansCollision
+                    deactivate D
+                end
+                
+                '????????????????????????????????????????????'
+                D -> D: deplacement(i, indexDestination)
+                activate D
+                D --> D: -8
+                deactivate D
+
+                D -> D: estCollision(1, indexDestination, deplacement, echiquierTest)
+                activate D 
+
+                    loop sur toutes les cases pour se rendre a destination
+                        D -> E: EstVide
+                        activate E
+                        E --> D: true
+                        deactivate E
+                    end loop
+                    
+                D --> D: true, 0
+                deactivate D
+                
+            end loop
+
+        D --> C: true, 0 
+        deactivate D
+
+    C --> B: true, 0
+    deactivate C
+
+    B -> C: faireDeplacement(indexMouvement.Item1, indexMouvement.Item2)
+    activate C
+
+        C -> D: nePeutPlusCharger(indexInitial)
+        activate D
+
+            D -> E: nePeutPlusCharger()
+            activate E
+            E --> D:
+            deactivate E
+
+        D --> C:
+        deactivate D 
+
+        C -> D: deplacer(indexInitial, indexDesti)
+        activate D
+        D --> C
+        deactivate D
+
+        C -> D: verifPromoPion(indexDesti)
+        activate D
+
+            D -> E: peutEtrePromu()
+            activate E
+
+                    E -> F: peutEtrePromu()
+                    activate F
+                    F --> E: false
+                    deactivate F
+
+            E --> D: false
+            deactivate E    
+
+        D --> C: false
+        deactivate D
+
+    C --> B: false
+    deactivate C
+
+    B -> C: verifEchec()
+    activate C
+
+        C -> D: trouverRoiEnnemi()
+        activate D
+
+            loop sur toutes les cases de l'échiquier jusqu'à trouver le roi du joueur qui fait le coup
+                D -> E: EstVide
+                activate E
+                E --> D: false
+                deactivate E
+
+                D -> C: tour()
+                activate C
+                C --> D: _nbCoup % 2
+                deactivate C
+
+                D -> E: ToString()
+                activate E
+
+                    E -> F: ToString()
+                    activate F
+                    F --> E: "k"
+                    deactivate F
+
+                E --> D: false
+                deactivate E
+
+            end loop
+
+        D --> C: 4, Blanc
+        deactivate D 
+
+        C -> D: verifEchec(roi.Item1, roi.Item2)
+        activate D
+
+            loop sur toutes les cases de l'échiquier
+                D -> E: EstVide
+                activate E
+                E --> D: false
+                deactivate E
+
+                D -> E: couleurPiece()
+                activate E
+                E --> D: Blanc
+                deactivate E
+
+                group Puisque je passe par toute les regles de piece et que certaine son special voici pour une piece normal
+                    
+                    D -> D: verifTrajectoire(i, indexDestiination)
+                    activate D 
+
+                        D -> E: peutEtrePromu()
+                        activate E
+
+                            E -> F: peutEtrePromu()
+                            activate F
+                            F --> E: false
+                            deactivate F
+
+                        E --> D: false
+                        deactivate E    
+
+                        D -> D: verifRoque(indexInitial, indexDestination)
+                        activate D
+
+                            D -> C: tour()
+                            activate C
+                            C --> D: _nbCoup % 2
+                            deactivate C
+
+                        D --> D: Mouvement.peutPasBouger
+                        deactivate D
+
+                        D -> E: regles(indexInitial, indexDestination)
+                        activate E
+
+                            E -> G: regles(indexInitial, indexDestination)
+                            activate G
+                            G --> E: Mouvement.peutBougerSansCollision
+                            deactivate G
+
+                        E --> D: Mouvement.peutBougerSansCollision
+                        deactivate E
+
+                    D --> D: Mouvement.peutBougerSansCollision
+                    deactivate D
+
+                end
+            
+            end loop
+
+        D --> C: true, 0, 0
+        deactivate D 
+
+    C --> B: true, 0
+    deactivate C
+
+B --> A: true, 0
 deactivate B
 
-A --> User: Done
-deactivate A
+A -> B: afficherEchiquier()
+activate B
+
+    B -> C: afficher()
+    activate C
+
+        C -> D: afficher()
+        activate D
+            loop concaténation de tout les caratères des pieces du plateau actuel
+
+                D -> E: EstVide
+                activate E
+                E --> D: false
+                deactivate E
+
+                D -> E: ToString()
+                activate E
+
+                    E -> F: ToString()
+                    activate F
+                    F --> E: "lettre"
+                    deactivate F
+            end loop
+
+                E --> D: "tcfrkfctpppppppT00000000000000000000000000000000PPPPPPP0TCFRKFC0"
+                deactivate E
+
+        D --> C:  "tcfrkfctpppppppT00000000000000000000000000000000PPPPPPP0TCFRKFC0"   
+        deactivate D 
+
+    C --> B:  "tcfrkfctpppppppT00000000000000000000000000000000PPPPPPP0TCFRKFC0"   
+    deactivate C 
+
+ B --> A:  "tcfrkfctpppppppT00000000000000000000000000000000PPPPPPP0TCFRKFC0"   
+deactivate B            
+
 
 @enduml
 
