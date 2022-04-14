@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Plateau (échiquier) de la partie
+    /// </summary>
     public class Plateau
     {
         private Case[] _echiquier;
@@ -77,7 +80,10 @@ namespace Echecs
               "PCFRPFCP" +
               "T000K00T";*/
 
-
+        /// <summary>
+        /// Instancie chaque case avec les pièces sur le plateau
+        /// </summary>
+        /// <param name="partie">La partie où se trouve le plateau</param>
         public Plateau(Partie partie)
         {
             _partie = partie;
@@ -98,7 +104,7 @@ namespace Echecs
                 }
                 else
                 {
-                    _echiquier[i] = new Case(true, this);
+                    _echiquier[i] = new Case(true);
 
                 }
 
@@ -120,7 +126,7 @@ namespace Echecs
         public void deplacer(int indexInitial, int indexDesti)
         {
             _echiquier[indexDesti] = _echiquier[indexInitial];
-            _echiquier[indexInitial] = new Case(true, this);
+            _echiquier[indexInitial] = new Case(true);
         }
         /// <summary>
         /// Affiche la chaine de caractère de l'échiquier
@@ -195,11 +201,11 @@ namespace Echecs
         {
             if (_echiquier[indexInitial].peutEtrePromu())
             {
-                if (_partie.tour() == 1 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial - 7 || indexDestination == indexInitial - 9))
+                if (_partie.tour() == 0 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial - 7 || indexDestination == indexInitial - 9))
                 {
                     return Mouvement.peutBougerAvecCollision;
                 }
-                else if (_partie.tour() == 0 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial + 7 || indexDestination == indexInitial + 9))
+                else if (_partie.tour() == 1 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial + 7 || indexDestination == indexInitial + 9))
                 {
                     return Mouvement.peutBougerAvecCollision;
                 }
@@ -388,7 +394,7 @@ namespace Echecs
             Case[] echiquierTest = (Case[])_echiquier.Clone();
 
             echiquierTest[indexDesti] = echiquierTest[indexInitial];
-            echiquierTest[indexInitial] = new Case(true, this);
+            echiquierTest[indexInitial] = new Case(true);
 
             int indexDestination = 0;
             for (int i = 0; i < echiquierTest.Length; i++)

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Partie d’échec ayant les informations de la partie.
+    /// </summary>
     public class Partie
     {
         Echec _controlleur;
@@ -16,13 +19,17 @@ namespace Echecs
         Joueur _joueur2;
         List<string> _listeEchiquier;
 
+        /// <summary>
+        /// Instancie le contrôleur Echec et les joueurs dans la partie
+        /// </summary>
+        /// <param name="_monControlleur">Le contrôleur Echec</param>
+        /// <param name="joueur1">Le joueur 1, qui joue les blancs</param>
+        /// <param name="joueur2">Le joueur 2, qui joue les noirs</param>
         public Partie(Echec _monControlleur, Joueur joueur1, Joueur joueur2)
         {
             _controlleur = _monControlleur;
             _joueur1 = joueur1;
             _joueur2 = joueur2;
-            Console.WriteLine(_joueur1.ToString());
-            Console.WriteLine(_joueur2.ToString());
             _plateau = new Plateau(this);
         }
         /// <summary>

@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// La pièce du pion
+    /// </summary>
     class Pion : PieceMemoire
     {
+
+        /// <summary>
+        /// Instancie le nom du pion
+        /// </summary>
+        /// <param name="_couleur">La couleur du pion</param>
         public Pion(Couleur _couleur) : base(_couleur)
         {
 

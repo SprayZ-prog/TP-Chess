@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Case du plateau du jeu pouvant détenir une pièce.
+    /// </summary>
     public class Case
     {
         private Piece _piece;

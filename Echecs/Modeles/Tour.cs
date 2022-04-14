@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// La pièce de la tour
+    /// </summary>
     class Tour : PieceMemoire
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_couleur"></param>
         public Tour(Couleur _couleur) : base(_couleur)
         {
             if (_couleur == Couleur.Blanc)

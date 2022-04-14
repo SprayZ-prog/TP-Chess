@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// La pièce du fou
+    /// </summary>
     class Fou : Piece
     {
+        /// <summary>
+        /// Instancie le nom de la pièce
+        /// </summary>
+        /// <param name="_couleur">La couleur</param>
         public Fou(Couleur _couleur) : base(_couleur)
         {
             if (_couleur == Couleur.Blanc)

@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Pièces du jeu d’échec
+    /// </summary>
     public abstract class Piece
     {
         protected char _nom;
         protected Couleur _couleur;
+
+        /// <summary>
+        /// Instancie la pièce à sa couleur
+        /// </summary>
+        /// <param name="couleur">La couleur de la pièce</param>
         public Piece(Couleur couleur)
         {
             _couleur = couleur;

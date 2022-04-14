@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// La pièce du cavalier
+    /// </summary>
     class Cavalier : Piece
     {
         /// <summary>

@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// La pièce de la reine
+    /// </summary>
     class Reine : Piece
     {
+        /// <summary>
+        /// Instancie le nom de la reine
+        /// </summary>
+        /// <param name="_couleur">La couleur de la reine</param>
         public Reine(Couleur _couleur) : base(_couleur)
         {
             if (_couleur == Couleur.Blanc)
