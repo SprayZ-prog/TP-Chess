@@ -8,37 +8,55 @@ participant "FormPartie" as A
 participant "Echec" as B
 participant "Partie" as C
 participant "Plateau" as D
-participant "Pieces" as E
+participant "Cases" as E
+participant "Pieces" as F
 
 User -> A: ClickSurEchiquier()
 activate A
 
-A -> B: jouerCoup(x1, y1, x2, y2)
+A -> B: jouerCoup(this, clickInitial.X, clickInitial.Y, clickDest.X, clickDest.Y)
 activate B
 
 B -> C: determinerCase(x1, y1, x2, y2)
 activate C
 
-C --> B: retourne _indexInitial, _indexDestination
+C --> B: retourne _indexMouvement
 deactivate C
 
-B -> C: verifDeplacementPossible(_indexInitial, _indexDesti)
+B -> C: verifDeplacement(indexMouvement.Item1, indexMouvement.Item2)
 activate C
 
-C -> D: verifierSiPiece(_indexInitial) 
+C -> D: verifierSiPiece(indexInitial) 
 activate D 
-' est ce que je vérifie les 2 case '
 
-D --> C: true, messageSansErreur
+D --> C: message
 deactivate D
 
-C -> D: maPiece(_indexInitial, nbCoup)
-activate D 
-D --> C: true, messageSansErreur
+C -> D: maPiece(indexInitial)
+activate D
+
+D -> C: tour()
+activate C
+C --> D: _nbCoup % 2
+deactivate C
+
+D -> E: couleurPiece()
+activate E
+E --> D: Couleur
+deactivate E
+
+D --> C: message
 deactivate D
 
-C -> D: verifTrajectoire(_indexInitial, _indexDesti)
+C -> D: verifTrajectoire(indexInitial, indexDesti)
 activate D 
+D -> E: peutEtrePromu()
+activate E
+E -> F: peutEtrePromu()
+activate F
+F --> E: false
+deactivate F
+
 D -> E: regles(_indexInitial, _indexDesti, plateau)
 activate E
 E --> D: enum('possible sans collision'), Case[]
