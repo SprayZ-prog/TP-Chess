@@ -31,6 +31,16 @@ namespace Echecs
               "PPPPPPPP" +
               "TCFRKFCT"; */
 
+        string _board =
+              "tcfrkfct" +
+              "pppppppp" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "PPPPPPP0" +
+              "TCFRKFCT";
+
 
         /*string _board =
               "t000k00t" +
@@ -42,7 +52,7 @@ namespace Echecs
               "PCFRPFCP" +
               "T000K00T";*/
 
-        string _board =
+        /*string _board =
               "tcfrkfc0" +
               "pppppppP" +
               "00000000" +
@@ -50,7 +60,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPp" +
-              "TCFRKFC0"; 
+              "TCFRKFC0"; */
 
         public Plateau(Partie partie)
         {
@@ -96,7 +106,7 @@ namespace Echecs
             {
                 if (!_echiquier[i].EstVide)
                 {
-                    echiquierActuel += _echiquier[i].Piece.ToString();
+                    echiquierActuel += _echiquier[i].ToString();
                 }
                 else
                 {
@@ -111,16 +121,16 @@ namespace Echecs
         public Tuple<bool, int> verifierSiPiece(int indexInitial)
         {
             Tuple<bool, int> message;
-            if (_echiquier[indexInitial].EstVide)
+            /*if (_echiquier[indexInitial].EstVide)
             {
                 message = new Tuple<bool, int>(false, 0);
             }
             else
             {
                 message = new Tuple<bool, int>(true, 1);
-            }
+            }*/
 
-
+            message = new Tuple<bool, int>(true, 1);
             return message;
 
         }
@@ -128,15 +138,15 @@ namespace Echecs
         public Tuple<bool, int> maPiece(int indexInitial)
         {
             Tuple<bool, int> message;
-            if ((_partie.tour() == 0 && _echiquier[indexInitial].couleurPiece() == Couleur.Blanc) || (_partie.tour() == 1 && _echiquier[indexInitial].couleurPiece() == Couleur.Noir))
+            /*if ((_partie.tour() == 0 && _echiquier[indexInitial].couleurPiece() == Couleur.Blanc) || (_partie.tour() == 1 && _echiquier[indexInitial].couleurPiece() == Couleur.Noir))
             {
                 message = new Tuple<bool, int>(true, 0);
             }
             else
             {
                 message = new Tuple<bool, int>(false, 2);
-            }
-
+            }*/
+            message = new Tuple<bool, int>(true, 0);
             return message;
 
         }
