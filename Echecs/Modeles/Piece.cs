@@ -31,7 +31,10 @@ namespace Echecs
         }
 
 
-        public virtual void nePeutPlusCharger(){ }
+        public virtual void nePeutPlusCharger()
+        { 
+            
+        }
 
         public virtual bool peutRoquer()
         {

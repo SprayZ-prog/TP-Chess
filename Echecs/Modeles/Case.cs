@@ -65,56 +65,84 @@ namespace Echecs
         {
             _estVide = estVide;    
         }
+
+        /// <summary>
+        /// Retourne la donnée membre pièce sur la case
+        /// </summary>
         public Piece Piece 
         { 
             get { return _piece; }
             set { _piece = value; }
         }
+
+        /// <summary>
+        /// Retourne vrai si la case est vide
+        /// </summary>
         public bool EstVide
         {
             get { return _estVide; }
             set { _estVide = value; }
         }
 
+        /// <summary>
+        /// La couleur de la pièce sur la case
+        /// </summary>
+        /// <returns>Retourne la couleur blanc ou noir</returns>
         public Couleur couleurPiece()
         {
             return _piece.Couleur;
         }
 
-        public Couleur setcouleurPiece()
-        {
-
-            return _piece.Couleur;
-        }
+        /// <summary>
+        /// Vérifie si les règles de la pièce sont respectés durant le coup
+        /// </summary>
+        /// <param name="indexInitiale">La case initiale de la pièce</param>
+        /// <param name="indexDesti">La case destination de la pièce</param>
+        /// <returns>Retourne le type de mouvement de la pièce selon ses règles</returns>
         public Mouvement regles(int indexInitiale, int indexDesti)
-
-
         {
             return _piece.regles(indexInitiale, indexDesti);
         }
         
-
+        /// <summary>
+        /// Renvoie le charactère représentant la pièce sur la case
+        /// </summary>
+        /// <returns>Le caractère de la pièce</returns>
         public override string ToString()
         {
             return _piece.ToString();
 
         }
 
+        /// <summary>
+        /// Vérifie si la pièce peut être promu
+        /// </summary>
+        /// <returns> Retourne vrai si la pièce peut être promu</returns>
         public bool peutEtrePromu()
         {
             return _piece.peutEtrePromu();
         }
 
+        /// <summary>
+        /// Vérifie si la pièce peut roquer
+        /// </summary>
+        /// <returns>Retourne vrai si la pièce sur la case peut roquer</returns>
         public bool peutRoquer()
         {
             return _piece.peutRoquer();
         }
 
+        /// <summary>
+        /// Fais en sorte que la pièce ne puisse plus charger
+        /// </summary>
         public void nePeutPlusCharger() 
         {
             _piece.nePeutPlusCharger();
         }
 
+        /// <summary>
+        /// Dit à la pièce qu'elle a bougé
+        /// </summary>
         public void vientDeBouger()
         {
             _piece.vientDeBouger();
