@@ -232,7 +232,7 @@ namespace Echecs
         /// </summary>
         public void lire()
         {
-            string fichier = @"../../test.txt";
+            string fichier = @"./test.txt";
 
             if (File.Exists(fichier))
             {
@@ -251,7 +251,7 @@ namespace Echecs
         /// </summary>
         public void sauvegarder()
         {
-            string fichier = @"../../test.txt";
+            string fichier = @"./test.txt";
 
             if (File.Exists(fichier))
             {
