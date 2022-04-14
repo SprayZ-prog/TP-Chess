@@ -222,7 +222,7 @@ namespace Echecs
         /// <returns>Retourne vrai avec 0 s'il n'y a pas d'échec ni d'échec et mat</returns>
         public Tuple<bool, int> verifEchec()
         {
-            Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi(_nbCoup);
+            Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi();
             int indexAttaquant = _plateau.verifEchec(roi.Item1, roi.Item2).Item3; 
 
             if (_plateau.verifEchec(roi.Item1, roi.Item2).Item2 == 8)
