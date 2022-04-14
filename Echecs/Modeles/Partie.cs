@@ -8,25 +8,26 @@ namespace Echecs
 {
     public class Partie
     {
-        Echec _parent;
+        Echec _controlleur;
         Plateau _plateau;
         int _nbCoup;
         int _coupDepuisPionBougé;
         Joueur _joueur1;
         Joueur _joueur2;
-        string _echiquierActuelle;
         List<string> _listeEchiquier;
 
         public Partie(Echec _monControlleur, Joueur joueur1, Joueur joueur2)
         {
-            _parent = _monControlleur;
+            _controlleur = _monControlleur;
             _joueur1 = joueur1;
             _joueur2 = joueur2;
             Console.WriteLine(_joueur1.ToString());
             Console.WriteLine(_joueur2.ToString());
             _plateau = new Plateau(this);
         }
-
+        /// <summary>
+        /// Met à jour les statistiques des joueurs après l'abandon
+        /// </summary>
         public void victoire_Abandon()
         {
             if (tour() == 0)
@@ -42,7 +43,9 @@ namespace Echecs
             Console.WriteLine(_joueur1.ToString());
             Console.WriteLine(_joueur2.ToString());
         }
-
+        /// <summary>
+        /// Met à jour les statistiques des joueurs après la partie nulle
+        /// </summary>
         public void uneNulle()
         {
             _joueur1.ajoutNulle();
@@ -51,13 +54,23 @@ namespace Echecs
             Console.WriteLine(_joueur2.ToString());
         }
 
-
+        /// <summary>
+        /// Tour d'un joueur
+        /// </summary>
+        /// <returns>Retourne le tour du bon joueur</returns>
         public int tour()
         {
             return _nbCoup % 2;
         }
 
-
+        /// <summary>
+        /// Détermine l'index de la case initiale et de la case de destination du coup
+        /// </summary>
+        /// <param name="x1">Coordonnée en X de la case initiale</param>
+        /// <param name="y1">Coordonnée en Y de la case initiale</param>
+        /// <param name="x2">Coordonnée en X de la case destination</param>
+        /// <param name="y2">Coordonnée en Y de la case destination</param>
+        /// <returns>Retourne les index de la case initiale et destination</returns>
         public Tuple<int, int> determinerCase(int x1, int y1, int x2, int y2)
         {
             int indexInitial = (x1 / 62) + (y1 / 62) * 496 / 62;
@@ -65,7 +78,12 @@ namespace Echecs
             Tuple<int, int> indexMovement = new Tuple<int, int>(indexInitial, indexDest);
             return indexMovement;
         }
-
+        /// <summary>
+        /// Vérifie la validité du déplacement du joueur
+        /// </summary>
+        /// <param name="indexInitial">L'index de la case initiale du coup</param>
+        /// <param name="indexDesti">L'index de la case destination du coup</param>
+        /// <returns>Retourne vrai sans entier d'erreur si le coup est valide</returns>
         public Tuple<bool, int> verifDeplacement(int indexInitial, int indexDesti)
         {
             Tuple<bool, int> message;
@@ -174,24 +192,34 @@ namespace Echecs
             
             return message;
         }
-
+        /// <summary>
+        /// Fais le coup demandé
+        /// </summary>
+        /// <param name="indexInitial">L'index de la case initiale du coup</param>
+        /// <param name="indexDesti">L'index de la case destination du coup</param>
+        /// <returns>Retourne vrai si une promotion de pion doit avoir lieu</returns>
         public bool faireDeplacement(int indexInitial, int indexDesti)
         {
             _plateau.nePeutPlusCharger(indexInitial);
             _plateau.deplacer(indexInitial, indexDesti);
             _nbCoup++;
 
-            return _plateau.verifPromoPion
-                
-                (indexDesti);
+            return _plateau.verifPromoPion(indexDesti);
         }
-
+        /// <summary>
+        /// Promouvoit le pion en la pièce que le joueur a sélectionné
+        /// </summary>
+        /// <param name="piece">La pièce que le pion deviendra</param>
+        /// <param name="indexPion">L'index de l'emplacement du pion</param>
         public void changerPion(char piece, int indexPion)
         {
             _plateau.changerPion(piece, indexPion);
         }
 
-
+        /// <summary>
+        /// Vérifie si un échec ou un échec et mat a lieu
+        /// </summary>
+        /// <returns>Retourne vrai avec 0 s'il n'y a pas d'échec ni d'échec et mat</returns>
         public Tuple<bool, int> verifEchec()
         {
             Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi(_nbCoup);
@@ -205,7 +233,10 @@ namespace Echecs
             
 
         }
-
+        /// <summary>
+        /// Affiche la chaine de caractère de l'échiquier avec les caractères des pièces aux bons endroits
+        /// </summary>
+        /// <returns>Retourne la chaine de caractères de l'échiquier</returns>
         public string afficher()
         {
             return _plateau.afficher();
