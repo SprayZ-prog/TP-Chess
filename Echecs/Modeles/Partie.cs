@@ -155,10 +155,15 @@ namespace Echecs
                             case Mouvement.peutGrandRoque:
                                 if (tour() == 0)
                                 {
-                                    _plateau.deplacer(indexInitial, indexDesti);
-                                    _plateau.deplacer(56, 59);
-                                    _nbCoup++;
-                                    message = new Tuple<bool, int>(true, 12);
+                                    message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                    if (message.Item1)
+                                    {
+                                        _plateau.deplacer(indexInitial, indexDesti);
+                                        _plateau.deplacer(56, 59);
+                                        _nbCoup++;
+                                        message = new Tuple<bool, int>(true, 12);
+                                    }
+                                    
                                 }
                                 else
                                 {
@@ -178,10 +183,14 @@ namespace Echecs
                                 }
                                 else
                                 {
-                                    _plateau.deplacer(indexInitial, indexDesti);
-                                    _plateau.deplacer(7, 5);
-                                    _nbCoup++;
-                                    message = new Tuple<bool, int>(true, 12);
+                                    message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                    if (message.Item1)
+                                    {
+                                        _plateau.deplacer(indexInitial, indexDesti);
+                                        _plateau.deplacer(7, 5);
+                                        _nbCoup++;
+                                        message = new Tuple<bool, int>(true, 12);
+                                    }
                                 }
                                 break;
 
