@@ -80,10 +80,12 @@ namespace Echecs
                     peinturerEchiquier(echiquier);
                 }
 
+                int tour = _controlleur.tour(this);
+
                 switch (mouvement.Item2)
                 {
                     case 0:
-                        if(_controlleur.tour(this) == 0){
+                        if(tour == 0){
                             labMessage.Text = "Tour des blancs";
                         }
                         else
@@ -124,10 +126,24 @@ namespace Echecs
                         labMessage.Text = "Invalide: Vous mettez votre roi en échec";
                         break;
                     case 8:
-                        labMessage.Text = "Échec";
+                        if (tour == 0)
+                        {
+                            labMessage.Text = "Échec des blancs";
+                        }
+                        else
+                        {
+                            labMessage.Text = "Échec des noirs";
+                        }
                         break;
                     case 9:
-                        labMessage.Text = "Échec et mat";
+                        if (tour == 0)
+                        {
+                            labMessage.Text = "Échec et mat des blancs";
+                        }
+                        else
+                        {
+                            labMessage.Text = "Échec et mat des noirs";
+                        }
                         finPartie(mouvement.Item2);
                         break;
                     case 10:
