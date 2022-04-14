@@ -39,15 +39,17 @@ namespace Echecs
             // 
             this.labMessage.AutoSize = true;
             this.labMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labMessage.Location = new System.Drawing.Point(78, 41);
+            this.labMessage.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labMessage.Location = new System.Drawing.Point(77, 53);
             this.labMessage.Name = "labMessage";
             this.labMessage.Size = new System.Drawing.Size(160, 31);
             this.labMessage.TabIndex = 1;
             this.labMessage.Text = "labMessage";
+            this.labMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAbandon
             // 
-            this.btnAbandon.Location = new System.Drawing.Point(163, 668);
+            this.btnAbandon.Location = new System.Drawing.Point(235, 670);
             this.btnAbandon.Name = "btnAbandon";
             this.btnAbandon.Size = new System.Drawing.Size(116, 34);
             this.btnAbandon.TabIndex = 4;
@@ -57,7 +59,7 @@ namespace Echecs
             // 
             // btnNulle
             // 
-            this.btnNulle.Location = new System.Drawing.Point(396, 668);
+            this.btnNulle.Location = new System.Drawing.Point(468, 670);
             this.btnNulle.Name = "btnNulle";
             this.btnNulle.Size = new System.Drawing.Size(116, 34);
             this.btnNulle.TabIndex = 5;
@@ -68,7 +70,7 @@ namespace Echecs
             // pnlEchiquier
             // 
             this.pnlEchiquier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlEchiquier.Location = new System.Drawing.Point(84, 122);
+            this.pnlEchiquier.Location = new System.Drawing.Point(156, 124);
             this.pnlEchiquier.Name = "pnlEchiquier";
             this.pnlEchiquier.Size = new System.Drawing.Size(496, 496);
             this.pnlEchiquier.TabIndex = 6;
@@ -79,7 +81,7 @@ namespace Echecs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 767);
+            this.ClientSize = new System.Drawing.Size(847, 767);
             this.Controls.Add(this.btnNulle);
             this.Controls.Add(this.btnAbandon);
             this.Controls.Add(this.labMessage);

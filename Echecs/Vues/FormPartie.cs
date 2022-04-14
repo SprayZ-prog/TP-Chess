@@ -85,7 +85,8 @@ namespace Echecs
                 switch (mouvement.Item2)
                 {
                     case 0:
-                        if(tour == 0){
+                        labMessage.ForeColor = System.Drawing.Color.Black;
+                        if (tour == 0){
                             labMessage.Text = "Tour des blancs";
                         }
                         else
@@ -94,38 +95,40 @@ namespace Echecs
                         }
                         break;
                     case 1:
-
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Sélectionner une pièce";
                         break;
 
                     case 2:
-
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Mauvaise couleur de pièce";
                         break;
 
                     case 3:
-
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Sélection de la même case 2 fois";
                         break;
                     case 4:
-
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Cette pièce ne peut pas faire ce mouvement";
                         break;
 
                     case 5:
-
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Une pièce est dans la trajectoire";
                         break;
 
                     case 6:
-
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Vous ne pouvez pas attaquer votre propre pièce";
                         break;
 
                     case 7:
+                        labMessage.ForeColor = System.Drawing.Color.Red;
                         labMessage.Text = "Invalide: Vous mettez votre roi en échec";
                         break;
                     case 8:
+                        labMessage.ForeColor = System.Drawing.Color.Black;
                         if (tour == 0)
                         {
                             labMessage.Text = "Échec des blancs";
@@ -136,6 +139,7 @@ namespace Echecs
                         }
                         break;
                     case 9:
+                        labMessage.ForeColor = System.Drawing.Color.Black;
                         if (tour == 0)
                         {
                             labMessage.Text = "Échec et mat des blancs";
@@ -147,6 +151,7 @@ namespace Echecs
                         finPartie(mouvement.Item2);
                         break;
                     case 10:
+                        labMessage.ForeColor = System.Drawing.Color.Black;
                         labMessage.Text = "Partie nulle";
                         finPartie(mouvement.Item2);
                         break;
@@ -240,16 +245,13 @@ namespace Echecs
         public void finPartie(int raison)
         {
             string message = "";
-            string title = "";
             MessageBoxButtons buttons;
             DialogResult result;
             buttons = MessageBoxButtons.YesNo;
             switch (raison)
             {
                 case 1:
-                    message = "Voulez-vous vraiment abandonner?";
-                    title = "Abandonner";
-                    result = MessageBox.Show(message, title, buttons);
+                    result = MessageBox.Show("Voulez-vous vraiment abandonner?", "Abandonner", buttons);
                     if (result == DialogResult.Yes)
                     {
                         _controlleur.victoire_Abandon(this);
@@ -258,9 +260,7 @@ namespace Echecs
 
                     break;
                 case 2:
-                    message = "Acceptez-vous une partie nulle?";
-                    title = "Partie nulle";
-                    result = MessageBox.Show(message, title, buttons);
+                    result = MessageBox.Show("Acceptez-vous une partie nulle?", "Partie nulle", buttons);
                     if (result == DialogResult.Yes)
                     {
                         _controlleur.uneNulle(this);
@@ -272,9 +272,8 @@ namespace Echecs
                         message = "Victoire des noirs!!!";
                     else
                         message = "Victoire des blancs!!!";
-
-                    title = "Victoire";
-                    result = MessageBox.Show(message, title, buttons);
+                    buttons = MessageBoxButtons.OK;
+                    result = MessageBox.Show(message, "Victoire", buttons);
                     _controlleur.victoire_Abandon(this);
                     
                     
@@ -282,9 +281,8 @@ namespace Echecs
                     
                     break;
                 case 10:
-                    message = "C'est une partie nulle!";
-                    title = "Partie nulle!!";
-                    result = MessageBox.Show(message, title, buttons);
+                    buttons = MessageBoxButtons.OK;
+                    result = MessageBox.Show("C'est une partie nulle!", "Partie nulle!!", buttons);
                     _controlleur.uneNulle(this);
                     
                     this.Close();
