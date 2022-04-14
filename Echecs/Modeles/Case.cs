@@ -12,6 +12,7 @@ namespace Echecs
         private bool _estVide;
         private Plateau _plateau;
         Couleur _couleur;
+
         /// <summary>
         /// Créer la pièce sur la case selon son identifiant
         /// </summary>

@@ -12,7 +12,7 @@ namespace Echecs
         private Partie _partie;
 
         //PLATEAU DEPART
-        /*string _board =
+        string _board =
               "tcfrkfct" +
               "pppppppp" +
               "00000000" +
@@ -20,7 +20,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCFRKFCT";*/
+              "TCFRKFCT";
 
         //PLATEAU ECHEC ET MAT
         /*string _board =
@@ -45,7 +45,7 @@ namespace Echecs
               "0CFRKFC0";*/
 
         //PLATEAU ROQUE
-        string _board =
+        /*string _board =
               "t000k00t" +
               "pcfrpfcp" +
               "00000000" +
@@ -53,7 +53,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PCFRPFCP" +
-              "T000K00T";
+              "T000K00T";*/
 
 
         public Plateau(Partie partie)
@@ -144,7 +144,7 @@ namespace Echecs
 
         }
         /// <summary>
-        /// Vérifie si la case initiale a bel et bien un des pièces du joueur
+        /// Vérifie si la case initiale a bel et bien une des pièces du joueur
         /// </summary>
         /// <param name="indexInitial">L'index de la case initiale</param>
         /// <returns>Retourne vrai si la pièce sélectionné est une pièce du joueur devant jouer.</returns>
@@ -334,7 +334,7 @@ namespace Echecs
 
         }
         /// <summary>
-        /// Vérifie la couleur de la pièce de la case destination pour s'assurer que ce n'est pas une pièce allié
+        /// Vérifie la couleur de la pièce de la case destination pour s'assurer que ce n'est pas une pièce alliée
         /// </summary>
         /// <param name="indexInitial">L'index de la case initiale de la pièce</param>
         /// <param name="indexDestination">L'index de la case destination de la pièce</param>
