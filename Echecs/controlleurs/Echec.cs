@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,7 +30,7 @@ namespace Echecs
             _listePartie = new List<Partie>();
             _listeFormPartie = new List<FormPartie>();
             _formMenu = new FormMenu(this);
-            read();
+            lire();
             Application.Run(_formMenu);
         }
         /// <summary>
@@ -105,7 +104,7 @@ namespace Echecs
 
                     if (promotion)
                     {
-                        _formPromotion = new FormPromotion(this, indexMovement.Item2, indexOfForm);
+                        _formPromotion = new FormPromotion(this, indexMovement.Item2);
                         _formPromotion.Show();
                     }
                 }
@@ -122,13 +121,11 @@ namespace Echecs
         /// </summary>
         /// <param name="piece">La pièce que que deviendra le pion</param>
         /// <param name="indexPion">L'index où se trouve le pion promu</param>
-        public void changerPion(char piece, int indexPion, int indexPartie)
-        { 
-            _unePartie = _listePartie[indexPartie];
+        public void changerPion(char piece, int indexPion)
+        {
             _unePartie.changerPion(piece, indexPion);
             _formPromotion.Close();
             string echiquier = afficherEchiquier();
-            _formPartie = _listeFormPartie[indexPartie];
             _formPartie.peinturerEchiquier(echiquier);
         }
         /// <summary>
@@ -155,23 +152,25 @@ namespace Echecs
         /// <summary>
         /// Indique le tour du joueur dans la bonne partie
         /// </summary>
-        /// 
         /// <param name="monForm">Formulaire de la partie</param>
-        /// <returns>Retourne le tour du joueur</returns>
+        /// <returns>Retourne le tour du bon joueur</returns>
         public int tour(FormPartie monForm)
         {
             int indexOfForm = _listeFormPartie.IndexOf(monForm);
             _unePartie = _listePartie[indexOfForm];
             return _unePartie.tour();
         }
-
-        public int tour(int indexPartie)
+        /// <summary>
+        /// Indique le tour du joueur dans la bonne partie
+        /// </summary>
+        /// <param name="monForm">Formulaire promotion de la bonne partie</param>
+        /// <returns>Retourne le tour du bon joueur</returns>
+        public int tour(FormPromotion monForm)
         {
-            _unePartie = _listePartie[indexPartie];
             return _unePartie.tour();
         }
         /// <summary>
-        /// Ajoute unn nouveau joueur dans la liste des joueurs du classement
+        /// Ajoute un nouveau joueur dans la liste des joueurs du classement avec ses statistiques
         /// </summary>
         /// <param name="nom">Nom du joueur</param>
         /// <param name="gagné">Le nombre de parties gagnées du le joueur</param>
@@ -198,7 +197,7 @@ namespace Echecs
         /// <summary>
         /// Affiche l'échiquier avec la position de chaque pièce
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retourne la chaine de caractères représentant l’échiquier.</returns>
         public string afficherEchiquier()
         {
             return _unePartie.afficher();
@@ -208,7 +207,7 @@ namespace Echecs
         /// </summary>
         public void fermerJeu()
         {
-            save();
+            sauvegarder();
         }
         /// <summary>
         /// Ferme le jeu d'échec
@@ -221,13 +220,13 @@ namespace Echecs
         /// <summary>
         /// Ajoute tous les joueurs du fichier sauvegardé dans la liste des joueurs
         /// </summary>
-        public void read()
+        public void lire()
         {
-            string file = @"../../test.txt";
+            string fichier = @"../../test.txt";
 
-            if (File.Exists(file))
+            if (File.Exists(fichier))
             {
-                string[] lines = File.ReadAllLines(file);
+                string[] lines = File.ReadAllLines(fichier);
                 foreach (string line in lines)
                 {
                     string[] infos = line.Split('/');
@@ -240,16 +239,16 @@ namespace Echecs
         /// <summary>
         /// Sauvegarde tous les joueurs dans un fichier
         /// </summary>
-        public void save()
+        public void sauvegarder()
         {
-            string file = @"../../test.txt";
+            string fichier = @"../../test.txt";
 
-            if (File.Exists(file))
+            if (File.Exists(fichier))
             {
-                File.Delete(file);
+                File.Delete(fichier);
             }
 
-            using (StreamWriter sw = new StreamWriter(file))
+            using (StreamWriter sw = new StreamWriter(fichier))
             {
                 foreach (Joueur joueur in ListeJoueur)
                 {
