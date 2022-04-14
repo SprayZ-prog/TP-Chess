@@ -14,12 +14,14 @@ namespace Echecs
     {
         Echec _controlleur;
         int _indexPion;
+        int _indexPartie;
 
-        public FormPromotion(Echec leControlleur, int index)
+        public FormPromotion(Echec leControlleur, int index, int indexPartie)
         {
             InitializeComponent();
             _controlleur = leControlleur;
             _indexPion = index;
+            _indexPartie = indexPartie;
         }
         /// <summary>
         /// Dessine l'image de la reine dans le formulaire
@@ -28,7 +30,7 @@ namespace Echecs
         {
             Graphics myGraph = pnl1.CreateGraphics();
             
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.queenWhite, 0, 0);
             }
@@ -44,7 +46,7 @@ namespace Echecs
         {
             Graphics myGraph = pnl2.CreateGraphics();
 
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.bishopWhite, 0, 0);
             }
@@ -61,7 +63,7 @@ namespace Echecs
         {
             Graphics myGraph = pnl3.CreateGraphics();
 
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.knightWhite, 0, 0);
             }
@@ -77,7 +79,7 @@ namespace Echecs
         {
             Graphics myGraph = pnl4.CreateGraphics();
 
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
                 myGraph.DrawImage(Properties.Resources.rookWhite, 0, 0);
             }
@@ -92,13 +94,13 @@ namespace Echecs
         /// </summary>
         private void pnl1_Click(object sender, EventArgs e)
         {
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
-                _controlleur.changerPion('R', _indexPion);
+                _controlleur.changerPion('R', _indexPion, _indexPartie);
             }
             else
             {
-                _controlleur.changerPion('r', _indexPion);
+                _controlleur.changerPion('r', _indexPion, _indexPartie);
             }
         }
         /// <summary>
@@ -106,13 +108,13 @@ namespace Echecs
         /// </summary>
         private void pnl2_Click(object sender, EventArgs e)
         {
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
-                _controlleur.changerPion('F', _indexPion);
+                _controlleur.changerPion('F', _indexPion, _indexPartie);
             }
             else
             {
-                _controlleur.changerPion('f', _indexPion);
+                _controlleur.changerPion('f', _indexPion, _indexPartie);
             }
         }
         /// <summary>
@@ -120,13 +122,13 @@ namespace Echecs
         /// </summary>
         private void pnl3_Click(object sender, EventArgs e)
         {
-            if (_controlleur.tour(this) != 0)
+            if (_controlleur.tour(_indexPartie) != 0)
             {
-                _controlleur.changerPion('C', _indexPion);
+                _controlleur.changerPion('C', _indexPion, _indexPartie);
             }
             else
             {
-                _controlleur.changerPion('c', _indexPion);
+                _controlleur.changerPion('c', _indexPion, _indexPartie);
             }
         }
         /// <summary>
@@ -134,13 +136,14 @@ namespace Echecs
         /// </summary>
         private void pnl4_Click(object sender, EventArgs e)
         {
-            if (_controlleur.tour(this) != 0)
+
+            if (_controlleur.tour(_indexPartie) != 0)
             {
-                _controlleur.changerPion('T', _indexPion);
+                _controlleur.changerPion('T', _indexPion, _indexPartie);
             }
             else
             {
-                _controlleur.changerPion('t', _indexPion);
+                _controlleur.changerPion('t', _indexPion, _indexPartie);
             }
         }
     }

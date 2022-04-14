@@ -21,7 +21,7 @@ namespace Echecs
               "fP0PPPPc" +
               "T0F0KFCT"; */
 
-        string _board =
+        /*string _board =
               "tcfrkfct" +
               "pppppppp" +
               "00000000" +
@@ -29,7 +29,7 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
-              "TCFRKFCT"; 
+              "TCFRKFCT"; */
 
 
         /*string _board =
@@ -40,7 +40,17 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PCFRPFCP" +
-              "T000K00T"; */
+              "T000K00T";*/
+
+        string _board =
+              "tcfrkfc0" +
+              "pppppppP" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "PPPPPPPp" +
+              "TCFRKFC0"; 
 
         public Plateau(Partie partie)
         {
