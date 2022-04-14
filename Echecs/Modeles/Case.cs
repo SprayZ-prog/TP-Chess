@@ -99,6 +99,7 @@ namespace Echecs
         public override string ToString()
         {
             return _piece.ToString();
+
         }
 
         public bool peutEtrePromu()
