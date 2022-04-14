@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Formulaire de la sélection des joueurs.
+    /// </summary>
     public partial class FormSelection : Form
     {
         private Echec _controlleur;
         private string selected1;
         private string selected2;
+
+        /// <summary>
+        /// Initialise le formulaire de promotion et instancie le controlleur Echec
+        /// </summary>
+        /// <param name="leControlleur">Le contrôleur Echec</param>
         public FormSelection(Echec controlleur)
         {
             _controlleur = controlleur;

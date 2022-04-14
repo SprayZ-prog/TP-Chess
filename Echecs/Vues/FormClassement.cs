@@ -11,9 +11,17 @@ using System.IO;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Formulaire du classement des joueurs.
+    /// </summary>
     public partial class FormClassement : Form
     {
         private Echec _controlleur;
+
+        /// <summary>
+        /// Initialise le classement et instancie le controlleur Echec
+        /// </summary>
+        /// <param name="leControlleur">Le contrôleur Echec</param>
         public FormClassement(Echec controlleur)
         {
             _controlleur = controlleur;

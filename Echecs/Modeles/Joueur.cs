@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Les joueurs étant inscrits dans le classement du jeu d’échec avec leurs statistiques.
+    /// </summary>
     public class Joueur
     {
         private string _nom;
@@ -13,6 +16,13 @@ namespace Echecs
         private int _statsDefaite;
         private int _statsNull;
 
+        /// <summary>
+        /// Instancie les informations du joueur
+        /// </summary>
+        /// <param name="nom">Le nom du joueur</param>
+        /// <param name="statsVictoire">Le nombre de victoire du joueur</param>
+        /// <param name="statsDefaire">Le nombre de défaite du joueur</param>
+        /// <param name="statsNull">Le nombre de partie nulle du joueur</param>
         public Joueur(string nom, int statsVictoire, int statsDefaire, int statsNull)
         {
             _nom = nom; 

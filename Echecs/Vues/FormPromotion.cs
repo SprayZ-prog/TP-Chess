@@ -10,12 +10,19 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Le formulaire qui s’affiche lors d’une promotion d’un pion. Affiche un choix de pièce qui pourra remplacer le pion
+    /// </summary>
     public partial class FormPromotion : Form
     {
         Echec _controlleur;
         int _indexPion;
         int _indexPartie;
 
+        /// <summary>
+        /// Initialise le formulaire de promotion et instancie le controlleur Echec
+        /// </summary>
+        /// <param name="leControlleur">Le contrôleur Echec</param>
         public FormPromotion(Echec leControlleur, int index, int indexPartie)
         {
             InitializeComponent();
@@ -23,6 +30,7 @@ namespace Echecs
             _indexPion = index;
             _indexPartie = indexPartie;
         }
+
         /// <summary>
         /// Dessine l'image de la reine dans le formulaire
         /// </summary>
@@ -39,6 +47,7 @@ namespace Echecs
                 myGraph.DrawImage(Properties.Resources.queenBlack, 0, 0);
             }
         }
+
         /// <summary>
         /// Dessine l'image du fou dans le formulaire
         /// </summary>
@@ -72,6 +81,7 @@ namespace Echecs
                 myGraph.DrawImage(Properties.Resources.knightBlack, 0, 0);
             }
         }
+
         /// <summary>
         /// Dessine l'image de la tour dans le formulaire
         /// </summary>
@@ -117,6 +127,7 @@ namespace Echecs
                 _controlleur.changerPion('f', _indexPion, _indexPartie);
             }
         }
+
         /// <summary>
         /// Événement du clic sur le cavalier, ce qui promouvoit le pion en cavalier
         /// </summary>
@@ -131,6 +142,7 @@ namespace Echecs
                 _controlleur.changerPion('c', _indexPion, _indexPartie);
             }
         }
+
         /// <summary>
         /// Événement du clic sur la tour, ce qui promouvoit le pion en tour
         /// </summary>
