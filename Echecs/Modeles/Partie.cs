@@ -144,7 +144,7 @@ namespace Echecs
                                 }
                                 else
                                 {
-                                    faireDeplacement(indexInitial, indexDesti);
+                                    _plateau.deplacer(indexInitial, indexDesti);
                                     _plateau.deplacer(0,3);
                                     _nbCoup++;
                                     message = new Tuple<bool, int>(true, 12);
