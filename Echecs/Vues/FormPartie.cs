@@ -11,6 +11,9 @@ using System.Threading;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Formulaire de la partie où se trouve l’échiquier et le choix des joueurs pour la partie.
+    /// </summary>
     public partial class FormPartie : Form
     {
         Echec _controlleur;
@@ -18,6 +21,10 @@ namespace Echecs
         Point clickInitial;
         Point clickDest;
 
+        /// <summary>
+        /// Initialise la partie et instancie le controlleur Echec
+        /// </summary>
+        /// <param name="leControlleur">Le contrôleur Echec</param>
         public FormPartie(Echec leControlleur)
         {
             InitializeComponent();

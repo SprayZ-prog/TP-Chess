@@ -61,7 +61,12 @@ namespace Echecs
                     break;
             }
         }
-        public Case(bool estVide, Plateau plateau)
+
+        /// <summary>
+        /// Instancie une case vide
+        /// </summary>
+        /// <param name="estVide">La confirmation que la case devra être vide</param>
+        public Case(bool estVide)
         {
             _estVide = estVide;    
         }

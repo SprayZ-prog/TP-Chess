@@ -21,6 +21,12 @@ namespace Echecs
 
         }
 
+        /// <summary>
+        /// Vérifie la validité du mouvement selon les règles du fou
+        /// </summary>
+        /// <param name="indexInitiale">L'index de la case initiale de la pièce</param>
+        /// <param name="indexDestination">L'index de la case destination de la pièce</param>
+        /// <returns>Retourne le type de mouvement du fou</returns>
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
 

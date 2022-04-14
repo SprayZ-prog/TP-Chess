@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Les couleurs des pièces
+    /// </summary>
     public enum Couleur
     {
         Blanc, 

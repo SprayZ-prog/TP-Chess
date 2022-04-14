@@ -66,7 +66,7 @@ namespace Echecs
         public virtual void vientDeBouger(){}
 
         /// <summary>
-        /// Vérifie le mouvement selon les règles de la pièce
+        /// Vérifie la validité du mouvement selon les règles de la pièce
         /// </summary>
         /// <param name="indexInitiale">L'index de la case initiale de la pièce</param>
         /// <param name="indexDestination">L'index de la case destination de la pièce</param>

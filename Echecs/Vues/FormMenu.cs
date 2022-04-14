@@ -10,10 +10,17 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
-   
+    /// <summary>
+    /// Formulaire du menu permettant de commencer une nouvelle partie, de voir le classement des joueurs et de quitter le jeu.
+    /// </summary>
     public partial class FormMenu : Form
     {
         Echec _controlleur;
+
+        /// <summary>
+        /// Initialise le menu et instancie le controlleur Echec
+        /// </summary>
+        /// <param name="leControlleur">Le contrôleur Echec</param>
         public FormMenu(Echec controlleur)
         {
             _controlleur = controlleur;

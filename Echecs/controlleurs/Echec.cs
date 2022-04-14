@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
+    /// <summary>
+    /// Le jeu d’échec permettant de jouer plusieurs parties et de montrer les joueurs.
+    /// </summary>
     public class Echec
     {
         FormMenu _formMenu;
@@ -24,6 +27,10 @@ namespace Echecs
         {
             Echec echec = new Echec();
         }
+
+        /// <summary>
+        /// Instancie les formulaire pour débuter le jeu
+        /// </summary>
         public Echec()
         {
             _listeJoueur = new List<Joueur>();
