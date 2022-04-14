@@ -16,7 +16,7 @@ namespace Echecs
         /// Créer la pièce sur la case selon son identifiant
         /// </summary>
         /// <param name="piece">L'identifiant de la pièce, soit son premier caractère</param>
-        /// <param name="plateau">Le plateau où se tro-</param>
+        /// <param name="plateau">Le plateau où se trouve la case</param>
         public Case(char piece, Plateau plateau) 
         {
             _plateau = plateau;

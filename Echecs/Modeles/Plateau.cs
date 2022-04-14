@@ -122,7 +122,7 @@ namespace Echecs
         /// Vérifie si le joueur a cliqué sur une case non vide
         /// </summary>
         /// <param name="indexInitial"></param>
-        /// <returns></returns>
+        /// <returns>Retourne vrai s'il y a une pièce à la case initiale</returns>
         public Tuple<bool, int> verifierSiPiece(int indexInitial)
         {
             Tuple<bool, int> message;
