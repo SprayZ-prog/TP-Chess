@@ -20,7 +20,12 @@ namespace Echecs
             }
 
         }
-
+        /// <summary>
+        /// Vérifie la validité du mouvement selon les règles de la reine
+        /// </summary>
+        /// <param name="indexInitiale">L'index de la case initiale de la pièce</param>
+        /// <param name="indexDestination">L'index de la case destination de la pièce</param>
+        /// <returns>Retourne le type de mouvement de la reine</returns>
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
             int x1 = indexInitiale % 8;

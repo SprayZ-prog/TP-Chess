@@ -21,15 +21,28 @@ namespace Echecs
 
         }
 
+        /// <summary>
+        /// Vérifie si la tour peut roquer
+        /// </summary>
+        /// <returns>Retourne vrai si la tour peut roquer</returns>
         public override bool peutRoquer()
         {
             return !_aBougé;
         }
+
+        /// <summary>
+        /// Dit que la tour a bougé
+        /// </summary>
         public override void vientDeBouger()
         {
             ABougé = true;
         }
-
+        /// <summary>
+        /// Vérifie la validité du mouvement selon les règles de la tour
+        /// </summary>
+        /// <param name="indexInitiale">L'index de la case initiale de la pièce</param>
+        /// <param name="indexDestination">L'index de la case destination de la pièce</param>
+        /// <returns>Retourne le type de mouvement de la tour</returns>
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
             if ((indexInitiale - indexDestination) % 8 == 0 || (indexInitiale + indexDestination) % 8 == 0 || indexInitiale / 8 == indexDestination / 8)

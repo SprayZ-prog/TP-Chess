@@ -276,7 +276,7 @@ namespace Echecs
 
         }
         /// <summary>
-        /// Vérifie le déplacement que la pièce fera sur chaque pièce
+        /// Vérifie le déplacement que la pièce fera sur chaque case
         /// </summary>
         /// <param name="indexInitial">L'index de la case initiale</param>
         /// <param name="indexDesti">L'index de la case destination</param>
