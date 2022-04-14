@@ -12,7 +12,7 @@ namespace Echecs
         private Partie _partie;
 
         //PLATEAU DEPART
-        string _board =
+        /*string _plateau =
               "tcfrkfct" +
               "pppppppp" +
               "00000000" +
@@ -20,10 +20,32 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "PPPPPPPP" +
+              "TCFRKFCT";*/
+
+        //Echec pion
+        /*string _plateau =
+              "tcfrkfct" +
+              "ppp0pppp" +
+              "00000000" +
+              "00000000" +
+              "000p0000" +
+              "00000000" +
+              "PPPP0PPP" +
+              "TCFRKFCT";*/
+
+        //test pour pouffer piece
+        string _plateau =
+              "tcfrkfct" +
+              "pppppppp" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "PPPPPPP0" +
               "TCFRKFCT";
 
         //PLATEAU ECHEC ET MAT
-        /*string _board =
+        /*string _plateau =
               "tcf0kf0T" +
               "pppp0pp0" +
               "00000000" +
@@ -34,7 +56,7 @@ namespace Echecs
               "TCF0KFC0";*/
 
         //PLATEAU PROMOTION
-        /*string _board =
+        /*string _plateau =
               "0cfrkfc0" +
               "PppppppP" +
               "00000000" +
@@ -45,7 +67,7 @@ namespace Echecs
               "0CFRKFC0";*/
 
         //PLATEAU ROQUE
-        /*string _board =
+        /*string _plateau =
               "t000k00t" +
               "pcfrpfcp" +
               "00000000" +
@@ -64,7 +86,7 @@ namespace Echecs
 
             if (tabEchiquier == null)
             {
-                tabEchiquier = _board.ToCharArray();
+                tabEchiquier = _plateau.ToCharArray();
             }
 
             for (int i = 0; i < 64; i++)
@@ -126,7 +148,7 @@ namespace Echecs
         /// Vérifie si le joueur a cliqué sur une case non vide
         /// </summary>
         /// <param name="indexInitial"></param>
-        /// <returns>Retourne vrai s'il y a une pièce à la case initiale</returns>
+        /// <returns></returns>
         public Tuple<bool, int> verifierSiPiece(int indexInitial)
         {
             Tuple<bool, int> message;
@@ -144,7 +166,7 @@ namespace Echecs
 
         }
         /// <summary>
-        /// Vérifie si la case initiale a bel et bien une des pièces du joueur
+        /// Vérifie si la case initiale a bel et bien un des pièces du joueur
         /// </summary>
         /// <param name="indexInitial">L'index de la case initiale</param>
         /// <returns>Retourne vrai si la pièce sélectionné est une pièce du joueur devant jouer.</returns>
@@ -173,11 +195,11 @@ namespace Echecs
         {
             if (_echiquier[indexInitial].peutEtrePromu())
             {
-                if (_partie.tour() == 0 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial - 7 || indexDestination == indexInitial - 9))
+                if (_partie.tour() == 1 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial - 7 || indexDestination == indexInitial - 9))
                 {
                     return Mouvement.peutBougerAvecCollision;
                 }
-                else if (_partie.tour() == 1 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial + 7 || indexDestination == indexInitial + 9))
+                else if (_partie.tour() == 0 && !_echiquier[indexDestination].EstVide && (indexDestination == indexInitial + 7 || indexDestination == indexInitial + 9))
                 {
                     return Mouvement.peutBougerAvecCollision;
                 }
@@ -334,7 +356,7 @@ namespace Echecs
 
         }
         /// <summary>
-        /// Vérifie la couleur de la pièce de la case destination pour s'assurer que ce n'est pas une pièce alliée
+        /// Vérifie la couleur de la pièce de la case destination pour s'assurer que ce n'est pas une pièce allié
         /// </summary>
         /// <param name="indexInitial">L'index de la case initiale de la pièce</param>
         /// <param name="indexDestination">L'index de la case destination de la pièce</param>
