@@ -104,7 +104,7 @@ namespace Echecs
 
                     if (promotion)
                     {
-                        _formPromotion = new FormPromotion(this, indexMovement.Item2);
+                        _formPromotion = new FormPromotion(this, indexMovement.Item2, indexOfForm);
                         _formPromotion.Show();
                     }
                 }
@@ -121,11 +121,13 @@ namespace Echecs
         /// </summary>
         /// <param name="piece">La pièce que que deviendra le pion</param>
         /// <param name="indexPion">L'index où se trouve le pion promu</param>
-        public void changerPion(char piece, int indexPion)
+        public void changerPion(char piece, int indexPion, int indexPartie)
         {
+            _unePartie = _listePartie[indexPartie];
             _unePartie.changerPion(piece, indexPion);
             _formPromotion.Close();
             string echiquier = afficherEchiquier();
+            _formPartie = _listeFormPartie[indexPartie];
             _formPartie.peinturerEchiquier(echiquier);
         }
         /// <summary>
@@ -165,8 +167,9 @@ namespace Echecs
         /// </summary>
         /// <param name="monForm">Formulaire promotion de la bonne partie</param>
         /// <returns>Retourne le tour du bon joueur</returns>
-        public int tour(FormPromotion monForm)
+        public int tour(int indexPartie)
         {
+            _unePartie = _listePartie[indexPartie];
             return _unePartie.tour();
         }
         /// <summary>
