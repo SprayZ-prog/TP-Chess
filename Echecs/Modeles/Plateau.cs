@@ -596,14 +596,11 @@ namespace Echecs
             return new Tuple<bool, int>(true, 8);
 
         }
-        public Tuple<bool, string> verifPat(int nbCoup)
-        {
-            Tuple<bool, string> message = new Tuple<bool, string>(false, "test");
-
-
-            return message;
-
-        }
+        /// <summary>
+        /// Vérifie si le roi peut bouger
+        /// </summary>
+        /// <param name="indexRoi">L'index de la case du roi</param>
+        /// <returns>Retourne vrai s'il peut bouger</returns>
         public bool peutBougerRoi(int indexRoi)
         {
             
