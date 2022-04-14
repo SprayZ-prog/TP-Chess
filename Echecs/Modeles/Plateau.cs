@@ -143,7 +143,7 @@ namespace Echecs
                 }
                 else
                 {   
-                    echiquierActuel += _echiquier[i].Piece.ToString();
+                    echiquierActuel += _echiquier[i].ToString();
                 }
 
             }
