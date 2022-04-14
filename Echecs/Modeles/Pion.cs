@@ -47,7 +47,7 @@ namespace Echecs
         }
 
         /// <summary>
-        /// Fais en sote que le pion ne puisse plus charger
+        /// Fais en sorte que le pion ne puisse plus charger
         /// </summary>
         public override void nePeutPlusCharger()
         {
