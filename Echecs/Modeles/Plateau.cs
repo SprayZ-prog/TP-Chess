@@ -236,7 +236,7 @@ namespace Echecs
         {
             if (_partie.tour() != 0 && indexInitial > 0 && indexInitial < 7 && _echiquier[indexInitial].peutRoquer())
             {
-                if (indexDestination == indexInitial - 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                if (indexDestination == indexInitial - 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination)).Item1 && _echiquier[indexDestination].EstVide)
                 {
                     if (_echiquier[0].peutRoquer())
                     {
@@ -245,7 +245,7 @@ namespace Echecs
                         return Mouvement.peutGrandRoque;
                     }
                 }
-                if (indexDestination == indexInitial + 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                if (indexDestination == indexInitial + 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination)).Item1 && _echiquier[indexDestination].EstVide)
                 {
                     if (_echiquier[7].peutRoquer())
                     {
@@ -258,7 +258,7 @@ namespace Echecs
             }
             else if (_partie.tour() == 0 && indexInitial > 56 && indexInitial < 63 && _echiquier[indexInitial].peutRoquer())
             {
-                if (indexDestination == indexInitial - 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                if (indexDestination == indexInitial - 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination)).Item1 && _echiquier[indexDestination].EstVide)
                 {
                     if (_echiquier[56].peutRoquer())
                     {
@@ -267,7 +267,7 @@ namespace Echecs
                         return Mouvement.peutGrandRoque;
                     }
                 }
-                if (indexDestination == indexInitial + 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination), _echiquier).Item1 && _echiquier[indexDestination].EstVide)
+                if (indexDestination == indexInitial + 2 && estCollision(indexInitial, indexDestination, deplacement(indexInitial, indexDestination)).Item1 && _echiquier[indexDestination].EstVide)
                 {
                     if (_echiquier[63].peutRoquer())
                     {
@@ -351,6 +351,31 @@ namespace Echecs
             {
 
                 if (!echiquier[indexChemin].EstVide)
+                {
+                    return new Tuple<bool, int>(false, 5);
+                }
+                indexChemin += deplacement;
+            }
+
+
+            return new Tuple<bool, int>(true, 0);
+
+        }
+        /// <summary>
+        /// Vérifie s'il y a une collision durant le trajet de la pièce
+        /// </summary>
+        /// <param name="indexInitial">L'index de la case initiale de la pièce</param>
+        /// <param name="indexDestination">L'index de la case destination de la pièce</param>
+        /// <param name="deplacement">Le déplacement sur chaque case de la pièce</param>
+        /// <returns>Retourne vrai avec 0 s'il n'y a pas de collision dans le trajet</returns>
+        public Tuple<bool, int> estCollision(int indexInitial, int indexDestination, int deplacement)
+        {
+            int indexChemin = indexInitial;
+            indexChemin += deplacement;
+            while (indexChemin != indexDestination)
+            {
+
+                if (_echiquier[indexChemin].EstVide)
                 {
                     return new Tuple<bool, int>(false, 5);
                 }
@@ -532,7 +557,7 @@ namespace Echecs
 
                                 int deplacement = this.deplacement(i, indexRoi);
 
-                                Tuple<bool, int> message = this.estCollision(i, indexRoi, deplacement, _echiquier);
+                                Tuple<bool, int> message = this.estCollision(i, indexRoi, deplacement);
                                 if (message.Item1)
                                 {
                                     return new Tuple<bool, int, int>(true, 8, i);

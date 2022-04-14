@@ -120,7 +120,7 @@ namespace Echecs
                                 int deplacement = _plateau.deplacement(indexInitial, indexDesti);
                                
 
-                                message = _plateau.estCollision(indexInitial, indexDesti, deplacement, _plateau.Echiquier);
+                                message = _plateau.estCollision(indexInitial, indexDesti, deplacement);
                                 if (message.Item1)
                                 {
                                     message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
@@ -137,7 +137,7 @@ namespace Echecs
                                 {
                                     int deplacementCharge = _plateau.deplacement(indexInitial, indexDesti);
 
-                                    Tuple<bool, int> message1 = _plateau.estCollision(indexInitial, indexDesti, deplacementCharge, _plateau.Echiquier);
+                                    Tuple<bool, int> message1 = _plateau.estCollision(indexInitial, indexDesti, deplacementCharge);
                                     if (message1.Item1)
                                     {
                                         message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
@@ -245,11 +245,11 @@ namespace Echecs
         public Tuple<bool, int> verifEchec()
         {
             Tuple<int, Couleur> roi = _plateau.trouverRoiEnnemi();
-            int indexAttaquant = _plateau.verifEchec(roi.Item1, roi.Item2).Item3; 
+            Tuple<bool, int, int> verifEchec = _plateau.verifEchec(roi.Item1, roi.Item2); 
 
-            if (_plateau.verifEchec(roi.Item1, roi.Item2).Item2 == 8)
+            if (verifEchec.Item2 == 8)
             {
-                return _plateau.verifEchecMat(roi.Item1, indexAttaquant);
+                return _plateau.verifEchecMat(roi.Item1, verifEchec.Item3);
             }
             return new Tuple<bool, int>(true, 0);
             
