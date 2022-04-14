@@ -11,16 +11,7 @@ namespace Echecs
         private Case[] _echiquier;
         private Partie _partie;
 
-        /*string _board =
-              "t00fkt00" +
-              "pp00cpp0" +
-              "000pp00p" +
-              "00p00000" +
-              "00000000" +
-              "0RC00r00" +
-              "fP0PPPPc" +
-              "T0F0KFCT"; */
-
+        //PLATEAU DEPART
         /*string _board =
               "tcfrkfct" +
               "pppppppp" +
@@ -28,29 +19,42 @@ namespace Echecs
               "00000000" +
               "00000000" +
               "00000000" +
-              "PPPPPPP0" +
-              "TCFRKFCT"; */
+              "PPPPPPPP" +
+              "TCFRKFCT";*/
 
+        //PLATEAU ECHEC ET MAT
+        /*string _board =
+              "tcf0kf0T" +
+              "pppp0pp0" +
+              "00000000" +
+              "0000R000" +
+              "00000000" +
+              "00000000" +
+              "PPP0PPP0" +
+              "TCF0KFC0";*/
 
+        //PLATEAU PROMOTION
+        /*string _board =
+              "0cfrkfc0" +
+              "PppppppP" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "00000000" +
+              "pPPPPPPp" +
+              "0CFRKFC0";*/
+
+        //PLATEAU ROQUE
         string _board =
               "t000k00t" +
-              "pcf0pfcp" +
+              "pcfrpfcp" +
               "00000000" +
               "00000000" +
               "00000000" +
-              "000000r0" +
-              "PCFRPF0P" +
+              "00000000" +
+              "PCFRPFCP" +
               "T000K00T";
 
-       /* string _board =
-              "tcfrkfc0" +
-              "pppppppP" +
-              "00000000" +
-              "00000000" +
-              "00000000" +
-              "00000000" +
-              "PPPPPPPp" +
-              "TCFRKFC0"; */
 
         public Plateau(Partie partie)
         {
@@ -568,10 +572,6 @@ namespace Echecs
                     {
 
 
-
-
-
-
                         if (!_echiquier[i].EstVide)
                         {
 
@@ -617,8 +617,7 @@ namespace Echecs
             }
             else if (indexRoi + 7 < 64 && (indexRoi + 7) % 8 != 7 && _partie.verifDeplacement(indexRoi, indexRoi + 7).Item1
                 || indexRoi + 8 < 64 && _partie.verifDeplacement(indexRoi, indexRoi + 8).Item1
-                || indexRoi + 9 < 64 && (indexRoi + 9) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1
-                || _echiquier[indexRoi].Piece.peutRoquer())
+                || indexRoi + 9 < 64 && (indexRoi + 9) % 8 != 0 && _partie.verifDeplacement(indexRoi, indexRoi + 9).Item1)
             {
                 return true;
             }

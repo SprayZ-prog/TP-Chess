@@ -126,21 +126,27 @@ namespace Echecs
                                 }
                                 break;
                             case Mouvement.peutCharger:
-
-                                int deplacementCharge = _plateau.deplacement(indexInitial, indexDesti);
-
-                                Tuple<bool, int> message1 = _plateau.estCollision(indexInitial, indexDesti, deplacementCharge, _plateau.Echiquier);
-                                if (message1.Item1)
+                                if (_plateau.Echiquier[indexDesti].EstVide)
                                 {
-                                    message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
+                                    int deplacementCharge = _plateau.deplacement(indexInitial, indexDesti);
 
-                                    if (message.Item1)
+                                    Tuple<bool, int> message1 = _plateau.estCollision(indexInitial, indexDesti, deplacementCharge, _plateau.Echiquier);
+                                    if (message1.Item1)
                                     {
-                                        message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
-                                        
-                                    }
+                                        message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
 
+                                        if (message.Item1)
+                                        {
+                                            message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
+                                        }
+
+                                    }
                                 }
+                                else
+                                {
+                                    message = new Tuple<bool, int>(false, 4);
+                                }
+                                
 
                                 break;
                             case Mouvement.peutBougerAvecCollision:
