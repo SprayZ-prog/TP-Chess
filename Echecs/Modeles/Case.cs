@@ -21,7 +21,6 @@ namespace Echecs
         /// <param name="plateau">Le plateau où se trouve la case</param>
         public Case(char piece, Plateau plateau) 
         {
-           
             _estVide = false;
 
             switch (piece)
@@ -119,7 +118,6 @@ namespace Echecs
         public override string ToString()
         {
             return _piece.ToString();
-
         }
 
         /// <summary>

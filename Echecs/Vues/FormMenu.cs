@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
+	
     /// <summary>
     /// Formulaire du menu permettant de commencer une nouvelle partie, de voir le classement des joueurs et de quitter le jeu.
     /// </summary>
@@ -34,6 +35,7 @@ namespace Echecs
         {
             _controlleur.nouvellePartie();
         }
+		
         /// <summary>
         /// Événement du bouton « Classement » qui affiche le classement
         /// </summary>
@@ -41,6 +43,7 @@ namespace Echecs
         {
             _controlleur.ouvrirClassement();
         }
+		
         /// <summary>
         /// Événement lors de la fermeture de ce formulaire (Menu principal) qui ferme tout le jeu
         /// </summary>
@@ -48,6 +51,7 @@ namespace Echecs
         {
             _controlleur.fermerJeu();
         }
+		
         /// <summary>
         /// Événement du clic du bouton « Quitter le jeu »
         /// </summary>

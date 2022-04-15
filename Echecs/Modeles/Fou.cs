@@ -36,7 +36,6 @@ namespace Echecs
         /// <returns>Retourne le type de mouvement du fou</returns>
         public override Mouvement regles(int indexInitiale, int indexDestination)
         {
-
             int x1 = indexInitiale % 8;
             int y1 = indexInitiale / 8;
             int x2 = indexDestination % 8;
@@ -50,7 +49,6 @@ namespace Echecs
                     return Mouvement.peutBougerSansCollision;
                 }
             }
-            
             return Mouvement.peutPasBouger;
         }
     }

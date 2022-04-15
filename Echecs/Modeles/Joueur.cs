@@ -56,7 +56,6 @@ namespace Echecs
         {
             get { return _statsDefaite; }
             set { _statsDefaite = value; }
-
         }
 
         /// <summary>
@@ -75,6 +74,7 @@ namespace Echecs
         {
             _statsVictoire++;
         }
+		
         /// <summary>
         /// Ajoute une défaite au joueur
         /// </summary>
@@ -82,6 +82,7 @@ namespace Echecs
         {
             _statsDefaite++;
         }
+		
         /// <summary>
         /// Ajoute une nulle au joueur
         /// </summary>
@@ -89,6 +90,7 @@ namespace Echecs
         {
             _statsNull++;
         }
+		
         /// <summary>
         /// Met en format lisible le joueur avec ses statistiques
         /// </summary>

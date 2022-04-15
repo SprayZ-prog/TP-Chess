@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Echecs
 {
+	
     /// <summary>
     /// Le formulaire qui s’affiche lors d’une promotion d’un pion. Affiche un choix de pièce qui pourra remplacer le pion
     /// </summary>
@@ -113,6 +114,7 @@ namespace Echecs
                 _controlleur.changerPion('r', _indexPion, _indexPartie);
             }
         }
+		
         /// <summary>
         /// Événement du clic sur le fou, ce qui promouvoit le pion en fou
         /// </summary>
@@ -148,7 +150,6 @@ namespace Echecs
         /// </summary>
         private void pnl4_Click(object sender, EventArgs e)
         {
-
             if (_controlleur.tour(_indexPartie) != 0)
             {
                 _controlleur.changerPion('T', _indexPion, _indexPartie);

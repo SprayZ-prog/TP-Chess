@@ -32,6 +32,7 @@ namespace Echecs
             _joueur2 = joueur2;
             _plateau = new Plateau(this);
         }
+		
         /// <summary>
         /// Met à jour les statistiques des joueurs après l'abandon
         /// </summary>
@@ -50,6 +51,7 @@ namespace Echecs
             Console.WriteLine(_joueur1.ToString());
             Console.WriteLine(_joueur2.ToString());
         }
+		
         /// <summary>
         /// Met à jour les statistiques des joueurs après la partie nulle
         /// </summary>
@@ -85,6 +87,7 @@ namespace Echecs
             Tuple<int, int> indexMovement = new Tuple<int, int>(indexInitial, indexDest);
             return indexMovement;
         }
+		
         /// <summary>
         /// Vérifie la validité du déplacement du joueur
         /// </summary>
@@ -106,7 +109,6 @@ namespace Echecs
                     message = _plateau.maPiece(indexInitial);
                     if (message.Item1)
                     {
-                        
                         Mouvement mouvement = _plateau.verifTrajectoire(indexInitial, indexDesti);
 
                         switch (mouvement)
@@ -118,9 +120,8 @@ namespace Echecs
 
                             case Mouvement.peutBougerSansCollision:
                                 int deplacement = _plateau.deplacement(indexInitial, indexDesti);
-                               
-
                                 message = _plateau.estCollision(indexInitial, indexDesti, deplacement);
+								
                                 if (message.Item1)
                                 {
                                     message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
@@ -128,7 +129,6 @@ namespace Echecs
                                     if (message.Item1)
                                     {
                                         message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
-
                                     }
                                 }
                                 break;
@@ -136,8 +136,8 @@ namespace Echecs
                                 if (_plateau.Echiquier[indexDesti].EstVide)
                                 {
                                     int deplacementCharge = _plateau.deplacement(indexInitial, indexDesti);
-
                                     Tuple<bool, int> message1 = _plateau.estCollision(indexInitial, indexDesti, deplacementCharge);
+									
                                     if (message1.Item1)
                                     {
                                         message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
@@ -146,16 +146,14 @@ namespace Echecs
                                         {
                                             message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
                                         }
-
                                     }
                                 }
                                 else
                                 {
                                     message = new Tuple<bool, int>(false, 4);
                                 }
-                                
-
                                 break;
+								
                             case Mouvement.peutBougerAvecCollision:
 
                                 message = _plateau.verifCouleurDesti(indexInitial, indexDesti);
@@ -165,6 +163,7 @@ namespace Echecs
                                     message = _plateau.metEnEchecAllie(indexInitial, indexDesti, _nbCoup);
                                 }
                                 break;
+								
                             case Mouvement.peutGrandRoque:
                                 if (tour() == 0)
                                 {
@@ -176,7 +175,6 @@ namespace Echecs
                                         _nbCoup++;
                                         message = new Tuple<bool, int>(true, 12);
                                     }
-                                    
                                 }
                                 else
                                 {
@@ -206,14 +204,13 @@ namespace Echecs
                                     }
                                 }
                                 break;
-
                         }
                     }
                 }
             }
-            
             return message;
         }
+		
         /// <summary>
         /// Fais le coup demandé
         /// </summary>
@@ -228,6 +225,7 @@ namespace Echecs
 
             return _plateau.verifPromoPion(indexDesti);
         }
+		
         /// <summary>
         /// Promouvoit le pion en la pièce que le joueur a sélectionné
         /// </summary>
@@ -252,9 +250,8 @@ namespace Echecs
                 return _plateau.verifEchecMat(roi.Item1, verifEchec.Item3);
             }
             return new Tuple<bool, int>(true, 0);
-            
-
         }
+		
         /// <summary>
         /// Affiche la chaine de caractère de l'échiquier avec les caractères des pièces aux bons endroits
         /// </summary>

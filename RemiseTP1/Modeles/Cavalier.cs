@@ -27,7 +27,6 @@ namespace Echecs
             }
         }
 
-
         /// <summary>
         /// Vérifie la validité du mouvement selon les règles du cavalier
         /// </summary>

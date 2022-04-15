@@ -11,6 +11,7 @@ namespace Echecs
     /// </summary>
     class Roi: PieceMemoire
     {
+		
         /// <summary>
         /// Instancie le nom de la pièce
         /// </summary>
@@ -25,7 +26,6 @@ namespace Echecs
             {
                 _nom = 'k';
             }
-            
         }
 
         /// <summary>

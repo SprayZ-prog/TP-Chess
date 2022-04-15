@@ -43,8 +43,8 @@ namespace Echecs
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result = MessageBox.Show("Veuiller selectionner 2 joueurs!", "Attention", buttons);
             }
-            
         }
+		
         /// <summary>
         /// Charge les joueurs dans les comboBox pour pouvoir les sélectionner
         /// </summary>
@@ -55,8 +55,8 @@ namespace Echecs
                 cmbJoueur1.Items.Add(joueur.ToString().Split('/')[0]);
                 cmbJoueur2.Items.Add(joueur.ToString().Split('/')[0]);
             }
-            
         }
+		
         /// <summary>
         /// Événement de la sélection du premier joueur pour jouer, qui sélectionne le premier joueur et l'enlève de la deuxième liste
         /// </summary>
@@ -74,10 +74,9 @@ namespace Echecs
                 selected1 = cmbJoueur1.SelectedItem.ToString();
                 int index = cmbJoueur2.FindString(selected1);
                 cmbJoueur2.Items.RemoveAt(index);
-
-                
             }
         }
+		
         /// <summary>
         /// Événement de la sélection du deuxième joueur pour jouer, qui sélectionne le deuxième joueur et l'enlève de la première liste
         /// </summary>
@@ -96,9 +95,6 @@ namespace Echecs
                 int index = cmbJoueur1.FindString(selected2);
                 cmbJoueur1.Items.RemoveAt(index);
             }
-           
-            
         }
-
     }
 }

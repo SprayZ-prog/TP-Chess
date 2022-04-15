@@ -18,7 +18,6 @@ namespace Echecs
         /// <param name="_couleur">La couleur du pion</param>
         public Pion(Couleur _couleur) : base(_couleur)
         {
-
             if(_couleur == Couleur.Blanc)
             {
                 _nom = 'P';
@@ -28,6 +27,7 @@ namespace Echecs
                 _nom = 'p';
             }
         }
+		
         /// <summary>
         /// Vérifie si le pion peut être promu
         /// </summary>
@@ -72,7 +72,6 @@ namespace Echecs
                 {
                     return Mouvement.peutBougerSansCollision;
                 }
-                
            }
            else
            {
@@ -84,7 +83,6 @@ namespace Echecs
                 {
                     return Mouvement.peutBougerSansCollision;
                 }
-   
            }
             return Mouvement.peutPasBouger;
         }

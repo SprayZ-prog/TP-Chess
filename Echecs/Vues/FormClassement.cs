@@ -24,8 +24,7 @@ namespace Echecs
         /// <param name="leControlleur">Le contrôleur Echec</param>
         public FormClassement(Echec controlleur)
         {
-            _controlleur = controlleur;
-            
+            _controlleur = controlleur;    
             InitializeComponent();
         }
 
@@ -36,7 +35,6 @@ namespace Echecs
         {
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
-
             listView1.Columns.Add("Nom", 150);
             listView1.Columns.Add("Parties gagnés", 150);
             listView1.Columns.Add("Parties perdues", 150);
@@ -48,6 +46,7 @@ namespace Echecs
                 listView1.Items.Add(lvi);
             }
         }
+		
         /// <summary>
         /// Ajoute le nouveau joueur au classement
         /// </summary>
@@ -60,20 +59,16 @@ namespace Echecs
                 ListViewItem lvi = new ListViewItem(row);
                 listView1.Items.Add(lvi);
                 _controlleur.ajouterJoueur(txtName.Text, Int32.Parse(txtWin.Text), Int32.Parse(txtLose.Text), Int32.Parse(txtNulle.Text));
-                
-                
             }
             else
             {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result = MessageBox.Show("Entrez le bon type dans les bons champs", "Attention", buttons);
-                
             }
             txtName.Text = "";
             txtWin.Text = "";
             txtLose.Text = "";
             txtNulle.Text = "";
-
         }
 
         /// <summary>
@@ -87,8 +82,6 @@ namespace Echecs
 
                 _controlleur.enleverJoueur(listView1.FocusedItem.Index);
             }
-            
-            
         }
     }
 }

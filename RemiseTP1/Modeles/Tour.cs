@@ -25,7 +25,6 @@ namespace Echecs
             {
                 _nom = 't';
             }
-
         }
 
         /// <summary>
@@ -44,6 +43,7 @@ namespace Echecs
         {
             ABougé = true;
         }
+		
         /// <summary>
         /// Vérifie la validité du mouvement selon les règles de la tour
         /// </summary>

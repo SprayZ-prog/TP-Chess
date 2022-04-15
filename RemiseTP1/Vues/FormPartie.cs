@@ -11,6 +11,7 @@ using System.Threading;
 
 namespace Echecs
 {
+	
     /// <summary>
     /// Formulaire de la partie où se trouve l’échiquier et le choix des joueurs pour la partie.
     /// </summary>
@@ -69,7 +70,6 @@ namespace Echecs
         /// </summary>
         private void pnlEchiquier_Click(object sender, EventArgs e)
         {
-
             Point point1 = pnlEchiquier.PointToClient(Cursor.Position);
 
             if (clique1 % 2 == 0)
@@ -165,15 +165,14 @@ namespace Echecs
                 }    
             }
             clique1++;
-
         }
+		
         /// <summary>
         /// Affiche les pièces sur l'échiquier sur leurs bons emplacements
         /// </summary>
         /// <param name="echiquier">La chaine de caractères ayant la position de chacune des pièces</param>
         public void peinturerEchiquier(string echiquier)
         {
-
             char[] tabEchiquier = null;
 
             if (tabEchiquier == null)
@@ -186,62 +185,57 @@ namespace Echecs
             SolidBrush myBrush = new SolidBrush(Color.Chocolate);
             myGraph.DrawImage(Properties.Resources.board2, 0, 0);
 
-
             // Dessine les pièces...
             for (int c = 0; c < 8; c++)
                 for (int r = 0; r < 8; r++)
                 {
-                    if (true)
-                    {
-                        //Thread.Sleep(100);
-                        switch (tabEchiquier[c * 8 + r])
-                        {
-                            case 'P':
-                                imgPiece = new Bitmap(Properties.Resources.pawnWhite);
-                                break;
-                            case 'p':
-                                imgPiece = new Bitmap(Properties.Resources.pawnBlack);
-                                break;
-                            case 'T':
-                                imgPiece = new Bitmap(Properties.Resources.rookWhite);
-                                break;
-                            case 't':
-                                imgPiece = new Bitmap(Properties.Resources.rookBlack);
-                                break;
-                            case 'C':
-                                imgPiece = new Bitmap(Properties.Resources.knightWhite);
-                                break;
-                            case 'c':
-                                imgPiece = new Bitmap(Properties.Resources.knightBlack);
-                                break;
-                            case 'F':
-                                imgPiece = new Bitmap(Properties.Resources.bishopWhite);
-                                break;
-                            case 'f':
-                                imgPiece = new Bitmap(Properties.Resources.bishopBlack);
-                                break;
-                            case 'R':
-                                imgPiece = new Bitmap(Properties.Resources.queenWhite);
-                                break;
-                            case 'r':
-                                imgPiece = new Bitmap(Properties.Resources.queenBlack);
-                                break;
-                            case 'K':
-                                imgPiece = new Bitmap(Properties.Resources.kingWhite);
-                                break;
-                            case 'k':
-                                imgPiece = new Bitmap(Properties.Resources.kingBlack);
-                                break;
-                            case '0':
-                                imgPiece = null;
-                                break;
-                        }
-                        if (imgPiece != null)
-                        {
-                            imgPiece.MakeTransparent(imgPiece.GetPixel(1, 1));
-                            myGraph.DrawImage(imgPiece, r * 62, c * 62);
-                        }
-                    }
+					switch (tabEchiquier[c * 8 + r])
+					{
+						case 'P':
+							imgPiece = new Bitmap(Properties.Resources.pawnWhite);
+							break;
+						case 'p':
+							imgPiece = new Bitmap(Properties.Resources.pawnBlack);
+							break;
+						case 'T':
+							imgPiece = new Bitmap(Properties.Resources.rookWhite);
+							break;
+						case 't':
+							imgPiece = new Bitmap(Properties.Resources.rookBlack);
+							break;
+						case 'C':
+							imgPiece = new Bitmap(Properties.Resources.knightWhite);
+							break;
+						case 'c':
+							imgPiece = new Bitmap(Properties.Resources.knightBlack);
+							break;
+						case 'F':
+							imgPiece = new Bitmap(Properties.Resources.bishopWhite);
+							break;
+						case 'f':
+							imgPiece = new Bitmap(Properties.Resources.bishopBlack);
+							break;
+						case 'R':
+							imgPiece = new Bitmap(Properties.Resources.queenWhite);
+							break;
+						case 'r':
+							imgPiece = new Bitmap(Properties.Resources.queenBlack);
+							break;
+						case 'K':
+							imgPiece = new Bitmap(Properties.Resources.kingWhite);
+							break;
+						case 'k':
+							imgPiece = new Bitmap(Properties.Resources.kingBlack);
+							break;
+						case '0':
+							imgPiece = null;
+							break;
+					}
+					if (imgPiece != null)
+					{
+						imgPiece.MakeTransparent(imgPiece.GetPixel(1, 1));
+						myGraph.DrawImage(imgPiece, r * 62, c * 62);
+					}
                 }
         }
 
@@ -264,7 +258,6 @@ namespace Echecs
                         _controlleur.victoire_Abandon(this);
                         this.Close();
                     }
-
                     break;
                 case 2:
                     result = MessageBox.Show("Acceptez-vous une partie nulle?", "Partie nulle", buttons);
@@ -282,22 +275,16 @@ namespace Echecs
                     buttons = MessageBoxButtons.OK;
                     result = MessageBox.Show(message, "Victoire", buttons);
                     _controlleur.victoire_Abandon(this);
-                    
-                    
-                    this.Close();
-                    
+                    this.Close();  
                     break;
                 case 10:
                     buttons = MessageBoxButtons.OK;
                     result = MessageBox.Show("C'est une partie nulle!", "Partie nulle!!", buttons);
                     _controlleur.uneNulle(this);
-                    
                     this.Close();
-                    
                     break;
             }
         }
-
     }
 }
 

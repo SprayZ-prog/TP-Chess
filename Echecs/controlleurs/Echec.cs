@@ -40,6 +40,7 @@ namespace Echecs
             lire();
             Application.Run(_formMenu);
         }
+		
         /// <summary>
         /// Ouvre le formulaire du classement
         /// </summary>
@@ -48,15 +49,16 @@ namespace Echecs
             _formClassement = new FormClassement(this);
             _formClassement.Show();
         }
+		
         /// <summary>
         /// Ouvre l formulaire de sélection de joueurs pour la nouvelle partie
         /// </summary>
         public void nouvellePartie()
         {
-            
             _formSelection = new FormSelection(this);
             _formSelection.Show();
         }
+		
         /// <summary>
         /// Commence la nouvelle partie et active et garde en mémoire les joueurs qui vont s'affronter
         /// </summary>
@@ -75,10 +77,8 @@ namespace Echecs
                 else if (this._listeJoueur[i].Nom.Equals(joueur2))
                 {
                     j2 = this._listeJoueur[i];
-                }
-                
+                } 
             }
-            
 
             _formSelection.Close();
 
@@ -87,6 +87,7 @@ namespace Echecs
             _listeFormPartie.Add(_formPartie);
             _formPartie.Show();
         }
+		
         /// <summary>
         /// Vérifie si le coup est valide et fait si possible le déplacement ainsi que la promotion s'il y a lieu
         /// </summary>
@@ -117,12 +118,10 @@ namespace Echecs
                 }
                 
                 message = _unePartie.verifEchec();
-               
-                
             }
             return message;
-            
         }
+		
         /// <summary>
         /// Change le pion qui est promu par la pièce que le joueur aura sélectionné.
         /// </summary>
@@ -137,6 +136,7 @@ namespace Echecs
             _formPartie = _listeFormPartie[indexPartie];
             _formPartie.peinturerEchiquier(echiquier);
         }
+		
         /// <summary>
         /// Abandon de la partie
         /// </summary>
@@ -147,6 +147,7 @@ namespace Echecs
             _unePartie = _listePartie[indexOfForm];
             _unePartie.victoire_Abandon();
         }
+		
         /// <summary>
         /// Partie nulle
         /// </summary>
@@ -169,6 +170,7 @@ namespace Echecs
             _unePartie = _listePartie[indexOfForm];
             return _unePartie.tour();
         }
+		
         /// <summary>
         /// Indique le tour du joueur dans la bonne partie
         /// </summary>
@@ -179,6 +181,7 @@ namespace Echecs
             _unePartie = _listePartie[indexPartie];
             return _unePartie.tour();
         }
+		
         /// <summary>
         /// Ajoute un nouveau joueur dans la liste des joueurs du classement avec ses statistiques
         /// </summary>
@@ -190,6 +193,7 @@ namespace Echecs
         {
             _listeJoueur.Add(new Joueur(nom, gagné, perdu, nulle));
         }
+		
         /// <summary>
         /// Vide la liste des joueurs
         /// </summary>
@@ -197,6 +201,7 @@ namespace Echecs
         {
             _listeJoueur.Clear();
         }
+		
         /// <summary>
         /// Retourne la liste de joueurs du jeu
         /// </summary>
@@ -204,6 +209,7 @@ namespace Echecs
         {
             get { return _listeJoueur; }
         }
+		
         /// <summary>
         /// Affiche l'échiquier avec la position de chaque pièce
         /// </summary>
@@ -212,6 +218,7 @@ namespace Echecs
         {
             return _unePartie.afficher();
         }
+		
         /// <summary>
         /// Ferme le jeu d'échec et sauvegarde
         /// </summary>
@@ -219,6 +226,7 @@ namespace Echecs
         {
             sauvegarder();
         }
+		
         /// <summary>
         /// Ferme le jeu d'échec
         /// </summary>
@@ -227,6 +235,7 @@ namespace Echecs
             fermerJeu();
             System.Windows.Forms.Application.Exit();
         }
+		
         /// <summary>
         /// Ajoute tous les joueurs du fichier sauvegardé dans la liste des joueurs
         /// </summary>
@@ -240,12 +249,11 @@ namespace Echecs
                 foreach (string line in lines)
                 {
                     string[] infos = line.Split('/');
-
                     ajouterJoueur(infos[0], Int32.Parse(infos[1]), Int32.Parse(infos[2]), Int32.Parse(infos[3]));
-
                 }
             }
         }
+		
         /// <summary>
         /// Sauvegarde tous les joueurs dans un fichier
         /// </summary>
@@ -263,12 +271,11 @@ namespace Echecs
                 foreach (Joueur joueur in ListeJoueur)
                 {
                     sw.WriteLine(joueur.ToString());
-
                 }
                 sw.Close();
             }
-
         }
+		
         /// <summary>
         /// Enlève le joueur sélectionné de la liste des joueurs
         /// </summary>
@@ -277,7 +284,5 @@ namespace Echecs
         {
             _listeJoueur.RemoveAt(index);
         }
-
-
     }
 }

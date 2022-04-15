@@ -25,8 +25,8 @@ namespace Echecs
             {
                 _nom = 'r';
             }
-
         }
+		
         /// <summary>
         /// Vérifie la validité du mouvement selon les règles de la reine
         /// </summary>
@@ -45,8 +45,7 @@ namespace Echecs
                 || (y2 - y1) / (x2 - x1) == 1 || (y2 - y1) / (x2 - x1) == -1)
                 {
                     return Mouvement.peutBougerSansCollision;
-                }
-                
+                } 
             return Mouvement.peutPasBouger;
         }
     }
