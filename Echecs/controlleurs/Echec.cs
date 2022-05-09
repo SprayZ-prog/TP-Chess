@@ -218,7 +218,21 @@ namespace Echecs
         {
             return _unePartie.afficher();
         }
-		
+
+        public void undo(FormPartie monForm)
+        {
+            int indexOfForm = _listeFormPartie.IndexOf(monForm);
+            _unePartie = _listePartie[indexOfForm];
+            _unePartie.undo();
+        }
+
+        public void redo(FormPartie monForm)
+        {
+            int indexOfForm = _listeFormPartie.IndexOf(monForm);
+            _unePartie = _listePartie[indexOfForm];
+            _unePartie.redo();
+        }
+
         /// <summary>
         /// Ferme le jeu d'échec et sauvegarde
         /// </summary>

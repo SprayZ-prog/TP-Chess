@@ -47,9 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modeles\PieceMemoire.cs" />
-    <Compile Include="reseau\Client.cs" />
-    <Compile Include="reseau\reseau.cs" />
-    <Compile Include="reseau\Server.cs" />
     <Compile Include="Vues\FormPromotion.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -109,6 +109,29 @@ namespace Echecs
                 }
             }
         }
+
+        public void nouvelleEchiquier(string nouvelleEchiquier)
+        {
+            _echiquier = new Case[64];
+            char[] tabEchiquier = null;
+
+            if (tabEchiquier == null)
+            {
+                tabEchiquier = nouvelleEchiquier.ToCharArray();
+            }
+
+            for (int i = 0; i < 64; i++)
+            {
+                if (tabEchiquier[i] != '0')
+                {
+                    _echiquier[i] = new Case(tabEchiquier[i], this);
+                }
+                else
+                {
+                    _echiquier[i] = new Case(true);
+                }
+            }
+        }
 		
         /// <summary>
         /// Retourne l'échiquier

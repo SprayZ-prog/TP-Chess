@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Echecs
 {
@@ -18,6 +15,8 @@ namespace Echecs
         Joueur _joueur1;
         Joueur _joueur2;
         List<string> _listeEchiquier;
+        Stack<string> _undoStack;
+        Stack<string> _redoStack;
 
         /// <summary>
         /// Instancie le contrôleur Echec et les joueurs dans la partie
@@ -31,8 +30,32 @@ namespace Echecs
             _joueur1 = joueur1;
             _joueur2 = joueur2;
             _plateau = new Plateau(this);
+            _undoStack = new Stack<string>();
+            _redoStack = new Stack<string>();
+
         }
-		
+
+        public void undo()
+        {
+            if(_undoStack.Count > 0)
+            {
+                _nbCoup--;
+                _redoStack.Push(afficher());
+                _plateau.nouvelleEchiquier(_undoStack.Pop());
+            }
+            
+        }
+
+        public void redo()
+        {
+            if (_redoStack.Count > 0)
+            {
+                _nbCoup++;
+                _undoStack.Push(afficher());
+                _plateau.nouvelleEchiquier(_redoStack.Pop());
+            }           
+        }
+
         /// <summary>
         /// Met à jour les statistiques des joueurs après l'abandon
         /// </summary>
@@ -219,6 +242,7 @@ namespace Echecs
         /// <returns>Retourne vrai si une promotion de pion doit avoir lieu</returns>
         public bool faireDeplacement(int indexInitial, int indexDesti)
         {
+            _undoStack.Push(_plateau.afficher());
             _plateau.nePeutPlusCharger(indexInitial);
             _plateau.deplacer(indexInitial, indexDesti);
             _nbCoup++;

@@ -285,6 +285,44 @@ namespace Echecs
                     break;
             }
         }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            _controlleur.undo(this);
+            string echiquier = _controlleur.afficherEchiquier();
+            peinturerEchiquier(echiquier);
+
+            int tour = _controlleur.tour(this);
+
+            if (tour == 0)
+            {
+                labMessage.Text = "Tour des blancs";
+            }
+            else
+            {
+                labMessage.Text = "Tour des noirs";
+            }
+
+        }
+
+        private void btnRedo_Click(object sender, EventArgs e)
+        {
+            _controlleur.redo(this);
+            string echiquier = _controlleur.afficherEchiquier();
+            peinturerEchiquier(echiquier);
+
+            int tour = _controlleur.tour(this);
+
+            if (tour == 0)
+            {
+                labMessage.Text = "Tour des blancs";
+            }
+            else
+            {
+                labMessage.Text = "Tour des noirs";
+            }
+
+        }
     }
 }
 
